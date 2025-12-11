@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { RefObject } from "react";
-import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useScroll, useMotionValueEvent } from "motion/react";
 
 /**
  * Custom hook that determines whether an element has scrolled into view by a certain amount.

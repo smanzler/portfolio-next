@@ -1,7 +1,8 @@
-import { Link, useNavigate, useParams } from "react-router";
-import { Button } from "../ui/button";
-import { ArrowLeft, Star } from "lucide-react";
-import { useEffect } from "react";
+"use client";
+
+import { useParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, FileQuestion, Star } from "lucide-react";
 import { useApps } from "@/hooks/useApps";
 import {
   Card,
@@ -9,54 +10,59 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../ui/accordion";
-import { H1, H3, Lead, P, UL } from "../ui/typography";
+} from "@/components/ui/accordion";
+import { H1, H3, Lead, P, UL } from "@/components/ui/typography";
+import Link from "next/link";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 
 const AppDetails = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const { title } = useParams();
   const { apps } = useApps();
-  const app = apps.find((app) => app.title === id);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+  const app = apps.find((app) => app.title === title);
 
   if (!app) {
     return (
       <div className="min-h-screen">
-        <Button
-          onClick={() => navigate("/apps")}
-          variant="ghost"
-          className="mb-8"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Apps
+        <Button variant="ghost" className="mb-8" asChild>
+          <Link href="/apps">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Apps
+          </Link>
         </Button>
 
-        <div className="flex flex-col items-center justify-center py-20">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            App Not Found
-          </h1>
-          <p className="text-base text-muted-foreground mb-8 text-center max-w-md">
-            Sorry, we couldn't find the app you're looking for. It might have
-            been moved or doesn't exist.
-          </p>
-          <div className="flex gap-4">
+        <Empty>
+          <EmptyHeader>
+            <EmptyMedia variant="icon">
+              <FileQuestion />
+            </EmptyMedia>
+            <EmptyTitle>App Not Found</EmptyTitle>
+            <EmptyDescription>
+              Sorry, we couldn't find the app you're looking for. It might have
+              been moved or doesn't exist.
+            </EmptyDescription>
+          </EmptyHeader>
+          <EmptyContent>
             <Button asChild>
-              <Link to="/apps">
-                <ArrowLeft className="h-4 w-4" />
-                View All Apps
+              <Link href="/apps">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Apps
               </Link>
             </Button>
-          </div>
-        </div>
+          </EmptyContent>
+        </Empty>
       </div>
     );
   }

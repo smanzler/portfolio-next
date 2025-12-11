@@ -1,7 +1,7 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import AccentShadowContainer from "../motion/accent-shadow-container";
 import { skills } from "./skills";
 import { Icon } from "@iconify/react";

@@ -1,15 +1,9 @@
-import { useNavigate } from "react-router";
 import { useApps } from "@/hooks/useApps";
-import { useEffect } from "react";
-import { H1, H4, Lead, Muted } from "../ui/typography";
+import { H1, H4, Lead, Muted } from "@/components/ui/typography";
+import Link from "next/link";
 
 const Apps = () => {
-  const navigate = useNavigate();
   const { apps } = useApps();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className="min-h-screen">
@@ -19,10 +13,10 @@ const Apps = () => {
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {apps.map((app) => (
-          <div
+          <Link
             key={app.title}
             className="relative flex flex-row cursor-pointer gap-6 group"
-            onClick={() => navigate(`/apps/${app.title}`)}
+            href={`/apps/${app.title}`}
           >
             <div className="absolute -top-4 -right-4 -bottom-4 -left-4 bg-accent dark:bg-input/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-200 pointer-events-none z-0" />
             <div className="flex flex-col gap-1 items-center justify-center">
@@ -39,7 +33,7 @@ const Apps = () => {
               <H4>{app.title}</H4>
               <Muted className="line-clamp-3">{app.description}</Muted>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

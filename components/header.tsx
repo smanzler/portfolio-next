@@ -62,7 +62,7 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed left-0 right-0 z-5 px-6"
+      className="fixed top-0 left-1/2 -translate-x-1/2 z-5 flex flex-col justify-center items-center w-full max-w-4xl px-6"
       animate={{
         top: isScrolled ? (isVisible ? "20px" : "-80px") : "0",
       }}
@@ -70,7 +70,7 @@ export function Header() {
     >
       <motion.div
         className={cn(
-          "rounded-full transition-colors flex justify-between items-center mx-auto max-w-4xl",
+          "rounded-full transition-colors flex justify-between items-center w-full",
           isScrolled
             ? "bg-card shadow-xl dark:shadow-[0_10px_40px_rgba(0,0,0,1)] backdrop-blur-lg supports-[backdrop-filter]:bg-neutral-400/40 dark:supports-[backdrop-filter]:bg-neutral-700/40"
             : "bg-transparent"
