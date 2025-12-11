@@ -1,5 +1,7 @@
-import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+"use client";
+
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { Button } from "../ui/button";
 import { ArrowLeft } from "lucide-react";
 import { H1, H2, H4, Muted, P, UL } from "../ui/typography";
@@ -9,29 +11,22 @@ import { AnimateOnThreshold } from "../motion/animate-on-threshold";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 
 const Policy = ({ type }: { type: "privacy" | "terms" }) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const { title } = useParams();
   const { apps } = useApps();
-  const item = apps.find((app) => app.title === id);
+  const item = apps.find((app) => app.title === title);
 
   const policy =
     type === "privacy" ? item?.privacyPolicy : item?.termsOfService;
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id, type]);
 
   if (!policy || !item) {
     return (
       <div className="min-h-screen">
         <AnimateOnThreshold shouldAnimate delay={0}>
-          <Button
-            onClick={() => navigate("/apps")}
-            variant="ghost"
-            className="mb-8"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Apps
+          <Button variant="ghost" className="mb-8" asChild>
+            <Link href="/apps">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Apps
+            </Link>
           </Button>
         </AnimateOnThreshold>
 
@@ -48,7 +43,7 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
           </AnimateOnThreshold>
           <AnimateOnThreshold shouldAnimate delay={0.2}>
             <Button asChild>
-              <Link to="/apps">
+              <Link href="/apps">
                 <ArrowLeft className="h-4 w-4" />
                 View All Apps
               </Link>
@@ -67,7 +62,7 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
         </AnimateOnThreshold>
         <div className="flex flex-row justify-between gap-4 items-end">
           <AnimateOnThreshold shouldAnimate delay={0.1}>
-            <Link to={`/apps/${item.title}`}>
+            <Link href={`/apps/${item.title}`}>
               <H2 className="hover:underline">{item.title}</H2>
             </Link>
             <Muted>Last updated: {policy.lastUpdated}</Muted>
@@ -77,7 +72,7 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
             delay={0.2}
             className="size-16 shrink-0 rounded-lg overflow-hidden"
           >
-            <Link to={`/apps/${item.title}`}>
+            <Link href={`/apps/${item.title}`}>
               <img
                 src={item.image}
                 alt={item.title}

@@ -31,7 +31,7 @@ export function useProjects() {
           "INVT is a modern event management platform that simplifies event discovery and RSVP management. Users can create events, share them with friends via QR codes, and track attendance in real-time. The app features a clean, intuitive interface built with React and styled with TailwindCSS, while Firebase handles authentication, real-time data synchronization, and cloud storage.",
         tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Firebase"],
           image: "/invt.png",
-        images: ["/invt-icon.png", "/invt-icon.png", "/invt-icon.png"],
+        images: ["/invt.png", "/invt.png", "/invt.png"],
         link: "https://invt.rsvp",
         featured: true,
         role: "Lead Full Stack Developer",

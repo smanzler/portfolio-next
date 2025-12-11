@@ -1,14 +1,9 @@
+import ProjectCard from "@/components/project-card";
+import { H1, Lead } from "@/components/ui/typography";
 import { useProjects } from "@/hooks/useProjects";
-import { H1, Lead } from "../ui/typography";
-import ProjectCard from "../ui/project-card";
-import { useEffect } from "react";
 
-const ProjectsPage = () => {
+export default function ProjectsPage() {
   const { projects } = useProjects();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className="min-h-screen flex flex-col gap-8">
@@ -24,6 +19,4 @@ const ProjectsPage = () => {
       </div>
     </div>
   );
-};
-
-export default ProjectsPage;
+}

@@ -1,25 +1,22 @@
+"use client";
+
 import type { Project } from "@/hooks/useProjects";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { H4, P } from "./typography";
-import { Badge } from "./badge";
-import { Button } from "./button";
+import { H4, P } from "./ui/typography";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
 import { Code } from "lucide-react";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
+import ThresholdMotionDiv from "./motion/threshold-motion-div";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const ProjectCard = ({ project }: { project: Project }) => {
   const router = useRouter();
-
   return (
-    <motion.div
-      key={project.title}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      viewport={{ once: true }}
-      onClick={() => router.push(`/projects/${project.title}`)}
+    <ThresholdMotionDiv
       className="relative group cursor-pointer rounded-xl overflow-hidden"
+      onClick={() => router.push(`/projects/${project.title}`)}
     >
       <div className="absolute inset-0 bg-muted">
         {project.image && (
@@ -75,18 +72,16 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 variant="ghost"
                 size="icon"
                 className="text-white hover:bg-white/20 hover:text-white"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  router.push(`/projects/${project.title}`);
-                }}
               >
-                <MoveRight />
+                <Link href={`/projects/${project.title}`}>
+                  <MoveRight />
+                </Link>
               </Button>
             )}
           </div>
         </div>
       </div>
-    </motion.div>
+    </ThresholdMotionDiv>
   );
 };
 

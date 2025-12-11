@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { useRef, useEffect } from "react";
 import { useScrollThreshold } from "@/hooks/useScrollThreshold";
@@ -65,6 +67,7 @@ const ThresholdMotionDiv = ({
     <motion.div
       {...props}
       ref={ref}
+      initial={initial}
       animate={isPast ? animate : initial}
       transition={transition}
     >

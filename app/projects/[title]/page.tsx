@@ -1,25 +1,30 @@
+"use client";
+
 import { useProjects } from "@/hooks/useProjects";
-import { useParams, useNavigate, Link } from "react-router";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Github, ExternalLink } from "lucide-react";
-import { useEffect } from "react";
-import { H1, H2, H3, Muted, P, UL } from "../ui/typography";
-import { Separator } from "../ui/separator";
-import { ThresholdContainer } from "../motion/threshold-container";
-import { AnimateOnThreshold } from "../motion/animate-on-threshold";
+import { ArrowLeft, Github, ExternalLink, FileQuestion } from "lucide-react";
+import { H1, H2, H3, Muted, P, UL } from "@/components/ui/typography";
+import { Separator } from "@/components/ui/separator";
+import { ThresholdContainer } from "@/components/motion/threshold-container";
+import { AnimateOnThreshold } from "@/components/motion/animate-on-threshold";
 import { Icon } from "@iconify/react";
-import ThresholdMotionDiv from "../motion/threshold-motion-div";
+import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 
-const ProjectDetails = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+export default function ProjectDetails() {
+  const { title } = useParams();
   const { projects } = useProjects();
-  const project = projects.find((project) => project.title === id);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+  const project = projects.find((project) => project.title === title);
 
   if (!project) {
     return (
@@ -27,33 +32,34 @@ const ProjectDetails = () => {
         {(isPast) => (
           <>
             <AnimateOnThreshold shouldAnimate={isPast} delay={0}>
-              <Button
-                onClick={() => navigate("/", { state: { id: "projects" } })}
-                variant="ghost"
-                className="mb-8 p-0"
-              >
-                <ArrowLeft />
-                Back to Projects
+              <Button variant="ghost" className="mb-8 p-0" asChild>
+                <Link href="/projects">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Projects
+                </Link>
               </Button>
             </AnimateOnThreshold>
 
-            <div className="flex flex-col items-center text-center justify-center py-20 gap-6">
-              <AnimateOnThreshold shouldAnimate={isPast} delay={0.2}>
-                <H1>Project Not Found</H1>
-                <P>
+            <Empty>
+              <EmptyHeader>
+                <EmptyMedia variant="icon">
+                  <FileQuestion />
+                </EmptyMedia>
+                <EmptyTitle>Project Not Found</EmptyTitle>
+                <EmptyDescription>
                   Sorry, we couldn't find the project you're looking for. It
                   might have been moved or doesn't exist.
-                </P>
-              </AnimateOnThreshold>
-              <AnimateOnThreshold shouldAnimate={isPast} delay={0.3}>
+                </EmptyDescription>
+              </EmptyHeader>
+              <EmptyContent>
                 <Button asChild>
-                  <Link to="/" state={{ id: "projects" }}>
+                  <Link href="/projects">
                     <ArrowLeft className="h-4 w-4" />
                     View All Projects
                   </Link>
                 </Button>
-              </AnimateOnThreshold>
-            </div>
+              </EmptyContent>
+            </Empty>
           </>
         )}
       </ThresholdContainer>
@@ -90,7 +96,7 @@ const ProjectDetails = () => {
             >
               <Button asChild>
                 <Link
-                  to={project.link}
+                  href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -223,6 +229,4 @@ const ProjectDetails = () => {
       </ThresholdMotionDiv>
     </div>
   );
-};
-
-export default ProjectDetails;
+}
