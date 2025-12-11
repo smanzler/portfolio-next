@@ -1,0 +1,124 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { motion } from "framer-motion";
+import profileImage from "@/assets/simon.jpeg";
+import AccentShadowContainer from "../motion/accent-shadow-container";
+import { skills } from "./skills";
+import { Icon } from "@iconify/react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+
+export default function Hero() {
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const SkillItem = ({ skill }: { skill: (typeof skills)[0] }) => {
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <AccentShadowContainer
+            className="p-2 mr-4 rounded-lg"
+            onClick={() => handleScroll("skills")}
+          >
+            <Icon icon={skill.icon} className="w-10 h-10" />
+          </AccentShadowContainer>
+        </TooltipTrigger>
+        <TooltipContent>{skill.name}</TooltipContent>
+      </Tooltip>
+    );
+  };
+
+  return (
+    <section
+      id="home"
+      className="min-h-screen flex flex-col text-center items-center justify-center max-w-xl mx-auto -mt-20"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
+        className="size-50 mb-4 rounded-full overflow-hidden"
+      >
+        <Avatar>
+          <AvatarImage src={profileImage} alt="Simon Manzler" />
+          <AvatarFallback>SM</AvatarFallback>
+        </Avatar>
+      </motion.div>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl mb-1"
+      >
+        Simon Manzler
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="text-muted-foreground md:text-xl lg:text-2xl mb-8"
+      >
+        Building modern, responsive, and user-friendly web and mobile
+        applications
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="relative w-full overflow-hidden"
+      >
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div className="flex">
+          <div className="flex animate-infinite-scroll">
+            {skills.map((skill, index) => (
+              <SkillItem key={`${skill.name}-${index}`} skill={skill} />
+            ))}
+          </div>
+          <div className="flex animate-infinite-scroll" aria-hidden="true">
+            {skills.map((skill, index) => (
+              <SkillItem
+                key={`${skill.name}-duplicate-${index}`}
+                skill={skill}
+              />
+            ))}
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes infinite-scroll {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-100%);
+            }
+          }
+          
+          .animate-infinite-scroll {
+            animation: infinite-scroll 20s linear infinite;
+          }
+        `}</style>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.8 + skills.length * 0.1 }}
+        className="mt-12"
+      >
+        <AccentShadowContainer hoverOffset={6} asChild>
+          <button
+            className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4 bg-primary text-primary-foreground"
+            onClick={() => handleScroll("projects")}
+          >
+            View Projects
+          </button>
+        </AccentShadowContainer>
+      </motion.div>
+    </section>
+  );
+}
