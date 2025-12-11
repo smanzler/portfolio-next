@@ -1,6 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+"use client";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
-import profileImage from "@/assets/simon.jpeg";
 import AccentShadowContainer from "../motion/accent-shadow-container";
 import { skills } from "./skills";
 import { Icon } from "@iconify/react";
@@ -41,7 +42,12 @@ export default function Hero() {
         className="size-50 mb-4 rounded-full overflow-hidden"
       >
         <Avatar>
-          <AvatarImage src={profileImage} alt="Simon Manzler" />
+          <AvatarImage
+            src="/simon.jpeg"
+            alt="Simon Manzler"
+            width={200}
+            height={200}
+          />
           <AvatarFallback>SM</AvatarFallback>
         </Avatar>
       </motion.div>

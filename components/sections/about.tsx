@@ -2,11 +2,10 @@ import { H1, H3, Lead, P } from "../ui/typography";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import { ThresholdContainer } from "../motion/threshold-container";
 import { AnimateOnThreshold } from "../motion/animate-on-threshold";
-import profileImage from "@/assets/simon-ramen.png";
 import { Button } from "../ui/button";
 import { ArrowRight, Download } from "lucide-react";
-import { Link } from "react-router";
-import resume from "@/assets/resume.pdf";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function About() {
   const handleScroll = (id: string) => {
@@ -25,7 +24,7 @@ export default function About() {
         </div>
 
         <Button variant="link" asChild>
-          <Link to={resume} target="_blank">
+          <Link href="/resume.pdf" target="_blank">
             Download Resume
             <Download />
           </Link>
@@ -37,10 +36,11 @@ export default function About() {
           <>
             <div className="flex flex-col gap-6">
               <AnimateOnThreshold shouldAnimate={isPast}>
-                <img
-                  src={profileImage}
+                <Image
+                  src="/simon-ramen.png"
                   alt="Simon"
-                  className="w-full h-full object-cover shadow-[-8px_8px_0_0_#ff7300]"
+                  width={500}
+                  height={500}
                 />
               </AnimateOnThreshold>
             </div>

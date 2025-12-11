@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { useProjects } from "@/hooks/useProjects";
 import { H1, Lead } from "../ui/typography";
 import FeaturedProjectCard from "../ui/featured-project-card";
@@ -11,7 +11,7 @@ export default function Projects() {
 
   const featuredProjects = projects.filter((project) => project.featured);
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <section id="projects" className="min-h-screen py-40 flex flex-col gap-6">
@@ -23,11 +23,11 @@ export default function Projects() {
         </div>
 
         <div>
-          <Button variant="link" onClick={() => navigate("/projects")}>
+          <Button variant="link" onClick={() => router.push("/projects")}>
             View All Projects
             <ArrowRight />
           </Button>
-          <Button variant="link" onClick={() => navigate("/apps")}>
+          <Button variant="link" onClick={() => router.push("/apps")}>
             View All Apps
             <ArrowRight />
           </Button>
@@ -43,7 +43,7 @@ export default function Projects() {
           />
         ))}
         <ThresholdMotionDiv className="w-fit mx-">
-          <Button variant="link" onClick={() => navigate("/projects")}>
+          <Button variant="link" onClick={() => router.push("/projects")}>
             View All Projects
             <ArrowRight />
           </Button>

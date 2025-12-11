@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { Brain, Briefcase, FolderOpenDot, Mail, User } from "lucide-react";
-import simonIcon from "@/assets/simon-icon.png";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { motion, useScroll } from "motion/react";
 import { useRouter } from "next/navigation";
@@ -69,112 +68,111 @@ export function Header() {
       }}
       transition={{ duration: 0.4, ease: [0.1, 0.6, 0.3, 0.95] }}
     >
-      <div className="container mx-auto px-4">
-        <motion.div
-          className={cn(
-            "mx-auto rounded-full transition-colors max-w-4xl flex justify-between items-center mx-auto",
-            isScrolled
-              ? "bg-card shadow-xl dark:shadow-[0_10px_40px_rgba(0,0,0,1)] backdrop-blur-lg supports-[backdrop-filter]:bg-neutral-400/40 dark:supports-[backdrop-filter]:bg-neutral-700/40"
-              : "bg-transparent"
-          )}
-          animate={{
-            padding: isScrolled ? "4px 24px" : "4px 0px",
-          }}
-          transition={{ duration: 0.3, ease: [0.1, 0.6, 0.3, 0.95] }}
-        >
+      <motion.div
+        className={cn(
+          "rounded-full transition-colors flex justify-between items-center",
+          isScrolled
+            ? "bg-card shadow-xl dark:shadow-[0_10px_40px_rgba(0,0,0,1)] backdrop-blur-lg supports-[backdrop-filter]:bg-neutral-400/40 dark:supports-[backdrop-filter]:bg-neutral-700/40"
+            : "bg-transparent"
+        )}
+        animate={{
+          padding: isScrolled ? "4px 24px" : "4px 0px",
+        }}
+        transition={{ duration: 0.3, ease: [0.1, 0.6, 0.3, 0.95] }}
+      >
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={(e) => handleClick("home", e)}
+            >
+              <Image
+                src="/simon-icon.png"
+                alt="Simon Manzler"
+                width={24}
+                height={24}
+              />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>Simon Manzler</TooltipContent>
+        </Tooltip>
+
+        <nav className="flex items-center">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={(e) => handleClick("home", e)}
+                className="hover:text-brand"
+                onClick={(e) => handleClick("projects", e)}
               >
-                <Image
-                  src={simonIcon}
-                  alt="Simon Manzler"
-                  className="h-6 w-6"
-                />
+                <FolderOpenDot />
               </Button>
             </TooltipTrigger>
-            <TooltipContent>Simon Manzler</TooltipContent>
+            <TooltipContent>Projects</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-brand"
+                onClick={(e) => handleClick("skills", e)}
+              >
+                <Brain />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Skills</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-brand"
+                onClick={(e) => handleClick("about", e)}
+              >
+                <User />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>About</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-brand"
+                onClick={(e) => handleClick("experience", e)}
+              >
+                <Briefcase />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Experience</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:text-brand"
+                onClick={(e) => handleClick("contact", e)}
+              >
+                <Mail />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Contact</TooltipContent>
           </Tooltip>
 
-          <nav className="flex items-center">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:text-brand"
-                  onClick={(e) => handleClick("projects", e)}
-                >
-                  <FolderOpenDot />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Projects</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:text-brand"
-                  onClick={(e) => handleClick("skills", e)}
-                >
-                  <Brain />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Skills</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:text-brand"
-                  onClick={(e) => handleClick("about", e)}
-                >
-                  <User />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>About</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:text-brand"
-                  onClick={(e) => handleClick("experience", e)}
-                >
-                  <Briefcase />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Experience</TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:text-brand"
-                  onClick={(e) => handleClick("contact", e)}
-                >
-                  <Mail />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>Contact</TooltipContent>
-            </Tooltip>
-
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <ModeToggle className="hover:text-brand" />
-              </TooltipTrigger>
-              <TooltipContent>Toggle Theme</TooltipContent>
-            </Tooltip>
-          </nav>
-        </motion.div>
-      </div>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <ModeToggle className="hover:text-brand" />
+            </TooltipTrigger>
+            <TooltipContent>Toggle Theme</TooltipContent>
+          </Tooltip>
+        </nav>
+      </motion.div>
     </motion.header>
   );
 }

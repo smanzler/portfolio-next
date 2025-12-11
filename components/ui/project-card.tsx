@@ -1,14 +1,15 @@
 import type { Project } from "@/hooks/useProjects";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { H4, P } from "./typography";
 import { Badge } from "./badge";
 import { Button } from "./button";
 import { Code } from "lucide-react";
 import { MoveRight } from "lucide-react";
+import Image from "next/image";
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <motion.div
@@ -17,13 +18,15 @@ const ProjectCard = ({ project }: { project: Project }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
       viewport={{ once: true }}
-      onClick={() => navigate(`/projects/${project.title}`)}
+      onClick={() => router.push(`/projects/${project.title}`)}
       className="relative group cursor-pointer rounded-xl overflow-hidden"
     >
       <div className="absolute inset-0 bg-muted">
         {project.image && (
-          <img
+          <Image
             src={project.image}
+            width={500}
+            height={500}
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-107"
             style={{
@@ -74,7 +77,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 className="text-white hover:bg-white/20 hover:text-white"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/projects/${project.title}`);
+                  router.push(`/projects/${project.title}`);
                 }}
               >
                 <MoveRight />

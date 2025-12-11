@@ -1,7 +1,5 @@
 // src/hooks/useProjects.ts
 import { useMemo } from "react";
-import repImage from "@/assets/rep-icon.png";
-import dashImage from "@/assets/dash-icon.png";
 
 interface Policy {
   lastUpdated: string;
@@ -48,8 +46,8 @@ export function useApps() {
           "Workout tracker built to work offline and sync with your friends.",
         longDescription:
           "Rep is a comprehensive workout tracking mobile application built with React Native and Expo. It enables users to log exercises, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can log workouts without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
-        image: repImage,
-        screenshots: [repImage, repImage, repImage],
+        image: "/rep-icon.png",
+        screenshots: ["/rep-icon.png", "/rep-icon.png", "/rep-icon.png"],
         tags: ["React Native", "Expo", "TypeScript"],
         features: [
           "Offline-first architecture with automatic sync",
@@ -265,8 +263,8 @@ export function useApps() {
           "Running tracker built to work offline and sync with your friends.",
         longDescription:
           "Dash is a comprehensive running tracking mobile application built with React Native and Expo. It enables users to track their runs, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can track runs without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
-        image: dashImage,
-        screenshots: [dashImage, dashImage, dashImage],
+        image: "/dash-icon.png",
+        screenshots: ["/dash-icon.png", "/dash-icon.png", "/dash-icon.png"],
         tags: ["React Native", "Expo", "TypeScript"],
         features: [
           "Offline-first architecture with automatic sync",

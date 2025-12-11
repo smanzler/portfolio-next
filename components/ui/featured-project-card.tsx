@@ -1,5 +1,5 @@
 import type { Project } from "@/hooks/useProjects";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { H4, P } from "./typography";
 import { Badge } from "./badge";
 import { Button } from "./button";
@@ -8,6 +8,7 @@ import { MoveRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import AccentShadowContainer from "../motion/accent-shadow-container";
+import Image from "next/image";
 
 const FeaturedProjectCard = ({
   project,
@@ -16,18 +17,20 @@ const FeaturedProjectCard = ({
   project: Project;
   side?: "left" | "right";
 }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <ThresholdMotionDiv
       key={project.title}
-      onClick={() => navigate(`/projects/${project.title}`)}
+      onClick={() => router.push(`/projects/${project.title}`)}
     >
       <AccentShadowContainer className="relative cursor-pointer rounded-xl overflow-hidden">
         {project.image && (
-          <img
+          <Image
             src={project.image}
             alt={project.title}
+            width={500}
+            height={500}
             className="w-full h-full min-h-[450px] md:min-h-[500px] object-cover"
           />
         )}
@@ -78,7 +81,7 @@ const FeaturedProjectCard = ({
                   size="icon"
                   onClick={(e) => {
                     e.stopPropagation();
-                    navigate(`/projects/${project.title}`);
+                    router.push(`/projects/${project.title}`);
                   }}
                 >
                   <MoveRight />

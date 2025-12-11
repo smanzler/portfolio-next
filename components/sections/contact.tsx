@@ -6,7 +6,7 @@ import { H1, H2, Lead, P, Muted } from "../ui/typography";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import { Mail } from "lucide-react";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router";
+import Link from "next/link";
 import AccentShadowContainer from "../motion/accent-shadow-container";
 
 export default function Contact() {
@@ -36,7 +36,7 @@ export default function Contact() {
                 className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
                 asChild
               >
-                <Link to="mailto:simanzler@gmail.com">
+                <Link href="mailto:simanzler@gmail.com">
                   <Mail className="h-4 w-4" />
                   Email me
                 </Link>
@@ -47,7 +47,7 @@ export default function Contact() {
                 asChild
               >
                 <Link
-                  to="https://github.com/smanzler"
+                  href="https://github.com/smanzler"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -64,7 +64,7 @@ export default function Contact() {
                 asChild
               >
                 <Link
-                  to="https://linkedin.com/in/simonmanzler"
+                  href="https://linkedin.com/in/simonmanzler"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

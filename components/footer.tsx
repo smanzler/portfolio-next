@@ -1,4 +1,5 @@
-import logoImage from "@/assets/simon-icon.png";
+"use client";
+
 import { useApps } from "@/hooks/useApps";
 import { useProjects } from "@/hooks/useProjects";
 import { Button } from "./ui/button";
@@ -94,10 +95,11 @@ const Footer = ({
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
                 <Image
-                  src={logoImage}
+                  src="/simon-icon.png"
                   alt="Simon Manzler"
                   title="Simon Manzler"
-                  className="h-10"
+                  width={40}
+                  height={40}
                 />
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
