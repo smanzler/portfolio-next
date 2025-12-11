@@ -8,7 +8,6 @@ import { MoveRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import AccentShadowContainer from "../motion/accent-shadow-container";
-import Image from "next/image";
 
 const FeaturedProjectCard = ({
   project,
@@ -26,7 +25,7 @@ const FeaturedProjectCard = ({
     >
       <AccentShadowContainer className="relative cursor-pointer rounded-xl overflow-hidden">
         {project.image && (
-          <Image
+          <img
             src={project.image}
             alt={project.title}
             width={500}

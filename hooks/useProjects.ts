@@ -30,7 +30,7 @@ export function useProjects() {
         longDescription:
           "INVT is a modern event management platform that simplifies event discovery and RSVP management. Users can create events, share them with friends via QR codes, and track attendance in real-time. The app features a clean, intuitive interface built with React and styled with TailwindCSS, while Firebase handles authentication, real-time data synchronization, and cloud storage.",
         tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Firebase"],
-          image: "/invt-icon.png",
+          image: "/invt.png",
         images: ["/invt-icon.png", "/invt-icon.png", "/invt-icon.png"],
         link: "https://invt.rsvp",
         featured: true,
@@ -71,7 +71,7 @@ export function useProjects() {
         longDescription:
           "Rep is a comprehensive workout tracking mobile application built with React Native and Expo. It enables users to log exercises, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can log workouts without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
         tags: ["React Native", "Supabase", "Expo"],
-        image: "/rep-icon.png",
+        image: "/rep.png",
         images: ["/rep-icon.png", "/rep-icon.png", "/rep-icon.png"],
         link: "https://github.com/smanzler/workout-tracker",
         featured: true,
@@ -113,7 +113,7 @@ export function useProjects() {
         longDescription:
           "A modern, responsive portfolio website designed to showcase my projects, skills, and experience. Built with React and styled with TailwindCSS and Shadcn UI components, the site features smooth animations, dark mode support, and an intuitive navigation experience. The site is deployed on GitHub Pages and serves as a central hub for my professional presence.",
         tags: ["React", "TailwindCSS", "Shadcn UI", "Github Pages"],
-        image: "/portfolio-icon.png",
+        image: "/portfolio.png",
         images: ["/portfolio-icon.png", "/portfolio-icon.png", "/portfolio-icon.png"],
         link: "https://simonmanzler.com",
         featured: true,

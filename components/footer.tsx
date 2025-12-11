@@ -5,6 +5,7 @@ import { useProjects } from "@/hooks/useProjects";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface MenuItem {
   title: string;
@@ -47,10 +48,11 @@ const Footer = ({
 }: FooterProps) => {
   const { apps } = useApps();
   const { projects } = useProjects();
+  const pathname = usePathname();
 
-  const getBottomLinks = () => {
-    if (location.pathname.startsWith("/apps/")) {
-      const appTitle = location.pathname.split("/")[2];
+  const getBottomLinks = (pathname: string) => {
+    if (pathname.startsWith("/apps/")) {
+      const appTitle = pathname.split("/")[2];
       return [
         {
           text: "Privacy Policy",
@@ -61,13 +63,13 @@ const Footer = ({
           url: `/apps/${appTitle}/terms`,
         },
       ];
-    } else if (location.pathname === "/apps") {
+    } else if (pathname === "/apps") {
       return [{ text: "Back to Home", url: "/" }];
     }
     return [];
   };
 
-  const bottomLinks = getBottomLinks();
+  const bottomLinks = getBottomLinks(pathname);
 
   const footerMenuItems: MenuItem[] = [
     ...menuItems,
