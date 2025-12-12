@@ -1,13 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { H1, H2, Lead, P, Muted } from "../ui/typography";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import { Mail } from "lucide-react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import AccentShadowContainer from "../motion/accent-shadow-container";
+import ContactForm from "../contact-form";
 
 export default function Contact() {
   return (
@@ -88,34 +85,7 @@ export default function Contact() {
             </Muted>
           </div>
 
-          <form className="space-y-6">
-            <div>
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" placeholder="Your name" />
-              </div>
-            </div>
-
-            <div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input type="email" id="email" placeholder="Your email" />
-              </div>
-            </div>
-
-            <div>
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="Your message" rows={4} />
-              </div>
-            </div>
-
-            <div>
-              <Button type="submit" className="w-full">
-                Send Message
-              </Button>
-            </div>
-          </form>
+          <ContactForm />
         </ThresholdMotionDiv>
       </div>
     </section>
