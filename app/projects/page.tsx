@@ -23,15 +23,13 @@ export default function ProjectsPage() {
           >
             <div className="absolute -inset-3 bg-accent dark:bg-input/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-200 pointer-events-none z-0" />
             <div className="flex flex-col gap-1 items-center justify-center">
-              {project.image && (
-                <div className="rounded-lg overflow-hidden bg-muted size-16">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-auto"
-                  />
-                </div>
-              )}
+              <div className="rounded-lg overflow-hidden bg-muted size-16">
+                <Image
+                  src={project.icon}
+                  alt={project.title}
+                  className="h-full w-auto"
+                />
+              </div>
               <Muted className="text-xs">{project.title}</Muted>
             </div>
             <div className="flex flex-col gap-2">

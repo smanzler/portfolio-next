@@ -5,6 +5,9 @@ import repImage from "../public/rep.png";
 import portfolioImage from "../public/portfolio.png";
 import writtenImage from "../public/portfolio.png";
 import repIcon from "../public/rep-icon.png";
+import invtIcon from "../public/invt-icon.png";
+import portfolioIcon from "../public/simon-icon.png";
+import writtenIcon from "../public/written-icon.png";
 import { StaticImageData } from "next/image";
 
 export interface Project {
@@ -12,7 +15,8 @@ export interface Project {
   description: string;
   longDescription?: string;
   tags: string[];
-  image?: StaticImageData;
+  image: StaticImageData;
+  icon: StaticImageData;
   images?: StaticImageData[];
   link?: string;
   featured?: boolean;
@@ -37,6 +41,7 @@ export function useProjects() {
           "INVT is a modern event management platform that simplifies event discovery and RSVP management. Users can create events, share them with friends via QR codes, and track attendance in real-time. The app features a clean, intuitive interface built with React and styled with TailwindCSS, while Firebase handles authentication, real-time data synchronization, and cloud storage.",
         tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Firebase"],
           image: invtImage,
+          icon: invtIcon,
         images: [invtImage, invtImage, invtImage],
         link: "https://invt.rsvp",
         featured: true,
@@ -78,6 +83,7 @@ export function useProjects() {
           "Rep is a comprehensive workout tracking mobile application built with React Native and Expo. It enables users to log exercises, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can log workouts without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
         tags: ["React Native", "Supabase", "Expo"],
         image: repImage,
+        icon: repIcon,
         images: [repIcon, repIcon, repIcon],
         link: "https://github.com/smanzler/workout-tracker",
         featured: true,
@@ -120,6 +126,7 @@ export function useProjects() {
           "A modern, responsive portfolio website designed to showcase my projects, skills, and experience. Built with React and styled with TailwindCSS and Shadcn UI components, the site features smooth animations, dark mode support, and an intuitive navigation experience. The site is deployed on GitHub Pages and serves as a central hub for my professional presence.",
         tags: ["React", "TailwindCSS", "Shadcn UI", "Github Pages"],
         image: portfolioImage,
+        icon: portfolioIcon,
         images: [portfolioImage, portfolioImage, portfolioImage],
         link: "https://simonmanzler.com",
         featured: true,
@@ -162,6 +169,7 @@ export function useProjects() {
         link: "https://written.simonmanzler.com",
         github: "https://github.com/smanzler/written",
         image: writtenImage,
+        icon: writtenIcon,
         images: [writtenImage, writtenImage, writtenImage],
       },
     ],
