@@ -42,6 +42,7 @@ export default function Hero() {
             alt="Simon Manzler"
             width={200}
             height={200}
+            loading="eager"
           />
           <AvatarFallback>SM</AvatarFallback>
         </Avatar>
