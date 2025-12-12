@@ -108,10 +108,10 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8 + skills.length * 0.1 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
         className="mt-12"
       >
-        <AccentShadowContainer hoverOffset={6} asChild>
+        <AccentShadowContainer hoverOffset={6} className="rounded-md">
           <Button onClick={() => scrollToSection("projects")}>
             View Projects
             <ArrowRight />
