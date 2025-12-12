@@ -58,22 +58,18 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
   return (
     <div className="min-h-screen">
       <div className="flex flex-col gap-6">
-        <AnimateOnThreshold shouldAnimate delay={0}>
+        <ThresholdMotionDiv>
           <H1>{type === "privacy" ? "Privacy Policy" : "Terms of Service"}</H1>
-        </AnimateOnThreshold>
+        </ThresholdMotionDiv>
         <div className="flex flex-row justify-between gap-4 items-end">
-          <AnimateOnThreshold shouldAnimate delay={0.1}>
+          <ThresholdMotionDiv>
             <Link href={`/apps/${item.title}`}>
               <H2 className="hover:underline">{item.title}</H2>
             </Link>
             <Muted>Last updated: {policy.lastUpdated}</Muted>
-          </AnimateOnThreshold>
+          </ThresholdMotionDiv>
           {item.image && (
-            <AnimateOnThreshold
-              shouldAnimate
-              delay={0.2}
-              className="size-16 shrink-0 rounded-lg overflow-hidden"
-            >
+            <ThresholdMotionDiv className="size-16 shrink-0 rounded-lg overflow-hidden">
               <Link href={`/apps/${item.title}`}>
                 <Image
                   src={item.image}
@@ -81,12 +77,12 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
                   className="size-full object-cover"
                 />
               </Link>
-            </AnimateOnThreshold>
+            </ThresholdMotionDiv>
           )}
         </div>
-        <AnimateOnThreshold shouldAnimate delay={0.3}>
+        <ThresholdMotionDiv>
           <Separator />
-        </AnimateOnThreshold>
+        </ThresholdMotionDiv>
         {policy.sections.map((section, index) => (
           <ThresholdMotionDiv key={index}>
             <H4>{section.title}</H4>
