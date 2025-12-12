@@ -1,13 +1,17 @@
+"use client";
+
 import type { Project } from "@/hooks/useProjects";
 import { useRouter } from "next/navigation";
-import { H4, P } from "./typography";
-import { Badge } from "./badge";
-import { Button } from "./button";
+import { H4, P } from "@/components/ui/typography";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Code } from "lucide-react";
 import { MoveRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import ThresholdMotionDiv from "../motion/threshold-motion-div";
-import AccentShadowContainer from "../motion/accent-shadow-container";
+import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
+import AccentShadowContainer from "@/components/motion/accent-shadow-container";
+import Link from "next/link";
+import Image from "next/image";
 
 const FeaturedProjectCard = ({
   project,
@@ -25,11 +29,9 @@ const FeaturedProjectCard = ({
     >
       <AccentShadowContainer className="relative cursor-pointer rounded-xl overflow-hidden">
         {project.image && (
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            width={500}
-            height={500}
             className="w-full h-full min-h-[450px] md:min-h-[500px] object-cover"
           />
         )}
@@ -64,26 +66,16 @@ const FeaturedProjectCard = ({
 
             <div className="flex gap-2 justify-end">
               {project.github ? (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.github, "_blank");
-                  }}
-                >
-                  <Code />
+                <Button variant="ghost" size="icon" asChild>
+                  <Link href={project.github} target="_blank">
+                    <Code />
+                  </Link>
                 </Button>
               ) : (
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    router.push(`/projects/${project.title}`);
-                  }}
-                >
-                  <MoveRight />
+                <Button variant="ghost" size="icon" asChild>
+                  <Link href={`/projects/${project.title}`}>
+                    <MoveRight />
+                  </Link>
                 </Button>
               )}
             </div>

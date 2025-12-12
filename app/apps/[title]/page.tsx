@@ -27,6 +27,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
+import Image from "next/image";
 
 const AppDetails = () => {
   const { title } = useParams();
@@ -75,13 +76,11 @@ const AppDetails = () => {
           <Lead>{app.description}</Lead>
         </div>
 
-        <div className="rounded-lg overflow-hidden size-16 shrink-0">
-          <img
-            src={app.image}
-            alt={app.title}
-            className="size-full object-cover"
-          />
-        </div>
+        {app.image && (
+          <div className="rounded-lg overflow-hidden bg-muted shrink-0">
+            <Image src={app.image} alt={app.title} width={64} height={64} />
+          </div>
+        )}
       </div>
 
       {/* Screenshots */}
@@ -93,10 +92,10 @@ const AppDetails = () => {
                 key={index}
                 className="rounded-xl overflow-hidden border w-1/3 min-w-64"
               >
-                <img
+                <Image
                   src={screenshot}
-                  alt={screenshot}
-                  className="w-full h-auto"
+                  alt={app.title}
+                  className="object-cover"
                 />
               </div>
             ))}

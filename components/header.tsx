@@ -2,12 +2,12 @@
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, scrollToSection } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { Brain, Briefcase, FolderOpenDot, Mail, User } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { motion, useScroll } from "motion/react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 
 export function Header() {
@@ -17,6 +17,7 @@ export function Header() {
   const lastScrollY = useRef(0);
   const lastVisibilityChangeY = useRef(0);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     return scrollY.on("change", (latest) => {
@@ -50,13 +51,10 @@ export function Header() {
   const handleClick = (id: string, e?: React.MouseEvent<HTMLButtonElement>) => {
     e?.preventDefault();
 
-    if (location.pathname === "/") {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+    if (pathname === "/") {
+      scrollToSection(id);
     } else {
-      router.push("/?id=" + id);
+      router.push(`/#${id}`);
     }
   };
 
@@ -92,6 +90,7 @@ export function Header() {
                 alt="Simon Manzler"
                 width={24}
                 height={24}
+                loading="eager"
               />
             </Button>
           </TooltipTrigger>

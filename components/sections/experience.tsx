@@ -1,3 +1,5 @@
+"use client";
+
 import { H1, H3, Lead, P } from "../ui/typography";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import { Briefcase, Calendar, MapPin } from "lucide-react";

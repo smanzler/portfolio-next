@@ -6,22 +6,18 @@ import AccentShadowContainer from "../motion/accent-shadow-container";
 import { skills } from "./skills";
 import { Icon } from "@iconify/react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { ArrowRight } from "lucide-react";
+import { Button } from "../ui/button";
+import { scrollToSection } from "@/lib/utils";
 
 export default function Hero() {
-  const handleScroll = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const SkillItem = ({ skill }: { skill: (typeof skills)[0] }) => {
     return (
       <Tooltip>
         <TooltipTrigger asChild>
           <AccentShadowContainer
-            className="p-2 mr-4 rounded-lg"
-            onClick={() => handleScroll("skills")}
+            className="p-2 mr-4 rounded-lg cursor-pointer"
+            onClick={() => scrollToSection("skills")}
           >
             <Icon icon={skill.icon} className="w-10 h-10" />
           </AccentShadowContainer>
@@ -116,12 +112,10 @@ export default function Hero() {
         className="mt-12"
       >
         <AccentShadowContainer hoverOffset={6} asChild>
-          <button
-            className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4 bg-primary text-primary-foreground"
-            onClick={() => handleScroll("projects")}
-          >
+          <Button onClick={() => scrollToSection("projects")}>
             View Projects
-          </button>
+            <ArrowRight />
+          </Button>
         </AccentShadowContainer>
       </motion.div>
     </section>

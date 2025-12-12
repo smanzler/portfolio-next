@@ -1,17 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useProjects } from "@/hooks/useProjects";
-import { H1, Lead } from "../ui/typography";
-import FeaturedProjectCard from "../ui/featured-project-card";
-import ThresholdMotionDiv from "../motion/threshold-motion-div";
+import { H1, Lead } from "@/components/ui/typography";
+import FeaturedProjectCard from "@/components/featured-project-card";
+import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
 
 export default function Projects() {
   const { projects } = useProjects();
 
   const featuredProjects = projects.filter((project) => project.featured);
-
-  const router = useRouter();
 
   return (
     <section id="projects" className="min-h-screen py-40 flex flex-col gap-6">
@@ -23,13 +21,17 @@ export default function Projects() {
         </div>
 
         <div>
-          <Button variant="link" onClick={() => router.push("/projects")}>
-            View All Projects
-            <ArrowRight />
+          <Button variant="link" asChild>
+            <Link href="/projects">
+              View All Projects
+              <ArrowRight />
+            </Link>
           </Button>
-          <Button variant="link" onClick={() => router.push("/apps")}>
-            View All Apps
-            <ArrowRight />
+          <Button variant="link" asChild>
+            <Link href="/apps">
+              View All Apps
+              <ArrowRight />
+            </Link>
           </Button>
         </div>
       </ThresholdMotionDiv>
@@ -43,9 +45,11 @@ export default function Projects() {
           />
         ))}
         <ThresholdMotionDiv className="w-fit mx-">
-          <Button variant="link" onClick={() => router.push("/projects")}>
-            View All Projects
-            <ArrowRight />
+          <Button variant="link" asChild>
+            <Link href="/projects">
+              View All Projects
+              <ArrowRight />
+            </Link>
           </Button>
         </ThresholdMotionDiv>
       </div>

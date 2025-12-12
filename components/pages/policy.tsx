@@ -9,6 +9,7 @@ import { Separator } from "../ui/separator";
 import { useApps } from "@/hooks/useApps";
 import { AnimateOnThreshold } from "../motion/animate-on-threshold";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
+import Image from "next/image";
 
 const Policy = ({ type }: { type: "privacy" | "terms" }) => {
   const { title } = useParams();
@@ -67,19 +68,21 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
             </Link>
             <Muted>Last updated: {policy.lastUpdated}</Muted>
           </AnimateOnThreshold>
-          <AnimateOnThreshold
-            shouldAnimate
-            delay={0.2}
-            className="size-16 shrink-0 rounded-lg overflow-hidden"
-          >
-            <Link href={`/apps/${item.title}`}>
-              <img
-                src={item.image}
-                alt={item.title}
-                className="size-full object-cover"
-              />
-            </Link>
-          </AnimateOnThreshold>
+          {item.image && (
+            <AnimateOnThreshold
+              shouldAnimate
+              delay={0.2}
+              className="size-16 shrink-0 rounded-lg overflow-hidden"
+            >
+              <Link href={`/apps/${item.title}`}>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  className="size-full object-cover"
+                />
+              </Link>
+            </AnimateOnThreshold>
+          )}
         </div>
         <AnimateOnThreshold shouldAnimate delay={0.3}>
           <Separator />

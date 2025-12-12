@@ -1,13 +1,19 @@
 // src/hooks/useProjects.ts
 import { useMemo } from "react";
+import invtImage from "../public/invt.png";
+import repImage from "../public/rep.png";
+import portfolioImage from "../public/portfolio.png";
+import writtenImage from "../public/portfolio.png";
+import repIcon from "../public/rep-icon.png";
+import { StaticImageData } from "next/image";
 
 export interface Project {
   title: string;
   description: string;
   longDescription?: string;
   tags: string[];
-  image?: string;
-  images?: string[];
+  image?: StaticImageData;
+  images?: StaticImageData[];
   link?: string;
   featured?: boolean;
   github?: string;
@@ -26,12 +32,12 @@ export function useProjects() {
       {
         title: "INVT",
         description:
-          "Web app that allows users to find and rsvp to events made by others. Also allows users to invite friends through a QR code.",
+          "Find and rsvp to events made by others and invite friends through QR codes.",
         longDescription:
           "INVT is a modern event management platform that simplifies event discovery and RSVP management. Users can create events, share them with friends via QR codes, and track attendance in real-time. The app features a clean, intuitive interface built with React and styled with TailwindCSS, while Firebase handles authentication, real-time data synchronization, and cloud storage.",
         tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Firebase"],
-          image: "/invt.png",
-        images: ["/invt.png", "/invt.png", "/invt.png"],
+          image: invtImage,
+        images: [invtImage, invtImage, invtImage],
         link: "https://invt.rsvp",
         featured: true,
         role: "Lead Full Stack Developer",
@@ -67,12 +73,12 @@ export function useProjects() {
       {
         title: "Rep",
         description:
-          "Workout tracker built with React Native and Supabase. It allows users to track their workouts and progress and share their progress with their friends. Supports offline mode and syncs once connected to the internet.",
+          "Track workouts, view progress, share with friends, and sync data offline.",
         longDescription:
           "Rep is a comprehensive workout tracking mobile application built with React Native and Expo. It enables users to log exercises, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can log workouts without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
         tags: ["React Native", "Supabase", "Expo"],
-        image: "/rep.png",
-        images: ["/rep-icon.png", "/rep-icon.png", "/rep-icon.png"],
+        image: repImage,
+        images: [repIcon, repIcon, repIcon],
         link: "https://github.com/smanzler/workout-tracker",
         featured: true,
         github: "https://github.com/smanzler/workout-tracker",
@@ -113,8 +119,8 @@ export function useProjects() {
         longDescription:
           "A modern, responsive portfolio website designed to showcase my projects, skills, and experience. Built with React and styled with TailwindCSS and Shadcn UI components, the site features smooth animations, dark mode support, and an intuitive navigation experience. The site is deployed on GitHub Pages and serves as a central hub for my professional presence.",
         tags: ["React", "TailwindCSS", "Shadcn UI", "Github Pages"],
-        image: "/portfolio.png",
-        images: ["/portfolio-icon.png", "/portfolio-icon.png", "/portfolio-icon.png"],
+        image: portfolioImage,
+        images: [portfolioImage, portfolioImage, portfolioImage],
         link: "https://simonmanzler.com",
         featured: true,
         github: "https://github.com/smanzler/portfolio",
@@ -149,44 +155,14 @@ export function useProjects() {
         ],
       },
       {
-        title: "Type Town",
-        description:
-          "Typing game built with React, Vite and Typescript. It allows users to type different quotes from different authors. Shows the user's typing speed and accuracy.",
-        tags: ["React", "Vite", "Typescript"],
-        link: "https://smanzler.github.io/TypeTownV3/",
-        github: "https://github.com/smanzler/TypeTownV3",
-          image: "/type-town-icon.png",
-        images: ["/type-town-icon.png", "/type-town-icon.png", "/type-town-icon.png"],
-        role: "Frontend Developer",
-        timeline: "2024",
-        keyFeatures: [
-          "Typing game with different quotes from different authors",
-          "Shows the user's typing speed and accuracy",
-          "Responsive design for mobile and desktop",
-        ],
-        challenges: [
-          "Implementing a scoring system",
-          "Implementing a leaderboard",
-          "Implementing a settings menu",
-        ],
-        technologies: [
-          {
-            category: "Frontend",
-            items: ["React", "Vite", "Typescript"],
-          },
-          {
-            category: "Tools",
-            items: ["Vite", "ESLint", "Git"],
-          },
-        ],
-      },
-      {
         title: "Written",
         description:
           "Infinite Journal built with React, Vite and Typescript. It allows users to write and save their journal entries. It also allows users to see their journal entries and compare their scores with their friends.",
         tags: ["React", "Vite", "Typescript"],
         link: "https://written.simonmanzler.com",
         github: "https://github.com/smanzler/written",
+        image: writtenImage,
+        images: [writtenImage, writtenImage, writtenImage],
       },
     ],
     []

@@ -20,6 +20,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
+import Image from "next/image";
 
 export default function ProjectDetails() {
   const { title } = useParams();
@@ -132,7 +133,7 @@ export default function ProjectDetails() {
           delay={0.4 + project.tags.length * 0.05}
           className="mb-20 rounded-lg overflow-hidden border"
         >
-          <img
+          <Image
             src={project.image}
             alt={project.title}
             className="w-full h-auto"
@@ -179,7 +180,7 @@ export default function ProjectDetails() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {project.images.slice(1).map((image, index) => (
               <div key={index} className="rounded-lg overflow-hidden border">
-                <img
+                <Image
                   src={image}
                   alt={`${project.title} screenshot ${index + 2}`}
                   className="w-full h-auto"

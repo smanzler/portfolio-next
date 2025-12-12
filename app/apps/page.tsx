@@ -1,6 +1,7 @@
 import { useApps } from "@/hooks/useApps";
 import { H1, H4, Lead, Muted } from "@/components/ui/typography";
 import Link from "next/link";
+import Image from "next/image";
 
 const Apps = () => {
   const { apps } = useApps();
@@ -18,15 +19,18 @@ const Apps = () => {
             className="relative flex flex-row cursor-pointer gap-6 group"
             href={`/apps/${app.title}`}
           >
-            <div className="absolute -top-4 -right-4 -bottom-4 -left-4 bg-accent dark:bg-input/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-200 pointer-events-none z-0" />
+            <div className="absolute -inset-3 bg-accent dark:bg-input/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-200 pointer-events-none z-0" />
             <div className="flex flex-col gap-1 items-center justify-center">
-              <div className="relative z-1 rounded-lg overflow-hidden bg-muted w-16 h-16">
-                <img
-                  src={app.image}
-                  alt={app.title}
-                  className="object-cover w-full h-full object-center"
-                />
-              </div>
+              {app.image && (
+                <div className="rounded-lg overflow-hidden bg-muted size-16">
+                  <Image
+                    src={app.image}
+                    alt={app.title}
+                    width={64}
+                    height={64}
+                  />
+                </div>
+              )}
               <Muted className="text-xs">{app.title}</Muted>
             </div>
             <div className="flex flex-col gap-2">

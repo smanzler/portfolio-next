@@ -1,3 +1,5 @@
+"use client";
+
 import AccentShadowContainer from "../motion/accent-shadow-container";
 import { AnimateOnThreshold } from "../motion/animate-on-threshold";
 import { ThresholdContainer } from "../motion/threshold-container";

@@ -5,14 +5,14 @@ import { useProjects } from "@/hooks/useProjects";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { scrollToSection } from "@/lib/utils";
 
 interface MenuItem {
   title: string;
   links: {
     text: string;
     url: string;
-    state?: string;
   }[];
 }
 
@@ -28,11 +28,12 @@ const Footer = ({
     {
       title: "Portfolio",
       links: [
-        { text: "Overview", url: "/", state: "home" },
-        { text: "Projects", url: "/", state: "projects" },
-        { text: "Skills", url: "/", state: "skills" },
-        { text: "About", url: "/", state: "about" },
-        { text: "Contact", url: "/", state: "contact" },
+        { text: "Overview", url: "/#home" },
+        { text: "Projects", url: "/#projects" },
+        { text: "Skills", url: "/#skills" },
+        { text: "About", url: "/#about" },
+        { text: "Experience", url: "/#experience" },
+        { text: "Contact", url: "/#contact" },
       ],
     },
     {
@@ -49,6 +50,7 @@ const Footer = ({
   const { apps } = useApps();
   const { projects } = useProjects();
   const pathname = usePathname();
+  const router = useRouter();
 
   const getBottomLinks = (pathname: string) => {
     if (pathname.startsWith("/apps/")) {
@@ -89,6 +91,22 @@ const Footer = ({
     },
   ];
 
+  const handleLinkClick = (
+    url: string,
+    e: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    if (url.startsWith("/#")) {
+      e.preventDefault();
+      const sectionId = url.slice(2);
+
+      if (pathname === "/") {
+        scrollToSection(sectionId);
+      } else {
+        router.push(url);
+      }
+    }
+  };
+
   return (
     <section className="py-32">
       <div className="container">
@@ -117,7 +135,12 @@ const Footer = ({
                         variant="link"
                         asChild
                       >
-                        <Link href={link.url}>{link.text}</Link>
+                        <Link
+                          href={link.url}
+                          onClick={(e) => handleLinkClick(link.url, e)}
+                        >
+                          {link.text}
+                        </Link>
                       </Button>
                     </li>
                   ))}

@@ -1,3 +1,5 @@
+"use client";
+
 import { H1, H3, Lead, P } from "../ui/typography";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import { ThresholdContainer } from "../motion/threshold-container";
@@ -6,15 +8,9 @@ import { Button } from "../ui/button";
 import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { scrollToSection } from "@/lib/utils";
 
 export default function About() {
-  const handleScroll = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="about" className="py-40 min-h-screen">
       <ThresholdMotionDiv className="flex flex-row justify-between mb-12">
@@ -60,7 +56,7 @@ export default function About() {
 
                   <Button
                     variant="link"
-                    onClick={() => handleScroll("experience")}
+                    onClick={() => scrollToSection("experience")}
                   >
                     Learn More
                     <ArrowRight />
