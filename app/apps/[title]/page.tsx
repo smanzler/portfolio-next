@@ -28,6 +28,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import Image from "next/image";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
 
 const AppDetails = () => {
   const { title } = useParams();
@@ -88,16 +89,12 @@ const AppDetails = () => {
         <div className="flex flex-row gap-4 overflow-x-auto">
           {app.screenshots &&
             app.screenshots.map((screenshot, index) => (
-              <div
+              <ImageLightbox
                 key={index}
-                className="rounded-xl overflow-hidden border w-1/3 min-w-64"
-              >
-                <Image
-                  src={screenshot}
-                  alt={app.title}
-                  className="object-cover"
-                />
-              </div>
+                src={screenshot}
+                alt={`${app.title} screenshot ${index + 1}`}
+                className="rounded-xl overflow-hidden border max-w-[500px]"
+              />
             ))}
         </div>
       </div>

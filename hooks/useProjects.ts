@@ -1,11 +1,12 @@
 // src/hooks/useProjects.ts
 import { useMemo } from "react";
-import invtImage from "../public/invt.png";
+import invtMainImage from "../public/invt/invt.png";
+import invtDetailImage1 from "../public/invt/image.png";
 import repImage from "../public/rep.png";
 import portfolioImage from "../public/portfolio.png";
 import writtenImage from "../public/portfolio.png";
 import repIcon from "../public/rep-icon.png";
-import invtIcon from "../public/invt-icon.png";
+import invtIcon from "../public/invt/invt-icon.png";
 import portfolioIcon from "../public/simon-icon.png";
 import writtenIcon from "../public/written-icon.png";
 import { StaticImageData } from "next/image";
@@ -39,10 +40,10 @@ export function useProjects() {
           "Find and rsvp to events made by others and invite friends through QR codes.",
         longDescription:
           "INVT is a modern event management platform that simplifies event discovery and RSVP management. Users can create events, share them with friends via QR codes, and track attendance in real-time. The app features a clean, intuitive interface built with React and styled with TailwindCSS, while Firebase handles authentication, real-time data synchronization, and cloud storage.",
-        tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Firebase"],
-          image: invtImage,
+        tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
+          image: invtMainImage,
           icon: invtIcon,
-        images: [invtImage, invtImage, invtImage],
+        images: [invtMainImage, invtDetailImage1],
         link: "https://invt.rsvp",
         featured: true,
         role: "Lead Full Stack Developer",
@@ -53,7 +54,6 @@ export function useProjects() {
           "RSVP management with guest list tracking",
           "User authentication and profile management",
           "Responsive design for mobile and desktop",
-          "Real-time updates using Firebase Firestore",
         ],
         challenges: [
           "Implementing real-time synchronization across multiple users",

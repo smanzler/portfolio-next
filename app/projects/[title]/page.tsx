@@ -21,6 +21,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import Image from "next/image";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
 
 export default function ProjectDetails() {
   const { title } = useParams();
@@ -131,12 +132,12 @@ export default function ProjectDetails() {
         <AnimateOnThreshold
           shouldAnimate
           delay={0.4 + project.tags.length * 0.05}
-          className="mb-20 rounded-lg overflow-hidden border"
+          className="mb-20"
         >
-          <Image
+          <ImageLightbox
             src={project.image}
             alt={project.title}
-            className="w-full h-auto"
+            className="rounded-lg overflow-hidden border"
           />
         </AnimateOnThreshold>
       )}
@@ -177,15 +178,14 @@ export default function ProjectDetails() {
       {project.images && project.images.length > 1 && (
         <ThresholdMotionDiv>
           <H3>Gallery</H3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {project.images.slice(1).map((image, index) => (
-              <div key={index} className="rounded-lg overflow-hidden border">
-                <Image
-                  src={image}
-                  alt={`${project.title} screenshot ${index + 2}`}
-                  className="w-full h-auto"
-                />
-              </div>
+          <div className="flex flex-row gap-4 overflow-x-auto mt-4">
+            {project.images.map((image, index) => (
+              <ImageLightbox
+                key={index}
+                src={image}
+                alt={`${project.title} screenshot ${index + 2}`}
+                className="h-[200px] sm:h-[300px]"
+              />
             ))}
           </div>
         </ThresholdMotionDiv>
