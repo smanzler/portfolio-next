@@ -46,7 +46,7 @@ export const AnimateOnThreshold = ({
   variants,
   initial: customInitial,
   animate: customAnimate,
-  transition = { duration: 0.5 },
+  transition = { duration: 0.4 },
   ...props
 }: AnimateOnThresholdProps) => {
   // If custom variants provided, use them; otherwise create from initial/animate props

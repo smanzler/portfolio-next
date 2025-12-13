@@ -9,6 +9,7 @@ import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { scrollToSection } from "@/lib/utils";
+import simonRamen from "../../public/simon-ramen.png";
 
 export default function About() {
   return (
@@ -33,10 +34,9 @@ export default function About() {
             <div className="flex flex-col gap-6">
               <AnimateOnThreshold shouldAnimate={isPast}>
                 <Image
-                  src="/simon-ramen.png"
+                  className="w-full h-full object-cover shadow-[-8px_8px_0_0_#ff7300]"
+                  src={simonRamen}
                   alt="Simon"
-                  width={500}
-                  height={500}
                 />
               </AnimateOnThreshold>
             </div>

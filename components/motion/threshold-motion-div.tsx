@@ -47,7 +47,7 @@ const ThresholdMotionDiv = ({
   onThresholdChange,
   animate = { opacity: 1, y: 0 },
   initial = { opacity: 0, y: 30 },
-  transition = { duration: 0.2 },
+  transition = { duration: 0.4 },
   ...props
 }: ThresholdMotionDivProps) => {
   // Internal ref for scroll threshold detection
