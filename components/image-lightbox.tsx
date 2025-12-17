@@ -6,34 +6,63 @@ import { motion, AnimatePresence } from "motion/react";
 import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "./ui/spinner";
 
 interface ImageLightboxProps {
   src: string | StaticImageData;
   alt: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
-export function ImageLightbox({ src, alt, className }: ImageLightboxProps) {
+export function ImageLightbox({
+  src,
+  alt,
+  className,
+  children,
+}: ImageLightboxProps) {
   const [open, setOpen] = React.useState(false);
   const layoutId = React.useId();
+  const [loaded, setLoaded] = React.useState(false);
+
+  const props = children
+    ? {
+        initial: { opacity: 1, scale: 0.9 },
+        animate: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.9 },
+        transition: { duration: 0.2 },
+      }
+    : { layoutId };
+
+  const handleClose = () => {
+    setOpen(false);
+    if (children) {
+      setLoaded(false);
+    }
+  };
 
   return (
     <>
       <motion.div
         className={cn(
-          "cursor-pointer shrink-0 rounded-lg overflow-hidden border",
+          "cursor-pointer shrink-0",
+          children ? "size-full" : "rounded-lg overflow-hidden border",
           className
         )}
+        layoutId={children ? undefined : layoutId}
         onClick={() => setOpen(true)}
-        layoutId={layoutId}
       >
-        <Image
-          src={src}
-          alt={alt}
-          unoptimized
-          priority
-          className="w-full h-full object-cover"
-        />
+        {children ? (
+          children
+        ) : (
+          <Image
+            src={src}
+            alt={alt}
+            unoptimized
+            priority
+            className="w-full h-full object-cover"
+          />
+        )}
       </motion.div>
 
       <AnimatePresence>
@@ -46,22 +75,36 @@ export function ImageLightbox({ src, alt, className }: ImageLightboxProps) {
               animate={{ opacity: 1, transition: { delay: 0.1 } }}
               exit={{ opacity: 0, transition: { delay: 0 } }}
               transition={{ duration: 0.2 }}
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
             />
 
             <motion.div className="fixed inset-0 z-51 flex items-center justify-center pointer-events-none">
               <motion.div
-                layoutId={layoutId}
-                className="w-[90dvw] max-w-7xl rounded-lg overflow-hidden border"
+                {...props}
+                className="relative w-[90dvw] max-w-7xl rounded-lg overflow-hidden border"
                 onClick={(e) => e.stopPropagation()}
               >
-                <Image src={src} alt={alt} unoptimized priority />
+                <>
+                  {!loaded && (
+                    <div className="absolute inset-0 flex items-center justify-center z-60 bg-black">
+                      <Spinner />
+                    </div>
+                  )}
+                  <Image
+                    src={src}
+                    alt={alt}
+                    unoptimized
+                    priority
+                    onLoad={() => setLoaded(true)}
+                    className="w-full h-full object-cover"
+                  />
+                </>
               </motion.div>
 
               {/* Close Button */}
               <motion.div
                 className="absolute top-4 right-4 z-20"
-                onClick={() => setOpen(false)}
+                onClick={handleClose}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}

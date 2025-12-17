@@ -5,7 +5,15 @@ import { redirect, useParams } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Github, ExternalLink, FileQuestion } from "lucide-react";
+import {
+  ArrowLeft,
+  Github,
+  ExternalLink,
+  FileQuestion,
+  GalleryVertical,
+  LayoutGrid,
+  LayoutList,
+} from "lucide-react";
 import { H1, H2, H3, Muted, P, UL } from "@/components/ui/typography";
 import { Separator } from "@/components/ui/separator";
 import { AnimateOnThreshold } from "@/components/motion/animate-on-threshold";
@@ -20,6 +28,14 @@ import {
 } from "@/components/ui/empty";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { VideoLightbox } from "@/components/video-lightbox";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import React from "react";
+import Image from "next/image";
 
 export default function ProjectDetails() {
   const { title } = useParams();
@@ -166,10 +182,11 @@ export default function ProjectDetails() {
         <AnimateOnThreshold shouldAnimate delay={0.9}>
           <H3>Challenges & Learnings</H3>
           {project.challenges.map((challenge, index) => (
-            <div key={challenge.problem + index}>
-              <P>{challenge.problem}</P>
-              <Muted>{challenge.solution}</Muted>
-            </div>
+            <P key={challenge.problem + index} className="mt-2">
+              <span className="font-bold">{challenge.problem}</span>
+              {" - "}
+              {challenge.solution}
+            </P>
           ))}
         </AnimateOnThreshold>
       )}
@@ -182,71 +199,193 @@ export default function ProjectDetails() {
       )}
       {project.nextSteps && project.nextSteps.length > 0 && (
         <AnimateOnThreshold shouldAnimate delay={1.1}>
-          <H3>Product Decisions</H3>
+          <H3>Next Steps</H3>
           <UL items={project.nextSteps} />
         </AnimateOnThreshold>
       )}
 
       {project.assets && project.assets.length > 0 && (
         <AnimateOnThreshold shouldAnimate delay={1.2}>
-          <H3>Images</H3>
-          <div className="grid grid-cols-1 gap-4 mt-4">
-            {project.assets?.map((asset, index) =>
-              asset.type === "image" ? (
-                <ImageLightbox
-                  key={index}
-                  src={asset.src}
-                  alt={`${project.title} ${asset.type} ${index + 1}`}
-                />
-              ) : asset.type === "video" && typeof asset.src === "string" ? (
-                <VideoLightbox
-                  key={index}
-                  src={asset.src}
-                  alt={`${project.title} ${asset.type} ${index + 1}`}
-                  fallback={asset.fallback}
-                />
-              ) : null
-            )}
+          <div className="flex flex-col gap-2">
+            <Tabs defaultValue="grid">
+              <div className="flex flex-row justify-between items-center">
+                <H3>Images</H3>
+                <TabsList>
+                  <Tooltip>
+                    <TabsTrigger value="large" asChild>
+                      <TooltipTrigger>
+                        <GalleryVertical />
+                      </TooltipTrigger>
+                    </TabsTrigger>
+                    <TooltipContent>Vertical Gallery</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TabsTrigger value="grid" asChild>
+                      <TooltipTrigger>
+                        <LayoutGrid />
+                      </TooltipTrigger>
+                    </TabsTrigger>
+                    <TooltipContent>Grid View</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TabsTrigger value="details" asChild>
+                      <TooltipTrigger>
+                        <LayoutList />
+                      </TooltipTrigger>
+                    </TabsTrigger>
+                    <TooltipContent>Details</TooltipContent>
+                  </Tooltip>
+                </TabsList>
+              </div>
+              <TabsContent value="large">
+                <div className="flex flex-col gap-2">
+                  {project.assets.map((asset, index) =>
+                    asset.type === "image" ? (
+                      <ImageLightbox
+                        key={index}
+                        src={asset.src}
+                        alt={
+                          asset.alt ||
+                          `${project.title} ${asset.type} ${index + 1}`
+                        }
+                      />
+                    ) : asset.type === "video" &&
+                      typeof asset.src === "string" ? (
+                      <VideoLightbox
+                        key={index}
+                        src={asset.src}
+                        alt={
+                          asset.alt ||
+                          `${project.title} ${asset.type} ${index + 1}`
+                        }
+                        fallback={asset.fallback}
+                      />
+                    ) : null
+                  )}
+                </div>
+              </TabsContent>
+              <TabsContent value="details">
+                <div className="flex flex-col gap-2">
+                  <Separator />
+                  {project.assets.map((asset, index) =>
+                    asset.type === "image" && typeof asset.src === "object" ? (
+                      <React.Fragment key={index}>
+                        <ImageLightbox
+                          src={asset.src}
+                          alt={
+                            asset.alt ||
+                            `${project.title} ${asset.type} ${index + 1}`
+                          }
+                        >
+                          <div className="flex flex-row gap-2 items-center justify-between">
+                            <P>{asset.alt || asset.src.src}</P>
+                            <Image
+                              src={asset.src}
+                              alt={asset.alt || asset.src.src}
+                              className="h-8 w-auto"
+                            />
+                          </div>
+                        </ImageLightbox>
+                        <Separator />
+                      </React.Fragment>
+                    ) : asset.type === "video" &&
+                      typeof asset.src === "string" ? (
+                      <React.Fragment key={index}>
+                        <VideoLightbox
+                          src={asset.src}
+                          alt={
+                            asset.alt ||
+                            `${project.title} ${asset.type} ${index + 1}`
+                          }
+                          fallback={asset.fallback}
+                        >
+                          <div className="flex flex-row gap-2 items-center justify-between">
+                            <P>{asset.alt || asset.src}</P>
+                            {asset.fallback && (
+                              <Image
+                                src={asset.fallback}
+                                alt={asset.alt || asset.src}
+                                className="size-90"
+                              />
+                            )}
+                          </div>
+                        </VideoLightbox>
+                        <Separator />
+                      </React.Fragment>
+                    ) : null
+                  )}
+                </div>
+              </TabsContent>
+              <TabsContent value="grid">
+                <div className="grid grid-cols-3 gap-4 mt-4">
+                  {project.assets?.map((asset, index) =>
+                    asset.type === "image" ? (
+                      <ImageLightbox
+                        key={index}
+                        src={asset.src}
+                        alt={
+                          asset.alt ||
+                          `${project.title} ${asset.type} ${index + 1}`
+                        }
+                      />
+                    ) : asset.type === "video" &&
+                      typeof asset.src === "string" ? (
+                      <VideoLightbox
+                        key={index}
+                        src={asset.src}
+                        alt={
+                          asset.alt ||
+                          `${project.title} ${asset.type} ${index + 1}`
+                        }
+                        fallback={asset.fallback}
+                      />
+                    ) : null
+                  )}
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </AnimateOnThreshold>
       )}
-      <AnimateOnThreshold shouldAnimate delay={1.3}>
-        <Separator className="my-30" />
-        <div className="text-center max-w-2xl mx-auto flex flex-col gap-6">
-          <div>
-            <H2>Interested in this project?</H2>
-            <Muted>
-              Check out the live demo or view the source code on GitHub.
-            </Muted>
+      {(project.link || project.github) && (
+        <AnimateOnThreshold shouldAnimate delay={1.3}>
+          <Separator className="my-30" />
+          <div className="text-center max-w-2xl mx-auto flex flex-col gap-6">
+            <div>
+              <H2>Interested in this project?</H2>
+              <Muted>
+                Check out the live demo or view the source code on GitHub.
+              </Muted>
+            </div>
+            <div className="flex gap-4 justify-center flex-wrap">
+              {project.link && (
+                <Button asChild>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    View Project
+                  </a>
+                </Button>
+              )}
+              {project.github && (
+                <Button asChild variant="outline">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Github className="mr-2 h-4 w-4" />
+                    View Code
+                  </a>
+                </Button>
+              )}
+            </div>
           </div>
-          <div className="flex gap-4 justify-center flex-wrap">
-            {project.link && (
-              <Button asChild>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  View Project
-                </a>
-              </Button>
-            )}
-            {project.github && (
-              <Button asChild variant="outline">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  View Code
-                </a>
-              </Button>
-            )}
-          </div>
-        </div>
-      </AnimateOnThreshold>
+        </AnimateOnThreshold>
+      )}
     </div>
   );
 }

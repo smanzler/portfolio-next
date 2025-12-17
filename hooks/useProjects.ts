@@ -34,6 +34,7 @@ export interface Project {
     type: "image" | "video";
     src: string | StaticImageData;
     fallback?: StaticImageData;
+    alt?: string;
   }[];
   link?: string;
   featured?: boolean;
@@ -69,10 +70,12 @@ export function useProjects() {
           {
             type: "image",
             src: invtMainImage,
+            alt: "INVT Main Image",
           },
           {
             type: "image",
             src: invtDetailImage1,
+            alt: "INVT Detail Image 1",
           },
         ],
         link: "https://invt.rsvp",
@@ -140,14 +143,17 @@ export function useProjects() {
           {
             type: "image",
             src: repIcon,
+            alt: "Rep Icon",
           },
           {
             type: "image",
             src: repIcon,
+            alt: "Rep Icon",
           },
           {
             type: "image",
             src: repIcon,
+            alt: "Rep Icon",
           },
         ],
         link: "https://github.com/smanzler/workout-tracker",
@@ -229,14 +235,17 @@ export function useProjects() {
           {
             type: "image",
             src: portfolioImage,
+            alt: "Portfolio Image",
           },
           {
             type: "image",
             src: portfolioImage,
+            alt: "Portfolio Image",
           },
           {
             type: "image",
             src: portfolioImage,
+            alt: "Portfolio Image",
           },
         ],
         link: "https://simonmanzler.com",
@@ -304,14 +313,17 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
           {
             type: "image",
             src: writtenImage,
+            alt: "Written Image",
           },
           {
             type: "image",
             src: writtenImage,
+            alt: "Written Image",
           },
           {
             type: "image",
             src: writtenImage,
+            alt: "Written Image",
           },
         ],
         problemAndSolution: {
@@ -437,23 +449,28 @@ Users can save builds locally, mark items as completed, and share builds via a c
           {
             type: "image",
             src: mclistImage1,
+            alt: "MCList Image 1",
           },
           {
             type: "image",
             src: mclistImage2,
+            alt: "MCList Image 2",
           },
           {
             type: "image",
             src: mclistImage3,
+            alt: "MCList Image 3",
           },
           {
             type: "image",
             src: mclistImage4,
+            alt: "MCList Image 4",
           },
           {
             type: "video",
             src: "/mclist/video1.mov",
             fallback: mclistVideo1Fallback,
+            alt: "MCList Video 1",
           },
         ],
         problemAndSolution: {

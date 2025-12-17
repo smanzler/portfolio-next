@@ -60,7 +60,7 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 left-1/2 -translate-x-1/2 z-5 flex flex-col justify-center items-center w-full max-w-4xl px-6"
+      className="fixed top-0 left-1/2 -translate-x-1/2 z-5 flex flex-col justify-center items-center w-full max-w-3xl px-6"
       animate={{
         top: isScrolled ? (isVisible ? "20px" : "-80px") : "0",
       }}
