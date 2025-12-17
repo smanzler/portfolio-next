@@ -71,13 +71,47 @@ export default function ProjectDetails() {
   return (
     <div className="min-h-screen flex flex-col gap-6">
       {/* Hero Section */}
-      <div className="mb-16">
-        <AnimateOnThreshold shouldAnimate className="flex flex-col gap-2">
+      <AnimateOnThreshold shouldAnimate className="flex flex-col">
+        <div className="flex flex-row justify-between items-start">
           <H1>{project.title}</H1>
-          {project.role && <Muted>{project.role}</Muted>}
-          {project.timeline && <Muted>{project.timeline}</Muted>}
-        </AnimateOnThreshold>
-        <div className="flex flex-wrap gap-2 my-6">
+
+          {(project.link || project.github) && (
+            <div className="flex gap-2 flex-wrap">
+              {project.link && (
+                <AnimateOnThreshold shouldAnimate delay={0.2}>
+                  <Button size="sm" asChild>
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      View Project
+                    </Link>
+                  </Button>
+                </AnimateOnThreshold>
+              )}
+              {project.github && (
+                <AnimateOnThreshold shouldAnimate delay={0.3}>
+                  <Button size="sm" asChild variant="outline">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon icon="line-md:github" />
+                      View Code
+                    </a>
+                  </Button>
+                </AnimateOnThreshold>
+              )}
+            </div>
+          )}
+        </div>
+        <div className="flex flex-row justify-between gap-2">
+          <Muted>{project.description}</Muted>
+        </div>
+        <div className="flex flex-wrap gap-2 mt-2">
           {project.tags.map((tag, index) => (
             <AnimateOnThreshold
               key={tag}
@@ -90,40 +124,10 @@ export default function ProjectDetails() {
             </AnimateOnThreshold>
           ))}
         </div>
-        <div className="flex gap-4 flex-wrap">
-          {project.link && (
-            <AnimateOnThreshold shouldAnimate delay={0.2}>
-              <Button asChild>
-                <Link
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  View Project
-                </Link>
-              </Button>
-            </AnimateOnThreshold>
-          )}
-          {project.github && (
-            <AnimateOnThreshold shouldAnimate delay={0.3}>
-              <Button asChild variant="outline">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon icon="line-md:github" />
-                  View Code
-                </a>
-              </Button>
-            </AnimateOnThreshold>
-          )}
-        </div>
-      </div>
+      </AnimateOnThreshold>
 
       {project.image && (
-        <AnimateOnThreshold shouldAnimate delay={0.4} className="mb-20">
+        <AnimateOnThreshold shouldAnimate delay={0.4}>
           <ImageLightbox
             src={project.image}
             alt={project.title}
@@ -183,36 +187,29 @@ export default function ProjectDetails() {
         </AnimateOnThreshold>
       )}
 
-      {project.images && project.images.length > 0 && (
+      {project.assets && project.assets.length > 0 && (
         <AnimateOnThreshold shouldAnimate delay={1.2}>
           <H3>Images</H3>
           <div className="grid grid-cols-1 gap-4 mt-4">
-            {project.images.map((image, index) => (
-              <ImageLightbox
-                key={index}
-                src={image}
-                alt={`${project.title} screenshot ${index + 2}`}
-              />
-            ))}
+            {project.assets?.map((asset, index) =>
+              asset.type === "image" ? (
+                <ImageLightbox
+                  key={index}
+                  src={asset.src}
+                  alt={`${project.title} ${asset.type} ${index + 1}`}
+                />
+              ) : asset.type === "video" && typeof asset.src === "string" ? (
+                <VideoLightbox
+                  key={index}
+                  src={asset.src}
+                  alt={`${project.title} ${asset.type} ${index + 1}`}
+                  fallback={asset.fallback}
+                />
+              ) : null
+            )}
           </div>
         </AnimateOnThreshold>
       )}
-      {project.videos && project.videos.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={1.2}>
-          <H3>Videos</H3>
-          <div className="grid grid-cols-1 gap-4 mt-4">
-            {project.videos.map((video, index) => (
-              <VideoLightbox
-                key={index}
-                src={video.src}
-                alt={`${project.title} video ${index + 1}`}
-                fallback={video.fallback}
-              />
-            ))}
-          </div>
-        </AnimateOnThreshold>
-      )}
-
       <AnimateOnThreshold shouldAnimate delay={1.3}>
         <Separator className="my-30" />
         <div className="text-center max-w-2xl mx-auto flex flex-col gap-6">

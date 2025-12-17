@@ -30,10 +30,10 @@ export interface Project {
   tags: string[];
   image: StaticImageData;
   icon: StaticImageData;
-  images?: StaticImageData[];
-  videos?: {
-    src: string;
-    fallback: StaticImageData;
+  assets?: {
+    type: "image" | "video";
+    src: string | StaticImageData;
+    fallback?: StaticImageData;
   }[];
   link?: string;
   featured?: boolean;
@@ -65,7 +65,16 @@ export function useProjects() {
         tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
         image: invtMainImage,
         icon: invtIcon,
-        images: [invtMainImage, invtDetailImage1],
+        assets: [
+          {
+            type: "image",
+            src: invtMainImage,
+          },
+          {
+            type: "image",
+            src: invtDetailImage1,
+          },
+        ],
         link: "https://invt.rsvp",
         featured: true,
         role: "Independent Contractor",
@@ -127,7 +136,20 @@ export function useProjects() {
         tags: ["React Native", "Supabase", "Expo"],
         image: repImage,
         icon: repIcon,
-        images: [repIcon, repIcon, repIcon],
+        assets: [
+          {
+            type: "image",
+            src: repIcon,
+          },
+          {
+            type: "image",
+            src: repIcon,
+          },
+          {
+            type: "image",
+            src: repIcon,
+          },
+        ],
         link: "https://github.com/smanzler/workout-tracker",
         featured: true,
         github: "https://github.com/smanzler/workout-tracker",
@@ -203,7 +225,20 @@ export function useProjects() {
         ],
         image: portfolioImage,
         icon: portfolioIcon,
-        images: [portfolioImage, portfolioImage, portfolioImage],
+        assets: [
+          {
+            type: "image",
+            src: portfolioImage,
+          },
+          {
+            type: "image",
+            src: portfolioImage,
+          },
+          {
+            type: "image",
+            src: portfolioImage,
+          },
+        ],
         link: "https://simonmanzler.com",
         featured: true,
         github: "https://github.com/smanzler/portfolio",
@@ -265,7 +300,20 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         github: "https://github.com/smanzler/written",
         image: writtenImage,
         icon: writtenIcon,
-        images: [writtenImage, writtenImage, writtenImage],
+        assets: [
+          {
+            type: "image",
+            src: writtenImage,
+          },
+          {
+            type: "image",
+            src: writtenImage,
+          },
+          {
+            type: "image",
+            src: writtenImage,
+          },
+        ],
         problemAndSolution: {
           problem:
             "Many journaling apps feel either overly complex or disconnected from the tactile satisfaction of writing by hand. Typing can feel sterile, and privacy is often unclear.",
@@ -373,18 +421,37 @@ The project was also an opportunity to deepen native iOS experience by building 
         ],
       },
       {
-        title: "Minecraft Material List Generator",
+        title: "MCList",
+        timeline: "November 2025",
         description:
           "A visual, interactive tool for tracking materials needed for Minecraft builds.",
         longDescription: `This web app helps Minecraft players track and manage materials needed for their builds. By parsing text-based lists from YouTube descriptions or other sources, it provides a visual checklist with images from the Minecraft Wiki and interactive progress tracking.
 
 Users can save builds locally, mark items as completed, and share builds via a compressed URL with metadata for social sharing.`,
+        github: "https://github.com/smanzler/mclist",
+        link: "https://mclist.simonmanzler.com",
         tags: ["Next.js", "React", "TypeScript", "Dexie", "Motion", "Lottie"],
         image: mclistImage2,
         icon: mclistIcon,
-        images: [mclistImage1, mclistImage2, mclistImage3, mclistImage4],
-        videos: [
+        assets: [
           {
+            type: "image",
+            src: mclistImage1,
+          },
+          {
+            type: "image",
+            src: mclistImage2,
+          },
+          {
+            type: "image",
+            src: mclistImage3,
+          },
+          {
+            type: "image",
+            src: mclistImage4,
+          },
+          {
+            type: "video",
             src: "/mclist/video1.mov",
             fallback: mclistVideo1Fallback,
           },

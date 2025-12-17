@@ -62,7 +62,7 @@ const P: React.FC<Props> = ({ className, children }) => {
   return (
     <p
       className={cn(
-        "leading-7 [&:not(:first-child)]:mt-4 text-[15px] text-neutral-800 dark:text-neutral-300",
+        "leading-7 [&:not(:first-child)]:mt-2 text-[15px] text-neutral-800 dark:text-neutral-300",
         className
       )}
     >
@@ -78,7 +78,7 @@ const UL: React.FC<{ className?: string; items: string[] }> = ({
   return (
     <ul
       className={cn(
-        "my-6 ml-6 list-disc [&>li]:mt-2 text-[15px] text-neutral-800 dark:text-neutral-300",
+        "ml-6 [&:not(:first-child)]:mt-2 list-disc text-[15px] text-neutral-800 dark:text-neutral-300",
         className
       )}
     >
