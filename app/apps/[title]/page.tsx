@@ -28,7 +28,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import Image from "next/image";
-import { ImageLightbox } from "@/components/ui/image-lightbox";
+import { ImageLightbox } from "@/components/image-lightbox";
 
 const AppDetails = () => {
   const { title } = useParams();
