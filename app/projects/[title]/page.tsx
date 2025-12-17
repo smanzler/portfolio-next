@@ -85,7 +85,7 @@ export default function ProjectDetails() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col gap-6">
+    <div className="min-h-screen flex flex-col gap-6 py-40">
       {/* Hero Section */}
       <AnimateOnThreshold shouldAnimate className="flex flex-col">
         <div className="flex flex-row justify-between items-start">
@@ -102,7 +102,7 @@ export default function ProjectDetails() {
                       rel="noopener noreferrer"
                     >
                       <ExternalLink className="h-4 w-4" />
-                      View Project
+                      View Live Demo
                     </Link>
                   </Button>
                 </AnimateOnThreshold>
@@ -157,59 +157,12 @@ export default function ProjectDetails() {
         <P>{project.longDescription || project.description}</P>
       </AnimateOnThreshold>
 
-      <AnimateOnThreshold shouldAnimate delay={0.6}>
-        <H3>Problem & Solution</H3>
-        <P>{project.problemAndSolution.problem}</P>
-        <P>{project.problemAndSolution.solution}</P>
-      </AnimateOnThreshold>
-
-      {project.keyFeatures && project.keyFeatures.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={0.7}>
-          <H3>Key Features</H3>
-          <UL items={project.keyFeatures} />
-        </AnimateOnThreshold>
-      )}
-
-      {project.technicalHighlights &&
-        project.technicalHighlights.length > 0 && (
-          <AnimateOnThreshold shouldAnimate delay={0.8}>
-            <H3>Technical Highlights</H3>
-            <UL items={project.technicalHighlights} />
-          </AnimateOnThreshold>
-        )}
-
-      {project.challenges && project.challenges.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={0.9}>
-          <H3>Challenges & Learnings</H3>
-          {project.challenges.map((challenge, index) => (
-            <P key={challenge.problem + index} className="mt-2">
-              <span className="font-bold">{challenge.problem}</span>
-              {" - "}
-              {challenge.solution}
-            </P>
-          ))}
-        </AnimateOnThreshold>
-      )}
-
-      {project.productDecisions && project.productDecisions.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={1}>
-          <H3>Product Decisions</H3>
-          <UL items={project.productDecisions} />
-        </AnimateOnThreshold>
-      )}
-      {project.nextSteps && project.nextSteps.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={1.1}>
-          <H3>Next Steps</H3>
-          <UL items={project.nextSteps} />
-        </AnimateOnThreshold>
-      )}
-
       {project.assets && project.assets.length > 0 && (
         <AnimateOnThreshold shouldAnimate delay={1.2}>
           <div className="flex flex-col gap-2">
             <Tabs defaultValue="grid">
               <div className="flex flex-row justify-between items-center">
-                <H3>Images</H3>
+                <H3>Media Gallery</H3>
                 <TabsList>
                   <Tooltip>
                     <TabsTrigger value="large" asChild>
@@ -347,6 +300,53 @@ export default function ProjectDetails() {
           </div>
         </AnimateOnThreshold>
       )}
+
+      <AnimateOnThreshold shouldAnimate delay={0.6}>
+        <H3>Problem & Solution</H3>
+        <P>{project.problemAndSolution.problem}</P>
+        <P>{project.problemAndSolution.solution}</P>
+      </AnimateOnThreshold>
+
+      {project.keyFeatures && project.keyFeatures.length > 0 && (
+        <AnimateOnThreshold shouldAnimate delay={0.7}>
+          <H3>Key Features</H3>
+          <UL items={project.keyFeatures} />
+        </AnimateOnThreshold>
+      )}
+
+      {project.technicalHighlights &&
+        project.technicalHighlights.length > 0 && (
+          <AnimateOnThreshold shouldAnimate delay={0.8}>
+            <H3>Technical Highlights</H3>
+            <UL items={project.technicalHighlights} />
+          </AnimateOnThreshold>
+        )}
+
+      {project.challenges && project.challenges.length > 0 && (
+        <AnimateOnThreshold shouldAnimate delay={0.9}>
+          <H3>Challenges & Learnings</H3>
+          {project.challenges.map((challenge, index) => (
+            <P key={challenge.problem + index} className="mt-2">
+              <span className="font-bold">{challenge.problem}</span>
+              {" - "}
+              {challenge.solution}
+            </P>
+          ))}
+        </AnimateOnThreshold>
+      )}
+
+      {project.productDecisions && project.productDecisions.length > 0 && (
+        <AnimateOnThreshold shouldAnimate delay={1}>
+          <H3>Product Decisions</H3>
+          <UL items={project.productDecisions} />
+        </AnimateOnThreshold>
+      )}
+      {project.nextSteps && project.nextSteps.length > 0 && (
+        <AnimateOnThreshold shouldAnimate delay={1.1}>
+          <H3>Next Steps</H3>
+          <UL items={project.nextSteps} />
+        </AnimateOnThreshold>
+      )}
       {(project.link || project.github) && (
         <AnimateOnThreshold shouldAnimate delay={1.3}>
           <Separator className="my-30" />
@@ -354,7 +354,9 @@ export default function ProjectDetails() {
             <div>
               <H2>Interested in this project?</H2>
               <Muted>
-                Check out the live demo or view the source code on GitHub.
+                Check out {project.link && "the live demo"}
+                {project.link && project.github && " or view "}
+                {project.github && "the source code on GitHub"}
               </Muted>
             </div>
             <div className="flex gap-4 justify-center flex-wrap">
@@ -366,7 +368,7 @@ export default function ProjectDetails() {
                     rel="noopener noreferrer"
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
-                    View Project
+                    View Live Demo
                   </a>
                 </Button>
               )}
