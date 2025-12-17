@@ -5,7 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
 
 interface ImageLightboxProps {
   src: string | StaticImageData;
@@ -20,7 +20,10 @@ export function ImageLightbox({ src, alt, className }: ImageLightboxProps) {
   return (
     <>
       <motion.div
-        className={cn("cursor-pointer shrink-0", className)}
+        className={cn(
+          "cursor-pointer shrink-0 rounded-lg overflow-hidden border",
+          className
+        )}
         onClick={() => setOpen(true)}
         layoutId={layoutId}
       >
@@ -49,7 +52,7 @@ export function ImageLightbox({ src, alt, className }: ImageLightboxProps) {
             <motion.div className="fixed inset-0 z-51 flex items-center justify-center pointer-events-none">
               <motion.div
                 layoutId={layoutId}
-                className="w-[90dvw] max-w-4xl"
+                className="w-[90dvw] max-w-7xl rounded-lg overflow-hidden border"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Image src={src} alt={alt} unoptimized priority />
