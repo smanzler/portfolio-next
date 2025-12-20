@@ -3,16 +3,26 @@
 import * as React from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { XIcon } from "lucide-react";
+import { XIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "./ui/spinner";
+
+interface Asset {
+  type: "image" | "video";
+  src: string | StaticImageData;
+  fallback?: StaticImageData;
+  alt?: string;
+}
 
 interface ImageLightboxProps {
   src: string | StaticImageData;
   alt: string;
   className?: string;
   children?: React.ReactNode;
+  assets?: Asset[];
+  currentIndex?: number;
+  onNavigate?: (index: number) => void;
 }
 
 export function ImageLightbox({
@@ -20,10 +30,73 @@ export function ImageLightbox({
   alt,
   className,
   children,
+  assets,
+  currentIndex = 0,
+  onNavigate,
 }: ImageLightboxProps) {
   const [open, setOpen] = React.useState(false);
   const layoutId = React.useId();
   const [loaded, setLoaded] = React.useState(false);
+  const [currentAssetIndex, setCurrentAssetIndex] =
+    React.useState(currentIndex);
+
+  const hasMultipleAssets = assets && assets.length > 1;
+  const currentAsset = assets
+    ? assets[currentAssetIndex]
+    : { type: "image" as const, src: src as StaticImageData, alt };
+  const currentImageSrc =
+    assets && currentAsset.type === "image" ? currentAsset.src : src;
+  const currentImageAlt =
+    assets && currentAsset.type === "image" ? currentAsset.alt || alt : alt;
+  const canGoPrevious = hasMultipleAssets && currentAssetIndex > 0;
+  const canGoNext = hasMultipleAssets && currentAssetIndex < assets.length - 1;
+
+  React.useEffect(() => {
+    if (open && assets) {
+      setCurrentAssetIndex(currentIndex);
+    }
+  }, [open, currentIndex, assets]);
+
+  React.useEffect(() => {
+    if (!open) {
+      setLoaded(false);
+    }
+  }, [open]);
+
+  React.useEffect(() => {
+    if (open) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "ArrowLeft" && canGoPrevious) {
+          handlePrevious();
+        } else if (e.key === "ArrowRight" && canGoNext) {
+          handleNext();
+        } else if (e.key === "Escape") {
+          handleClose();
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [open, canGoPrevious, canGoNext]);
+
+  const handlePrevious = () => {
+    if (canGoPrevious && assets) {
+      const newIndex = currentAssetIndex - 1;
+      setCurrentAssetIndex(newIndex);
+      setLoaded(false);
+      onNavigate?.(newIndex);
+    }
+  };
+
+  const handleNext = () => {
+    if (canGoNext && assets) {
+      const newIndex = currentAssetIndex + 1;
+      setCurrentAssetIndex(newIndex);
+      setLoaded(false);
+      onNavigate?.(newIndex);
+    }
+  };
 
   const props = children
     ? {
@@ -84,22 +157,71 @@ export function ImageLightbox({
                 className="relative w-[90dvw] max-w-7xl rounded-lg overflow-hidden border"
                 onClick={(e) => e.stopPropagation()}
               >
-                <>
+                <motion.div
+                  key={currentAssetIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative w-full h-full"
+                >
                   {!loaded && (
                     <div className="absolute inset-0 flex items-center justify-center z-60 bg-black">
                       <Spinner />
                     </div>
                   )}
                   <Image
-                    src={src}
-                    alt={alt}
+                    src={currentImageSrc}
+                    alt={currentImageAlt}
                     unoptimized
                     priority
                     onLoad={() => setLoaded(true)}
                     className="w-full h-full object-cover"
                   />
-                </>
+                </motion.div>
               </motion.div>
+
+              {/* Navigation Arrows */}
+              {hasMultipleAssets && (
+                <>
+                  {canGoPrevious && (
+                    <motion.div
+                      className="absolute left-4 z-20"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                    >
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handlePrevious}
+                        className="bg-background/80 backdrop-blur-sm hover:bg-background/90"
+                      >
+                        <ChevronLeft className="h-6 w-6" />
+                        <span className="sr-only">Previous</span>
+                      </Button>
+                    </motion.div>
+                  )}
+                  {canGoNext && (
+                    <motion.div
+                      className="absolute right-4 z-20"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                    >
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handleNext}
+                        className="bg-background/80 backdrop-blur-sm hover:bg-background/90"
+                      >
+                        <ChevronRight className="h-6 w-6" />
+                        <span className="sr-only">Next</span>
+                      </Button>
+                    </motion.div>
+                  )}
+                </>
+              )}
 
               {/* Close Button */}
               <motion.div

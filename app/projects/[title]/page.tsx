@@ -27,7 +27,8 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { ImageLightbox } from "@/components/image-lightbox";
-import { VideoLightbox } from "@/components/video-lightbox";
+import { AssetThumbnail } from "@/components/asset-thumbnail";
+import { AssetLightboxModal } from "@/components/asset-lightbox-modal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -40,6 +41,8 @@ import Image from "next/image";
 export default function ProjectDetails() {
   const { title } = useParams();
   const { projects } = useProjects();
+  const [lightboxOpen, setLightboxOpen] = React.useState(false);
+  const [lightboxIndex, setLightboxIndex] = React.useState(0);
 
   if (!title || typeof title !== "string") {
     redirect("/projects");
@@ -158,7 +161,7 @@ export default function ProjectDetails() {
       </AnimateOnThreshold>
 
       {project.assets && project.assets.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={1.2}>
+        <AnimateOnThreshold shouldAnimate delay={0.6}>
           <div className="flex flex-col gap-2">
             <Tabs defaultValue="grid">
               <div className="flex flex-row justify-between items-center">
@@ -192,108 +195,79 @@ export default function ProjectDetails() {
               </div>
               <TabsContent value="large">
                 <div className="flex flex-col gap-2">
-                  {project.assets.map((asset, index) =>
-                    asset.type === "image" ? (
-                      <ImageLightbox
-                        key={index}
-                        src={asset.src}
-                        alt={
-                          asset.alt ||
-                          `${project.title} ${asset.type} ${index + 1}`
-                        }
-                      />
-                    ) : asset.type === "video" &&
-                      typeof asset.src === "string" ? (
-                      <VideoLightbox
-                        key={index}
-                        src={asset.src}
-                        alt={
-                          asset.alt ||
-                          `${project.title} ${asset.type} ${index + 1}`
-                        }
-                        fallback={asset.fallback}
-                      />
-                    ) : null
-                  )}
+                  {project.assets.map((asset, index) => (
+                    <AssetThumbnail
+                      key={index}
+                      asset={asset}
+                      index={index}
+                      onClick={() => {
+                        // Simplified: just update index and open
+                        setLightboxIndex(index);
+                        setLightboxOpen(true);
+                      }}
+                    />
+                  ))}
                 </div>
               </TabsContent>
               <TabsContent value="details">
                 <div className="flex flex-col gap-2">
                   <Separator />
-                  {project.assets.map((asset, index) =>
-                    asset.type === "image" && typeof asset.src === "object" ? (
-                      <React.Fragment key={index}>
-                        <ImageLightbox
-                          src={asset.src}
-                          alt={
-                            asset.alt ||
-                            `${project.title} ${asset.type} ${index + 1}`
+                  {project.assets.map((asset, index) => (
+                    <React.Fragment key={index}>
+                      <AssetThumbnail
+                        asset={asset}
+                        index={index}
+                        onClick={() => {
+                          // Always set index first, then open
+                          setLightboxIndex(index);
+                          if (!lightboxOpen) {
+                            setLightboxOpen(true);
                           }
-                        >
-                          <div className="flex flex-row gap-2 items-center justify-between">
-                            <P>{asset.alt || asset.src.src}</P>
+                        }}
+                      >
+                        <div className="flex flex-row gap-2 items-center justify-between">
+                          <P>
+                            {asset.alt ||
+                              (asset.type === "image" &&
+                              typeof asset.src === "object"
+                                ? asset.src.src
+                                : String(asset.src))}
+                          </P>
+                          {asset.type === "image" &&
+                          typeof asset.src === "object" ? (
                             <Image
                               src={asset.src}
                               alt={asset.alt || asset.src.src}
                               className="h-8 w-auto"
                             />
-                          </div>
-                        </ImageLightbox>
-                        <Separator />
-                      </React.Fragment>
-                    ) : asset.type === "video" &&
-                      typeof asset.src === "string" ? (
-                      <React.Fragment key={index}>
-                        <VideoLightbox
-                          src={asset.src}
-                          alt={
-                            asset.alt ||
-                            `${project.title} ${asset.type} ${index + 1}`
-                          }
-                          fallback={asset.fallback}
-                        >
-                          <div className="flex flex-row gap-2 items-center justify-between">
-                            <P>{asset.alt || asset.src}</P>
-                            {asset.fallback && (
-                              <Image
-                                src={asset.fallback}
-                                alt={asset.alt || asset.src}
-                                className="size-90"
-                              />
-                            )}
-                          </div>
-                        </VideoLightbox>
-                        <Separator />
-                      </React.Fragment>
-                    ) : null
-                  )}
+                          ) : asset.fallback ? (
+                            <Image
+                              src={asset.fallback}
+                              alt={asset.alt || String(asset.src)}
+                              className="size-90"
+                            />
+                          ) : null}
+                        </div>
+                      </AssetThumbnail>
+                      <Separator />
+                    </React.Fragment>
+                  ))}
                 </div>
               </TabsContent>
               <TabsContent value="grid">
                 <div className="grid grid-cols-3 gap-4 mt-4">
-                  {project.assets?.map((asset, index) =>
-                    asset.type === "image" ? (
-                      <ImageLightbox
-                        key={index}
-                        src={asset.src}
-                        alt={
-                          asset.alt ||
-                          `${project.title} ${asset.type} ${index + 1}`
-                        }
-                      />
-                    ) : asset.type === "video" &&
-                      typeof asset.src === "string" ? (
-                      <VideoLightbox
-                        key={index}
-                        src={asset.src}
-                        alt={
-                          asset.alt ||
-                          `${project.title} ${asset.type} ${index + 1}`
-                        }
-                        fallback={asset.fallback}
-                      />
-                    ) : null
-                  )}
+                  {project.assets?.map((asset, index) => (
+                    <AssetThumbnail
+                      key={index}
+                      asset={asset}
+                      index={index}
+                      onClick={() => {
+                        // Simplified: just update index and open
+                        setLightboxIndex(index);
+                        setLightboxOpen(true);
+                      }}
+                    />
+                  ))}
                 </div>
               </TabsContent>
             </Tabs>
@@ -301,14 +275,14 @@ export default function ProjectDetails() {
         </AnimateOnThreshold>
       )}
 
-      <AnimateOnThreshold shouldAnimate delay={0.6}>
+      <AnimateOnThreshold shouldAnimate delay={0.7}>
         <H3>Problem & Solution</H3>
         <P>{project.problemAndSolution.problem}</P>
         <P>{project.problemAndSolution.solution}</P>
       </AnimateOnThreshold>
 
       {project.keyFeatures && project.keyFeatures.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={0.7}>
+        <AnimateOnThreshold shouldAnimate delay={0.8}>
           <H3>Key Features</H3>
           <UL items={project.keyFeatures} />
         </AnimateOnThreshold>
@@ -316,14 +290,14 @@ export default function ProjectDetails() {
 
       {project.technicalHighlights &&
         project.technicalHighlights.length > 0 && (
-          <AnimateOnThreshold shouldAnimate delay={0.8}>
+          <AnimateOnThreshold shouldAnimate delay={0.9}>
             <H3>Technical Highlights</H3>
             <UL items={project.technicalHighlights} />
           </AnimateOnThreshold>
         )}
 
       {project.challenges && project.challenges.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={0.9}>
+        <AnimateOnThreshold shouldAnimate delay={1}>
           <H3>Challenges & Learnings</H3>
           {project.challenges.map((challenge, index) => (
             <P key={challenge.problem + index} className="mt-2">
@@ -336,19 +310,19 @@ export default function ProjectDetails() {
       )}
 
       {project.productDecisions && project.productDecisions.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={1}>
+        <AnimateOnThreshold shouldAnimate delay={1.1}>
           <H3>Product Decisions</H3>
           <UL items={project.productDecisions} />
         </AnimateOnThreshold>
       )}
       {project.nextSteps && project.nextSteps.length > 0 && (
-        <AnimateOnThreshold shouldAnimate delay={1.1}>
+        <AnimateOnThreshold shouldAnimate delay={1.2}>
           <H3>Next Steps</H3>
           <UL items={project.nextSteps} />
         </AnimateOnThreshold>
       )}
       {(project.link || project.github) && (
-        <AnimateOnThreshold shouldAnimate delay={1.3}>
+        <AnimateOnThreshold shouldAnimate delay={1.4}>
           <Separator className="my-30" />
           <div className="text-center max-w-2xl mx-auto flex flex-col gap-6">
             <div>
@@ -387,6 +361,16 @@ export default function ProjectDetails() {
             </div>
           </div>
         </AnimateOnThreshold>
+      )}
+
+      {/* Single shared lightbox modal */}
+      {project.assets && project.assets.length > 0 && (
+        <AssetLightboxModal
+          assets={project.assets}
+          open={lightboxOpen}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxOpen(false)}
+        />
       )}
     </div>
   );
