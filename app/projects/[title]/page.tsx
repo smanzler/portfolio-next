@@ -97,32 +97,28 @@ export default function ProjectDetails() {
           {(project.link || project.github) && (
             <div className="flex gap-2 flex-wrap">
               {project.link && (
-                <AnimateOnThreshold shouldAnimate delay={0.2}>
-                  <Button size="sm" asChild>
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      View Live Demo
-                    </Link>
-                  </Button>
-                </AnimateOnThreshold>
+                <Button size="sm" asChild>
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    View Live Demo
+                  </Link>
+                </Button>
               )}
               {project.github && (
-                <AnimateOnThreshold shouldAnimate delay={0.3}>
-                  <Button size="sm" asChild variant="outline">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon icon="line-md:github" />
-                      View Code
-                    </a>
-                  </Button>
-                </AnimateOnThreshold>
+                <Button size="sm" asChild variant="outline">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon icon="line-md:github" />
+                    View Code
+                  </a>
+                </Button>
               )}
             </div>
           )}
