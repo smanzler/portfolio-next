@@ -1,12 +1,20 @@
 // src/hooks/useProjects.ts
 import { useMemo } from "react";
-import invtMainImage from "../public/invt/invt.png";
-import invtDetailImage1 from "../public/invt/image.png";
 
 import repIcon from "../public/rep-icon.png";
 import repImage from "../public/rep.png";
 
-import invtIcon from "../public/invt/invt-icon.png";
+import invtIcon from "../public/invt/icon.png";
+import invtImage1 from "../public/invt/image1.png";
+import invtImage2 from "../public/invt/image2.png";
+import invtImage3 from "../public/invt/image3.png";
+import invtImage4 from "../public/invt/image4.png";
+import invtImage5 from "../public/invt/image5.png";
+import invtImage6 from "../public/invt/image6.png";
+import invtImage7 from "../public/invt/image7.png";
+import invtImage8 from "../public/invt/image8.png";
+import invtImage9 from "../public/invt/image9.png";
+import invtVideo1Fallback from "../public/invt/video1-fallback.png";
 
 import portfolioIcon from "../public/simon-icon.png";
 import portfolioImage from "../public/portfolio.png";
@@ -73,13 +81,54 @@ export function useProjects() {
         longDescription:
           "INVT simplifies event discovery and RSVP management through a clean, intuitive interface. Users can create events, share invitations via QR codes, sell tickets, and track attendance. The platform is built with React and styled using shadcn/ui and TailwindCSS, with Supabase handling authentication, storage, and real-time data.",
         tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
-        image: invtMainImage,
+        image: invtImage1,
         icon: invtIcon,
         assets: [
           {
             type: "image",
-            src: invtDetailImage1,
-            alt: "INVT Detail Image 1",
+            src: invtImage2,
+            alt: "Main Page",
+          },
+          {
+            type: "image",
+            src: invtImage3,
+            alt: "Create Event Page",
+          },
+          {
+            type: "video",
+            src: "/invt/video1.mov",
+            fallback: invtVideo1Fallback,
+            alt: "Event Details",
+          },
+          {
+            type: "image",
+            src: invtImage4,
+            alt: "RSVPs Page",
+          },
+          {
+            type: "image",
+            src: invtImage5,
+            alt: "Map View",
+          },
+          {
+            type: "image",
+            src: invtImage6,
+            alt: "Profile Page",
+          },
+          {
+            type: "image",
+            src: invtImage7,
+            alt: "Notifications Page",
+          },
+          {
+            type: "image",
+            src: invtImage8,
+            alt: "Past Events",
+          },
+          {
+            type: "image",
+            src: invtImage9,
+            alt: "Sign In Page",
           },
         ],
         link: "https://invt.rsvp",
