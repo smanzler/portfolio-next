@@ -1,4 +1,3 @@
-import ProjectCard from "@/components/project-card";
 import { H1, H4, Lead, Muted } from "@/components/ui/typography";
 import { useProjects } from "@/hooks/useProjects";
 import Image from "next/image";
