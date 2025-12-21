@@ -16,8 +16,16 @@ import invtImage8 from "../public/invt/image8.png";
 import invtImage9 from "../public/invt/image9.png";
 import invtVideo1Fallback from "../public/invt/video1-fallback.png";
 
-import portfolioIcon from "../public/simon-icon.png";
-import portfolioImage from "../public/portfolio.png";
+import portfolioIcon from "../public/portfolio/icon.png";
+import portfolioImage1 from "../public/portfolio/image1.png";
+import portfolioImage2 from "../public/portfolio/image2.png";
+import portfolioImage3 from "../public/portfolio/image3.png";
+import portfolioImage4 from "../public/portfolio/image4.png";
+import portfolioImage5 from "../public/portfolio/image5.png";
+import portfolioImage6 from "../public/portfolio/image6.png";
+import portfolioImage7 from "../public/portfolio/image7.png";
+import portfolioImage8 from "../public/portfolio/image8.png";
+import portfolioImage9 from "../public/portfolio/image9.png";
 
 import writtenIcon from "../public/written/icon.png";
 import writtenImage1 from "../public/written/image1.png";
@@ -285,23 +293,48 @@ export function useProjects() {
           "motion",
           "Vercel",
         ],
-        image: portfolioImage,
+        image: portfolioImage1,
         icon: portfolioIcon,
         assets: [
           {
             type: "image",
-            src: portfolioImage,
-            alt: "Portfolio Image",
+            src: portfolioImage2,
+            alt: "Featured Projects",
           },
           {
             type: "image",
-            src: portfolioImage,
-            alt: "Portfolio Image",
+            src: portfolioImage3,
+            alt: "Skills",
           },
           {
             type: "image",
-            src: portfolioImage,
-            alt: "Portfolio Image",
+            src: portfolioImage4,
+            alt: "About Me",
+          },
+          {
+            type: "image",
+            src: portfolioImage5,
+            alt: "Experience",
+          },
+          {
+            type: "image",
+            src: portfolioImage6,
+            alt: "Contact",
+          },
+          {
+            type: "image",
+            src: portfolioImage7,
+            alt: "Footer",
+          },
+          {
+            type: "image",
+            src: portfolioImage8,
+            alt: "Projects Page",
+          },
+          {
+            type: "image",
+            src: portfolioImage9,
+            alt: "Project Details Page",
           },
         ],
         link: "https://simonmanzler.com",
