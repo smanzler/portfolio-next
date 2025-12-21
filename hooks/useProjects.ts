@@ -38,6 +38,7 @@ export interface Project {
   }[];
   link?: string;
   featured?: boolean;
+  isApp?: boolean;
   github?: string;
   role?: string;
   timeline?: string;
@@ -158,6 +159,7 @@ export function useProjects() {
         ],
         link: "https://github.com/smanzler/workout-tracker",
         featured: true,
+        isApp: true,
         github: "https://github.com/smanzler/workout-tracker",
         role: "Mobile Developer",
         timeline: "2024",
@@ -389,6 +391,7 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
 
 The project was also an opportunity to deepen native iOS experience by building all map-related UI and GPS logic in Swift and bridging it into a React Native app using Expo native modules.`,
         tags: ["Expo", "TypeScript", "Swift", "Mapbox IOS SDK"],
+        isApp: true,
         image: writtenIcon,
         icon: writtenIcon,
         problemAndSolution: {

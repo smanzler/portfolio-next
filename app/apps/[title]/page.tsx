@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, FileQuestion, Star } from "lucide-react";
-import { useApps } from "@/hooks/useApps";
+import { useProjects } from "@/hooks/useProjects";
 import {
   Card,
   CardContent,
@@ -28,12 +28,23 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import Image from "next/image";
-import { ImageLightbox } from "@/components/image-lightbox";
+import { AssetLightboxDialog } from "@/components/asset-lightbox-dialog";
+import { useState } from "react";
+import { AssetThumbnail } from "@/components/asset-thumbnail";
+import { useApps } from "@/hooks/useApps";
 
 const AppDetails = () => {
   const { title } = useParams();
   const { apps } = useApps();
   const app = apps.find((app) => app.title === title);
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const handleLightboxOpen = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   if (!app) {
     return (
@@ -87,12 +98,12 @@ const AppDetails = () => {
       {/* Screenshots */}
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-4 overflow-x-auto">
-          {app.screenshots &&
-            app.screenshots.map((screenshot, index) => (
-              <ImageLightbox
+          {app.assets &&
+            app.assets.map((asset, index) => (
+              <AssetThumbnail
                 key={index}
-                src={screenshot}
-                alt={`${app.title} screenshot ${index + 1}`}
+                asset={asset}
+                onClick={() => handleLightboxOpen(index)}
                 className="rounded-xl overflow-hidden border max-w-[500px]"
               />
             ))}
@@ -184,6 +195,14 @@ const AppDetails = () => {
             </Accordion>
           </div>
         </div>
+      )}
+      {app.assets && app.assets.length > 0 && (
+        <AssetLightboxDialog
+          assets={app.assets}
+          open={lightboxOpen}
+          setOpen={setLightboxOpen}
+          initialIndex={lightboxIndex}
+        />
       )}
     </div>
   );

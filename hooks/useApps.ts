@@ -29,7 +29,12 @@ export interface App {
   longDescription?: string;
   tags: string[];
   image?: StaticImageData;
-  screenshots?: StaticImageData[];
+  assets?: {
+    type: "image" | "video";
+    src: string | StaticImageData;
+    fallback?: StaticImageData;
+    alt?: string;
+  }[];
   features?: string[];
   link?: string;
   featured?: boolean;
@@ -50,7 +55,23 @@ export function useApps() {
         longDescription:
           "Rep is a comprehensive workout tracking mobile application built with React Native and Expo. It enables users to log exercises, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can log workouts without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
         image: repIcon,
-        screenshots: [repIcon, repIcon, repIcon],
+        assets: [
+          {
+            type: "image",
+            src: repIcon,
+            alt: "Rep Icon",
+          },
+          {
+            type: "image",
+            src: repIcon,
+            alt: "Rep Icon",
+          },
+          {
+            type: "image",
+            src: repIcon,
+            alt: "Rep Icon",
+          },
+        ],
         tags: ["React Native", "Expo", "TypeScript"],
         features: [
           "Offline-first architecture with automatic sync",
@@ -267,7 +288,23 @@ export function useApps() {
         longDescription:
           "Dash is a comprehensive running tracking mobile application built with React Native and Expo. It enables users to track their runs, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can track runs without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
         image: dashIcon,
-        screenshots: [dashIcon, dashIcon, dashIcon],
+        assets: [
+          {
+            type: "image",
+            src: dashIcon,
+            alt: "Dash Icon",
+          },
+          {
+            type: "image",
+            src: dashIcon,
+            alt: "Dash Icon",
+          },
+          {
+            type: "image",
+            src: dashIcon,
+            alt: "Dash Icon",
+          },
+        ],
         tags: ["React Native", "Expo", "TypeScript"],
         features: [
           "Offline-first architecture with automatic sync",
