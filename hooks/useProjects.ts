@@ -11,8 +11,16 @@ import invtIcon from "../public/invt/invt-icon.png";
 import portfolioIcon from "../public/simon-icon.png";
 import portfolioImage from "../public/portfolio.png";
 
-import writtenIcon from "../public/written-icon.png";
-import writtenImage from "../public/portfolio.png";
+import writtenIcon from "../public/written/icon.png";
+import writtenImage1 from "../public/written/image1.png";
+import writtenImage2 from "../public/written/image2.png";
+import writtenImage3 from "../public/written/image3.png";
+import writtenImage4 from "../public/written/image4.png";
+import writtenImage5 from "../public/written/image5.png";
+import writtenImage6 from "../public/written/image6.png";
+import writtenImage7 from "../public/written/image7.png";
+import writtenVideo1Fallback from "../public/written/video1-fallback.png";
+import writtenVideo2Fallback from "../public/written/video2-fallback.png";
 
 import mclistIcon from "../public/mclist/icon.png";
 import mclistImage1 from "../public/mclist/image1.png";
@@ -304,23 +312,50 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         link: "https://written.simonmanzler.com",
         github: "https://github.com/smanzler/written",
         featured: true,
-        image: writtenImage,
+        image: writtenImage1,
         icon: writtenIcon,
         assets: [
           {
-            type: "image",
-            src: writtenImage,
-            alt: "Written Image",
+            type: "video",
+            src: "/written/video1.mov",
+            fallback: writtenVideo1Fallback,
+            alt: "Writing Demo",
           },
           {
             type: "image",
-            src: writtenImage,
-            alt: "Written Image",
+            src: writtenImage2,
+            alt: "Sidebar",
           },
           {
             type: "image",
-            src: writtenImage,
-            alt: "Written Image",
+            src: writtenImage3,
+            alt: "Journal Entry",
+          },
+          {
+            type: "image",
+            src: writtenImage4,
+            alt: "Account Settings",
+          },
+          {
+            type: "image",
+            src: writtenImage5,
+            alt: "Security Settings",
+          },
+          {
+            type: "video",
+            src: "/written/video2.mov",
+            fallback: writtenVideo2Fallback,
+            alt: "Appearance Settings",
+          },
+          {
+            type: "image",
+            src: writtenImage6,
+            alt: "AI Settings",
+          },
+          {
+            type: "image",
+            src: writtenImage7,
+            alt: "Login Screen",
           },
         ],
         problemAndSolution: {

@@ -13,6 +13,8 @@ import {
   GalleryVertical,
   LayoutGrid,
   LayoutList,
+  Play,
+  CirclePlay,
 } from "lucide-react";
 import { H1, H2, H3, Muted, P, UL } from "@/components/ui/typography";
 import { Separator } from "@/components/ui/separator";
@@ -165,7 +167,7 @@ export default function ProjectDetails() {
       {project.assets && project.assets.length > 0 && (
         <AnimateOnThreshold shouldAnimate delay={0.6}>
           <div className="flex flex-col gap-2">
-            <Tabs defaultValue="grid">
+            <Tabs defaultValue="large">
               <div className="flex flex-row justify-between items-center">
                 <H3>Media Gallery</H3>
                 <TabsList>
@@ -215,13 +217,18 @@ export default function ProjectDetails() {
                         className="group cursor-pointer flex flex-row gap-2 items-center justify-between"
                         onClick={() => handleLightboxOpen(index + 1)}
                       >
-                        <P className="group-hover:text-primary/80 transition-colors">
-                          {asset.alt ||
-                            (asset.type === "image" &&
-                            typeof asset.src === "object"
-                              ? asset.src.src
-                              : String(asset.src))}
-                        </P>
+                        <div className="flex flex-row gap-2 items-center">
+                          <P className="group-hover:text-primary/80 transition-colors">
+                            {asset.alt ||
+                              (asset.type === "image" &&
+                              typeof asset.src === "object"
+                                ? asset.src.src
+                                : String(asset.src))}
+                          </P>
+                          {asset.type === "video" && (
+                            <CirclePlay className="h-4 w-4" />
+                          )}
+                        </div>
                         {asset.type === "image" &&
                         typeof asset.src === "object" ? (
                           <Image
@@ -233,7 +240,7 @@ export default function ProjectDetails() {
                           <Image
                             src={asset.fallback}
                             alt={asset.alt || String(asset.src)}
-                            className="size-90"
+                            className="h-8 w-auto"
                           />
                         ) : null}
                       </div>
