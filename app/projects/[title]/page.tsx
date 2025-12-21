@@ -26,9 +26,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { ImageLightbox } from "@/components/image-lightbox";
-import { AssetThumbnail } from "@/components/asset-thumbnail";
-import { AssetLightboxModal } from "@/components/asset-lightbox-modal";
+import { AssetLightboxDialog } from "@/components/asset-lightbox-dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -36,20 +34,25 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+import { AssetThumbnail } from "@/components/asset-thumbnail";
 
 export default function ProjectDetails() {
   const { title } = useParams();
   const { projects } = useProjects();
-  const [lightboxOpen, setLightboxOpen] = React.useState(false);
   const [lightboxIndex, setLightboxIndex] = React.useState(0);
+  const [lightboxOpen, setLightboxOpen] = React.useState(false);
 
   if (!title || typeof title !== "string") {
     redirect("/projects");
   }
-
   const decodedTitle = decodeURIComponent(title);
   const project = projects.find((project) => project.title === decodedTitle);
+
+  const handleLightboxOpen = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   if (!project) {
     return (
@@ -143,11 +146,13 @@ export default function ProjectDetails() {
 
       {project.image && (
         <AnimateOnThreshold shouldAnimate delay={0.4}>
-          <ImageLightbox
-            src={project.image}
-            alt={project.title}
-            className="rounded-lg overflow-hidden border"
-          />
+          <div className="rounded-lg overflow-hidden border">
+            <Image
+              src={project.image}
+              alt={project.title}
+              className="w-full h-auto object-cover"
+            />
+          </div>
         </AnimateOnThreshold>
       )}
 
@@ -195,12 +200,7 @@ export default function ProjectDetails() {
                     <AssetThumbnail
                       key={index}
                       asset={asset}
-                      index={index}
-                      onClick={() => {
-                        // Simplified: just update index and open
-                        setLightboxIndex(index);
-                        setLightboxOpen(true);
-                      }}
+                      onClick={() => handleLightboxOpen(index)}
                     />
                   ))}
                 </div>
@@ -210,41 +210,32 @@ export default function ProjectDetails() {
                   <Separator />
                   {project.assets.map((asset, index) => (
                     <React.Fragment key={index}>
-                      <AssetThumbnail
-                        asset={asset}
-                        index={index}
-                        onClick={() => {
-                          // Always set index first, then open
-                          setLightboxIndex(index);
-                          if (!lightboxOpen) {
-                            setLightboxOpen(true);
-                          }
-                        }}
+                      <div
+                        className="group cursor-pointer flex flex-row gap-2 items-center justify-between"
+                        onClick={() => handleLightboxOpen(index)}
                       >
-                        <div className="flex flex-row gap-2 items-center justify-between">
-                          <P>
-                            {asset.alt ||
-                              (asset.type === "image" &&
-                              typeof asset.src === "object"
-                                ? asset.src.src
-                                : String(asset.src))}
-                          </P>
-                          {asset.type === "image" &&
-                          typeof asset.src === "object" ? (
-                            <Image
-                              src={asset.src}
-                              alt={asset.alt || asset.src.src}
-                              className="h-8 w-auto"
-                            />
-                          ) : asset.fallback ? (
-                            <Image
-                              src={asset.fallback}
-                              alt={asset.alt || String(asset.src)}
-                              className="size-90"
-                            />
-                          ) : null}
-                        </div>
-                      </AssetThumbnail>
+                        <P className="group-hover:text-primary/80 transition-colors">
+                          {asset.alt ||
+                            (asset.type === "image" &&
+                            typeof asset.src === "object"
+                              ? asset.src.src
+                              : String(asset.src))}
+                        </P>
+                        {asset.type === "image" &&
+                        typeof asset.src === "object" ? (
+                          <Image
+                            src={asset.src}
+                            alt={asset.alt || asset.src.src}
+                            className="h-8 w-auto"
+                          />
+                        ) : asset.fallback ? (
+                          <Image
+                            src={asset.fallback}
+                            alt={asset.alt || String(asset.src)}
+                            className="size-90"
+                          />
+                        ) : null}
+                      </div>
                       <Separator />
                     </React.Fragment>
                   ))}
@@ -256,12 +247,7 @@ export default function ProjectDetails() {
                     <AssetThumbnail
                       key={index}
                       asset={asset}
-                      index={index}
-                      onClick={() => {
-                        // Simplified: just update index and open
-                        setLightboxIndex(index);
-                        setLightboxOpen(true);
-                      }}
+                      onClick={() => handleLightboxOpen(index)}
                     />
                   ))}
                 </div>
@@ -359,13 +345,13 @@ export default function ProjectDetails() {
         </AnimateOnThreshold>
       )}
 
-      {/* Single shared lightbox modal */}
+      {/* Lightbox modal */}
       {project.assets && project.assets.length > 0 && (
-        <AssetLightboxModal
+        <AssetLightboxDialog
           assets={project.assets}
           open={lightboxOpen}
+          setOpen={setLightboxOpen}
           initialIndex={lightboxIndex}
-          onClose={() => setLightboxOpen(false)}
         />
       )}
     </div>
