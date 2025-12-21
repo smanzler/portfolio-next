@@ -1,6 +1,6 @@
 // src/hooks/useProjects.ts
 import { useMemo } from "react";
-import repIcon from "../public/rep-icon.png";
+import repIcon from "../public/rep/icon.png";
 import dashIcon from "../public/dash-icon.png";
 import { StaticImageData } from "next/image";
 

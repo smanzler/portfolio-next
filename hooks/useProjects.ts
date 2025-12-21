@@ -1,8 +1,23 @@
 // src/hooks/useProjects.ts
 import { useMemo } from "react";
 
-import repIcon from "../public/rep-icon.png";
-import repImage from "../public/rep.png";
+import repIcon from "../public/rep/icon.png";
+import repImage1 from "../public/rep/image1.png";
+import repImage2 from "../public/rep/image2.png";
+import repImage3 from "../public/rep/image3.png";
+import repImage4 from "../public/rep/image4.png";
+import repImage5 from "../public/rep/image5.png";
+import repImage6 from "../public/rep/image6.png";
+import repImage7 from "../public/rep/image7.png";
+import repImage8 from "../public/rep/image8.png";
+import repImage9 from "../public/rep/image9.png";
+import repImage10 from "../public/rep/image10.png";
+import repImage11 from "../public/rep/image11.png";
+import repImage12 from "../public/rep/image12.png";
+import repImage13 from "../public/rep/image13.png";
+import repImage14 from "../public/rep/image14.png";
+import repImage15 from "../public/rep/image15.png";
+import repVideo1Fallback from "../public/rep/video1-fallback.png";
 
 import invtIcon from "../public/invt/icon.png";
 import invtImage1 from "../public/invt/image1.png";
@@ -203,26 +218,87 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         longDescription:
           "Rep is a workout tracking app built to support consistent strength training without unnecessary complexity. Inspired by existing apps like Strong, Rep focuses on fast workout logging, offline reliability, and meaningful progress tracking. The app uses a local-first architecture and is designed around real gym usage, with features added only when they proved necessary.",
         tags: ["React Native", "Supabase", "Expo"],
-        image: repImage,
+        image: repImage1,
         icon: repIcon,
         assets: [
           {
             type: "image",
-            src: repIcon,
-            alt: "Rep Icon",
+            src: repImage2,
+            alt: "Profile Page",
+          },
+          {
+            type: "video",
+            src: "/rep/video1.mov",
+            fallback: repVideo1Fallback,
+            alt: "Workout Demo",
           },
           {
             type: "image",
-            src: repIcon,
-            alt: "Rep Icon",
+            src: repImage3,
+            alt: "Start Workout Page",
           },
           {
             type: "image",
-            src: repIcon,
-            alt: "Rep Icon",
+            src: repImage4,
+            alt: "History Page",
+          },
+          {
+            type: "image",
+            src: repImage5,
+            alt: "Details Modal",
+          },
+          {
+            type: "image",
+            src: repImage6,
+            alt: "Add Exercise Modal",
+          },
+          {
+            type: "image",
+            src: repImage7,
+            alt: "Add Exercise Modal 2",
+          },
+          {
+            type: "image",
+            src: repImage8,
+            alt: "Workout Modal",
+          },
+          {
+            type: "image",
+            src: repImage9,
+            alt: "Completing Sets",
+          },
+          {
+            type: "image",
+            src: repImage10,
+            alt: "Completed Workout",
+          },
+          {
+            type: "image",
+            src: repImage11,
+            alt: "Explore Page",
+          },
+          {
+            type: "image",
+            src: repImage12,
+            alt: "Create Post Page",
+          },
+          {
+            type: "image",
+            src: repImage13,
+            alt: "Add Workout To Post",
+          },
+          {
+            type: "image",
+            src: repImage14,
+            alt: "Settings Dropdown",
+          },
+          {
+            type: "image",
+            src: repImage15,
+            alt: "Notifications Page",
           },
         ],
-        link: "https://github.com/smanzler/workout-tracker",
+        link: "https://apps.apple.com/us/app/rep-workout-tracker/id6743640996",
         featured: true,
         isApp: true,
         github: "https://github.com/smanzler/workout-tracker",

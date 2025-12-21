@@ -198,7 +198,13 @@ export default function ProjectDetails() {
                 </TabsList>
               </div>
               <TabsContent value="large">
-                <div className="flex flex-col gap-2">
+                <div
+                  className={
+                    project.isApp
+                      ? "grid grid-cols-2 gap-4"
+                      : "flex flex-row gap-2"
+                  }
+                >
                   {project.assets.map((asset, index) => (
                     <AssetThumbnail
                       key={index}
