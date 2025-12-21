@@ -251,7 +251,6 @@ export function useProjects() {
           },
         ],
         link: "https://simonmanzler.com",
-        featured: true,
         github: "https://github.com/smanzler/portfolio",
         role: "Frontend Developer & Designer",
         timeline: "2024",
@@ -309,6 +308,7 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         tags: ["React", "Vite", "Typescript"],
         link: "https://written.simonmanzler.com",
         github: "https://github.com/smanzler/written",
+        featured: true,
         image: writtenImage,
         icon: writtenIcon,
         assets: [
