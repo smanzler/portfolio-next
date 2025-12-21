@@ -2,11 +2,10 @@ import * as React from "react";
 import Image, { StaticImageData } from "next/image";
 import {
   Dialog,
-  DialogContent,
-  DialogClose,
+  DialogOverlay,
+  DialogPortal,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { XIcon } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -15,6 +14,43 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { XIcon } from "lucide-react";
+import { Button } from "./ui/button";
+
+function AssetDialogContent({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Content>) {
+  return (
+    <DialogPortal data-slot="dialog-portal">
+      <DialogOverlay>
+        <DialogPrimitive.Close data-slot="dialog-close" asChild>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute top-4 right-4"
+          >
+            <XIcon />
+            <span className="sr-only">Close</span>
+          </Button>
+        </DialogPrimitive.Close>
+      </DialogOverlay>
+      <DialogPrimitive.Content
+        data-slot="dialog-content"
+        className={cn(
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </DialogPrimitive.Content>
+    </DialogPortal>
+  );
+}
 
 interface Asset {
   type: "image" | "video";
@@ -64,7 +100,7 @@ export function AssetLightboxDialog({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="w-[95vw] !max-w-7xl p-6 bg-transparent border-none shadow-none">
+      <AssetDialogContent className="!max-w-7xl p-6 bg-transparent border-none shadow-none">
         <DialogTitle className="sr-only">Media Gallery</DialogTitle>
 
         <Carousel
@@ -120,7 +156,7 @@ export function AssetLightboxDialog({
             </>
           )}
         </Carousel>
-      </DialogContent>
+      </AssetDialogContent>
     </Dialog>
   );
 }

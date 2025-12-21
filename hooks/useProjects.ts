@@ -70,11 +70,6 @@ export function useProjects() {
         assets: [
           {
             type: "image",
-            src: invtMainImage,
-            alt: "INVT Main Image",
-          },
-          {
-            type: "image",
             src: invtDetailImage1,
             alt: "INVT Detail Image 1",
           },

@@ -144,17 +144,18 @@ export default function ProjectDetails() {
         </div>
       </AnimateOnThreshold>
 
-      {project.image && (
-        <AnimateOnThreshold shouldAnimate delay={0.4}>
-          <div className="rounded-lg overflow-hidden border">
-            <Image
-              src={project.image}
-              alt={project.title}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </AnimateOnThreshold>
-      )}
+      <AnimateOnThreshold shouldAnimate delay={0.4}>
+        <div className="rounded-lg overflow-hidden border">
+          <AssetThumbnail
+            asset={{
+              type: "image",
+              src: project.image,
+              alt: project.title,
+            }}
+            onClick={() => handleLightboxOpen(0)}
+          />
+        </div>
+      </AnimateOnThreshold>
 
       <AnimateOnThreshold shouldAnimate delay={0.5}>
         <H3>Overview</H3>
@@ -200,7 +201,7 @@ export default function ProjectDetails() {
                     <AssetThumbnail
                       key={index}
                       asset={asset}
-                      onClick={() => handleLightboxOpen(index)}
+                      onClick={() => handleLightboxOpen(index + 1)}
                     />
                   ))}
                 </div>
@@ -212,7 +213,7 @@ export default function ProjectDetails() {
                     <React.Fragment key={index}>
                       <div
                         className="group cursor-pointer flex flex-row gap-2 items-center justify-between"
-                        onClick={() => handleLightboxOpen(index)}
+                        onClick={() => handleLightboxOpen(index + 1)}
                       >
                         <P className="group-hover:text-primary/80 transition-colors">
                           {asset.alt ||
@@ -247,7 +248,7 @@ export default function ProjectDetails() {
                     <AssetThumbnail
                       key={index}
                       asset={asset}
-                      onClick={() => handleLightboxOpen(index)}
+                      onClick={() => handleLightboxOpen(index + 1)}
                     />
                   ))}
                 </div>
@@ -348,7 +349,14 @@ export default function ProjectDetails() {
       {/* Lightbox modal */}
       {project.assets && project.assets.length > 0 && (
         <AssetLightboxDialog
-          assets={project.assets}
+          assets={[
+            {
+              type: "image",
+              src: project.image,
+              alt: "Project Image",
+            },
+            ...project.assets,
+          ]}
           open={lightboxOpen}
           setOpen={setLightboxOpen}
           initialIndex={lightboxIndex}
