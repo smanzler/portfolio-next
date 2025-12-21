@@ -10,9 +10,10 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
-import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2, X } from "lucide-react";
 import { useState } from "react";
 import { sendContactEmail } from "@/app/actions/send-email";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -69,22 +70,24 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {submitStatus.type && (
-        <div
-          className={`flex items-center gap-2 p-3 rounded-md text-sm mb-6 ${
-            submitStatus.type === "success"
-              ? "bg-green-50 dark:bg-green-950/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800"
-              : "bg-red-50 dark:bg-red-950/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800"
-          }`}
+      {submitStatus.type === "success" ? (
+        <Alert variant="default" className="mb-6 !grid-cols-[auto_1fr_auto]">
+          <CheckCircle2 />
+          <AlertTitle>Success! Your message has been sent</AlertTitle>
+          <X onClick={() => setSubmitStatus({ type: null, message: "" })} />
+          <AlertDescription>{submitStatus.message}</AlertDescription>
+        </Alert>
+      ) : submitStatus.type === "error" ? (
+        <Alert
+          variant="destructive"
+          className="mb-6 !grid-cols-[auto_1fr_auto]"
         >
-          {submitStatus.type === "success" ? (
-            <CheckCircle2 className="h-4 w-4 shrink-0" />
-          ) : (
-            <AlertCircle className="h-4 w-4 shrink-0" />
-          )}
-          <span>{submitStatus.message}</span>
-        </div>
-      )}
+          <AlertCircle />
+          <AlertTitle>Error! Your message has not been sent</AlertTitle>
+          <X onClick={() => setSubmitStatus({ type: null, message: "" })} />
+          <AlertDescription>{submitStatus.message}</AlertDescription>
+        </Alert>
+      ) : null}
 
       <FieldGroup>
         <Field>
