@@ -64,7 +64,7 @@ export function AssetLightboxDialog({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="w-[95vw] !max-w-7xl p-6 bg-transparent border-none">
+      <DialogContent className="w-[95vw] !max-w-7xl p-6 bg-transparent border-none shadow-none">
         <DialogTitle className="sr-only">Media Gallery</DialogTitle>
 
         <Carousel
@@ -74,11 +74,13 @@ export function AssetLightboxDialog({
             loop: false,
             startIndex: initialIndex,
           }}
-          className="w-full h-full"
         >
           <CarouselContent>
             {assets.map((asset, i) => (
-              <CarouselItem key={i}>
+              <CarouselItem
+                key={i}
+                className="flex items-center justify-center"
+              >
                 {asset.type === "image" ? (
                   <Image
                     src={asset.src as StaticImageData}
