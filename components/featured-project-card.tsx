@@ -12,6 +12,7 @@ import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
 import AccentShadowContainer from "@/components/motion/accent-shadow-container";
 import Link from "next/link";
 import Image from "next/image";
+import { AssetThumbnail } from "./asset-thumbnail";
 
 const FeaturedProjectCard = ({
   project,
@@ -22,17 +23,20 @@ const FeaturedProjectCard = ({
 }) => {
   const router = useRouter();
 
+  const handleHeroAssetClick = () => {
+    router.push(`/projects/${project.title}`);
+  };
+
   return (
     <ThresholdMotionDiv
       key={project.title}
       onClick={() => router.push(`/projects/${project.title}`)}
     >
       <AccentShadowContainer className="relative cursor-pointer rounded-xl overflow-hidden">
-        {project.image && (
-          <Image
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full min-h-[450px] md:min-h-[500px] object-cover"
+        {project.heroAsset && (
+          <AssetThumbnail
+            asset={project.heroAsset}
+            onClick={handleHeroAssetClick}
           />
         )}
         <div
@@ -62,22 +66,6 @@ const FeaturedProjectCard = ({
                   {tag}
                 </Badge>
               ))}
-            </div>
-
-            <div className="flex gap-2 justify-end">
-              {project.github ? (
-                <Button variant="ghost" size="icon" asChild>
-                  <Link href={project.github} target="_blank">
-                    <Code />
-                  </Link>
-                </Button>
-              ) : (
-                <Button variant="ghost" size="icon" asChild>
-                  <Link href={`/projects/${project.title}`}>
-                    <MoveRight />
-                  </Link>
-                </Button>
-              )}
             </div>
           </div>
         </ThresholdMotionDiv>

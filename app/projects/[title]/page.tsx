@@ -36,7 +36,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { AssetThumbnail } from "@/components/asset-thumbnail";
 
 export default function ProjectDetails() {
@@ -148,14 +148,12 @@ export default function ProjectDetails() {
 
       <AnimateOnThreshold shouldAnimate delay={0.4}>
         <div className="rounded-lg overflow-hidden border">
-          <AssetThumbnail
-            asset={{
-              type: "image",
-              src: project.image,
-              alt: project.title,
-            }}
-            onClick={() => handleLightboxOpen(0)}
-          />
+          {project.heroAsset && (
+            <AssetThumbnail
+              asset={project.heroAsset}
+              onClick={() => handleLightboxOpen(0)}
+            />
+          )}
         </div>
       </AnimateOnThreshold>
 
@@ -202,7 +200,7 @@ export default function ProjectDetails() {
                   className={
                     project.isApp
                       ? "grid grid-cols-2 gap-4"
-                      : "flex flex-row gap-2"
+                      : "flex flex-col gap-2"
                   }
                 >
                   {project.assets.map((asset, index) => (
@@ -257,7 +255,7 @@ export default function ProjectDetails() {
               </TabsContent>
               <TabsContent value="grid">
                 <div className="grid grid-cols-3 gap-4 mt-4">
-                  {project.assets?.map((asset, index) => (
+                  {project.assets.map((asset, index) => (
                     <AssetThumbnail
                       key={index}
                       asset={asset}
@@ -362,14 +360,7 @@ export default function ProjectDetails() {
       {/* Lightbox modal */}
       {project.assets && project.assets.length > 0 && (
         <AssetLightboxDialog
-          assets={[
-            {
-              type: "image",
-              src: project.image,
-              alt: "Project Image",
-            },
-            ...project.assets,
-          ]}
+          assets={[project.heroAsset, ...project.assets]}
           open={lightboxOpen}
           setOpen={setLightboxOpen}
           initialIndex={lightboxIndex}

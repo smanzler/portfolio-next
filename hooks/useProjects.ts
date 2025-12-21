@@ -64,19 +64,21 @@ import mclistVideo1Fallback from "../public/mclist/video1-fallback.png";
 
 import { StaticImageData } from "next/image";
 
+export interface Asset {
+  type: "image" | "video";
+  src: string | StaticImageData;
+  fallback?: StaticImageData;
+  alt?: string;
+}
+
 export interface Project {
   title: string;
   description: string;
   longDescription?: string;
   tags: string[];
-  image: StaticImageData;
   icon: StaticImageData;
-  assets?: {
-    type: "image" | "video";
-    src: string | StaticImageData;
-    fallback?: StaticImageData;
-    alt?: string;
-  }[];
+  heroAsset: Asset;
+  assets?: Asset[];
   link?: string;
   featured?: boolean;
   isApp?: boolean;
@@ -109,15 +111,18 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         tags: ["React", "Vite", "Typescript"],
         link: "https://written.simonmanzler.com",
         github: "https://github.com/smanzler/written",
-        featured: true,
-        image: writtenImage1,
+        heroAsset: {
+          type: "video",
+          src: "/written/video1.mov",
+          fallback: writtenVideo1Fallback,
+          alt: "Writing Demo",
+        },
         icon: writtenIcon,
         assets: [
           {
-            type: "video",
-            src: "/written/video1.mov",
-            fallback: writtenVideo1Fallback,
-            alt: "Writing Demo",
+            type: "image",
+            src: writtenImage1,
+            alt: "Written Icon",
           },
           {
             type: "image",
@@ -218,19 +223,24 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         longDescription:
           "Rep is a workout tracking app built to support consistent strength training without unnecessary complexity. Inspired by existing apps like Strong, Rep focuses on fast workout logging, offline reliability, and meaningful progress tracking. The app uses a local-first architecture and is designed around real gym usage, with features added only when they proved necessary.",
         tags: ["React Native", "Supabase", "Expo"],
-        image: repImage1,
+
         icon: repIcon,
+        heroAsset: {
+          type: "video",
+          src: "/rep/video1.mov",
+          fallback: repVideo1Fallback,
+          alt: "Workout Demo",
+        },
         assets: [
+          {
+            type: "image",
+            src: repImage1,
+            alt: "Rep Homepage",
+          },
           {
             type: "image",
             src: repImage2,
             alt: "Profile Page",
-          },
-          {
-            type: "video",
-            src: "/rep/video1.mov",
-            fallback: repVideo1Fallback,
-            alt: "Workout Demo",
           },
           {
             type: "image",
@@ -299,7 +309,7 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
           },
         ],
         link: "https://apps.apple.com/us/app/rep-workout-tracker/id6743640996",
-        featured: true,
+
         isApp: true,
         github: "https://github.com/smanzler/workout-tracker",
         role: "Mobile Developer",
@@ -363,9 +373,20 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         longDescription:
           "INVT simplifies event discovery and RSVP management through a clean, intuitive interface. Users can create events, share invitations via QR codes, sell tickets, and track attendance. The platform is built with React and styled using shadcn/ui and TailwindCSS, with Supabase handling authentication, storage, and real-time data.",
         tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
-        image: invtImage1,
+
         icon: invtIcon,
+        heroAsset: {
+          type: "video",
+          src: "/invt/video1.mov",
+          fallback: invtVideo1Fallback,
+          alt: "Event Details",
+        },
         assets: [
+          {
+            type: "image",
+            src: invtImage1,
+            alt: "INVT Homepage",
+          },
           {
             type: "image",
             src: invtImage2,
@@ -375,12 +396,6 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
             type: "image",
             src: invtImage3,
             alt: "Create Event Page",
-          },
-          {
-            type: "video",
-            src: "/invt/video1.mov",
-            fallback: invtVideo1Fallback,
-            alt: "Event Details",
           },
           {
             type: "image",
@@ -414,7 +429,7 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
           },
         ],
         link: "https://invt.rsvp",
-        featured: true,
+
         role: "Independent Contractor",
         timeline: "June 2025 - Present",
         problemAndSolution: {
@@ -481,7 +496,11 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
           "motion",
           "Vercel",
         ],
-        image: portfolioImage1,
+        heroAsset: {
+          type: "image",
+          src: portfolioImage1,
+          alt: "Portfolio Homepage",
+        },
         icon: portfolioIcon,
         assets: [
           {
@@ -582,7 +601,11 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
 The project was also an opportunity to deepen native iOS experience by building all map-related UI and GPS logic in Swift and bridging it into a React Native app using Expo native modules.`,
         tags: ["Expo", "TypeScript", "Swift", "Mapbox IOS SDK"],
         isApp: true,
-        image: dashIcon,
+        heroAsset: {
+          type: "image",
+          src: dashIcon,
+          alt: "Dash Video 1",
+        },
         icon: dashIcon,
         problemAndSolution: {
           problem:
@@ -636,7 +659,12 @@ Users can save builds locally, mark items as completed, and share builds via a c
         github: "https://github.com/smanzler/mclist",
         link: "https://mclist.simonmanzler.com",
         tags: ["Next.js", "React", "TypeScript", "Dexie", "Motion", "Lottie"],
-        image: mclistImage2,
+        heroAsset: {
+          type: "video",
+          src: "/mclist/video1.mov",
+          fallback: mclistVideo1Fallback,
+          alt: "MCList Video 1",
+        },
         icon: mclistIcon,
         assets: [
           {
@@ -658,12 +686,6 @@ Users can save builds locally, mark items as completed, and share builds via a c
             type: "image",
             src: mclistImage4,
             alt: "MCList Image 4",
-          },
-          {
-            type: "video",
-            src: "/mclist/video1.mov",
-            fallback: mclistVideo1Fallback,
-            alt: "MCList Video 1",
           },
         ],
         problemAndSolution: {
@@ -687,7 +709,6 @@ Users can save builds locally, mark items as completed, and share builds via a c
           "Generated metadata dynamically for sharing and social previews",
         ],
         productDecisions: [
-          "No backend: kept the project lightweight and fully client-side",
           "Focused on fun, visual feedback for item completion",
           "Scoped features tightly to avoid overengineering",
         ],
