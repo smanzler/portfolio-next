@@ -85,307 +85,6 @@ export function useProjects() {
   const projects: Project[] = useMemo(
     (): Project[] => [
       {
-        title: "INVT",
-        description:
-          "Find and rsvp to events made by others and invite friends through QR codes.",
-        longDescription:
-          "INVT simplifies event discovery and RSVP management through a clean, intuitive interface. Users can create events, share invitations via QR codes, sell tickets, and track attendance. The platform is built with React and styled using shadcn/ui and TailwindCSS, with Supabase handling authentication, storage, and real-time data.",
-        tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
-        image: invtImage1,
-        icon: invtIcon,
-        assets: [
-          {
-            type: "image",
-            src: invtImage2,
-            alt: "Main Page",
-          },
-          {
-            type: "image",
-            src: invtImage3,
-            alt: "Create Event Page",
-          },
-          {
-            type: "video",
-            src: "/invt/video1.mov",
-            fallback: invtVideo1Fallback,
-            alt: "Event Details",
-          },
-          {
-            type: "image",
-            src: invtImage4,
-            alt: "RSVPs Page",
-          },
-          {
-            type: "image",
-            src: invtImage5,
-            alt: "Map View",
-          },
-          {
-            type: "image",
-            src: invtImage6,
-            alt: "Profile Page",
-          },
-          {
-            type: "image",
-            src: invtImage7,
-            alt: "Notifications Page",
-          },
-          {
-            type: "image",
-            src: invtImage8,
-            alt: "Past Events",
-          },
-          {
-            type: "image",
-            src: invtImage9,
-            alt: "Sign In Page",
-          },
-        ],
-        link: "https://invt.rsvp",
-        featured: true,
-        role: "Independent Contractor",
-        timeline: "June 2025 - Present",
-        problemAndSolution: {
-          problem:
-            "Existing event platforms were overly complex and difficult to use for both organizers and attendees.",
-          solution:
-            "INVT focuses on a streamlined experience by removing unnecessary features while still supporting essential workflows like invitations, ticket sales, and attendee management.",
-        },
-        keyFeatures: [
-          "Create and manage public or private events",
-          "Share invites via QR codes and track invite attribution",
-          "Sell event tickets directly through the platform",
-          "Retarget previous attendees for future events",
-          "Authentication, storage, and real-time data powered by Supabase",
-        ],
-        technicalHighlights: [
-          "Migrated backend from Firebase to Supabase to support relational data and improve scalability",
-          "Designed a relational PostgreSQL schema for events, users, tickets, and invites",
-          "Implemented web push notifications using the Web Push API and a custom service worker integration with Vite",
-          "Integrated Stripe using a marketplace model, allowing individual event hosts to manage payouts and taxes independently",
-          "Built a responsive UI using shadcn/ui and TailwindCSS for consistent and easily adjustable styling",
-        ],
-        challenges: [
-          {
-            problem: "Backend Migration",
-            solution:
-              "Transitioned from Firebase to Supabase to improve relational data modeling and avoid vendor lock-in. This required refactoring data access patterns, rebuilding authentication flows, and migrating storage logic.",
-          },
-          {
-            problem: "Web Push Notifications",
-            solution:
-              "Implemented push notifications in a PWA environment, including handling HTTPS requirements and service worker constraints when the app is inactive.",
-          },
-          {
-            problem: "Payments Architecture",
-            solution:
-              "Chose a Stripe marketplace model to enable multiple organizers to sell tickets while managing payouts and tax responsibilities independently.",
-          },
-          {
-            problem: "UX Consistency",
-            solution:
-              "Used shadcn/ui as a foundation to maintain design consistency while allowing rapid iteration on layout and interaction patterns.",
-          },
-        ],
-        nextSteps: [
-          "Improve analytics for event organizers",
-          "Expand attendee engagement tools",
-          "Enhance accessibility and mobile UX",
-        ],
-      },
-      {
-        title: "Rep",
-        description:
-          "Track workouts, view progress, share with friends, and sync data offline.",
-        longDescription:
-          "Rep is a workout tracking app built to support consistent strength training without unnecessary complexity. Inspired by existing apps like Strong, Rep focuses on fast workout logging, offline reliability, and meaningful progress tracking. The app uses a local-first architecture and is designed around real gym usage, with features added only when they proved necessary.",
-        tags: ["React Native", "Supabase", "Expo"],
-        image: repImage,
-        icon: repIcon,
-        assets: [
-          {
-            type: "image",
-            src: repIcon,
-            alt: "Rep Icon",
-          },
-          {
-            type: "image",
-            src: repIcon,
-            alt: "Rep Icon",
-          },
-          {
-            type: "image",
-            src: repIcon,
-            alt: "Rep Icon",
-          },
-        ],
-        link: "https://github.com/smanzler/workout-tracker",
-        featured: true,
-        isApp: true,
-        github: "https://github.com/smanzler/workout-tracker",
-        role: "Mobile Developer",
-        timeline: "2024",
-        keyFeatures: [
-          "Log workouts, exercises, and sets with offline support",
-          "Local-first data storage with background sync",
-          "Track workout history and personal records",
-          "Social feed with shared workouts, likes, and interactions",
-          "Push notifications for follows and likes",
-          "Native charts for visualizing workout progress",
-        ],
-        problemAndSolution: {
-          problem:
-            "Many workout apps include excessive features that slow down basic logging and don't adapt well to real gym workflows.",
-
-          solution:
-            "Rep prioritizes speed, offline support, and usability by storing all workout data locally and syncing in the background. By using the app personally, features were shaped by real needs rather than assumptions, leading to a focused and practical MVP.",
-        },
-        technicalHighlights: [
-          "Built with React Native for cross-platform development",
-          "Implemented a local-first data model using WatermelonDB",
-          "Designed custom sync logic with Supabase for pushing and pulling workout data",
-          "Built a social feed with relational data for users, posts, workouts, and likes",
-          "Integrated native Swift modules to render performant charts",
-          "Implemented push notifications with in-app toasts when the app is active",
-        ],
-        challenges: [
-          {
-            problem: "Local-First Sync Architecture",
-            solution:
-              "Implemented bidirectional sync between the local database and Supabase, handling conflict resolution and ensuring data consistency across sessions and devices.",
-          },
-          {
-            problem: "Social Feed & Data Modeling",
-            solution:
-              "Designed a relational schema to support posts, attached workouts, likes, and follow relationships while keeping feed queries performant.",
-          },
-          {
-            problem: "Native Chart Rendering",
-            solution:
-              "Built native chart components using Swift and bridged them into React Native to achieve smooth, high-performance visualizations.",
-          },
-          {
-            problem: "Notifications & In-App Feedback",
-            solution:
-              "Implemented push notifications for social interactions and handled in-app notification states with custom toasts when the app is open.",
-          },
-        ],
-        productDecisions: [
-          "Shipped an MVP quickly and expanded features only when they were validated by real usage",
-          "Prioritized usability over feature count",
-          "Stopped feature development when additions no longer improved the core experience",
-          "Used personal daily usage to guide UX and feature priorities",
-        ],
-      },
-      {
-        title: "Portfolio",
-        description:
-          "A continuously evolving portfolio used to practice design, animation, and modern frontend patterns.",
-        longDescription: `This portfolio is a long-running project that has evolved alongside my growth as a developer. It began as a static HTML/CSS site, was later migrated to React with Vite, and is now built with Next.js. Each iteration reflects new tools, patterns, and design principles I’ve learned over time.
-
-                          The site also serves as the official domain for my published apps, hosting privacy policies and terms of service required for App Store distribution.`,
-        tags: [
-          "Next.js",
-          "React",
-          "TypeScript",
-          "TailwindCSS",
-          "Shadcn UI",
-          "motion",
-          "Vercel",
-        ],
-        image: portfolioImage1,
-        icon: portfolioIcon,
-        assets: [
-          {
-            type: "image",
-            src: portfolioImage2,
-            alt: "Featured Projects",
-          },
-          {
-            type: "image",
-            src: portfolioImage3,
-            alt: "Skills",
-          },
-          {
-            type: "image",
-            src: portfolioImage4,
-            alt: "About Me",
-          },
-          {
-            type: "image",
-            src: portfolioImage5,
-            alt: "Experience",
-          },
-          {
-            type: "image",
-            src: portfolioImage6,
-            alt: "Contact",
-          },
-          {
-            type: "image",
-            src: portfolioImage7,
-            alt: "Footer",
-          },
-          {
-            type: "image",
-            src: portfolioImage8,
-            alt: "Projects Page",
-          },
-          {
-            type: "image",
-            src: portfolioImage9,
-            alt: "Project Details Page",
-          },
-        ],
-        link: "https://simonmanzler.com",
-        github: "https://github.com/smanzler/portfolio",
-        role: "Frontend Developer & Designer",
-        timeline: "2024",
-        problemAndSolution: {
-          problem:
-            "Early versions of my portfolio quickly became outdated as my skills improved, making it difficult to reflect my current abilities.",
-          solution:
-            "Instead of treating the portfolio as a finished product, I designed it as an evolving system — a place to experiment with modern tooling, subtle animations, and component-driven design while maintaining a clean and professional presentation.",
-        },
-        keyFeatures: [
-          "Component-driven UI built with shadcn/ui and TailwindCSS",
-          "Subtle, purposeful animations to enhance UX without distraction",
-          "Modular layout that supports iteration and content reorganization",
-          "Deployed as a stable domain for App Store privacy policies and legal pages",
-          "Continuously updated to reflect current skills and projects",
-        ],
-        technicalHighlights: [
-          "Migrated the project across multiple stacks (HTML/CSS → React + Vite → Next.js)",
-          "Implemented motion-based UI interactions using the Motion library",
-          "Used shadcn/ui components as a foundation for rapid experimentation and reuse",
-          "Designed flexible layouts to accommodate different project types and page structures",
-          "Balanced animation performance and accessibility with visual polish",
-        ],
-        challenges: [
-          {
-            problem: "Animation Without Overuse",
-            solution:
-              "Learned to design subtle, UX-driven animations that support interaction and hierarchy rather than overpowering the content.",
-          },
-          {
-            problem: "Design Identity",
-            solution:
-              "Iterated on typography, spacing, and layout to find a visual style that feels personal, confident, and professional.",
-          },
-          {
-            problem: "Content Organization",
-            solution:
-              "Refined how projects, sections, and information are structured to keep the site scannable while still expressive.",
-          },
-        ],
-        productDecisions: [
-          "Treated the portfolio as a living project rather than a static deliverable",
-          "Used real experimentation instead of artificial demos",
-          "Practiced new components and UI patterns directly in production",
-          "Prioritized clarity and restraint over visual noise",
-        ],
-      },
-      {
         title: "Written",
         description:
           "A local-first journaling app focused on satisfying writing, privacy, and ownership.",
@@ -495,6 +194,307 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
           "Prioritized privacy and ownership over convenience",
           "Chose local-first architecture to ensure reliability and trust",
           "Kept AI features optional, lightweight, and user-controlled",
+        ],
+      },
+      {
+        title: "Rep",
+        description:
+          "Track workouts, view progress, share with friends, and sync data offline.",
+        longDescription:
+          "Rep is a workout tracking app built to support consistent strength training without unnecessary complexity. Inspired by existing apps like Strong, Rep focuses on fast workout logging, offline reliability, and meaningful progress tracking. The app uses a local-first architecture and is designed around real gym usage, with features added only when they proved necessary.",
+        tags: ["React Native", "Supabase", "Expo"],
+        image: repImage,
+        icon: repIcon,
+        assets: [
+          {
+            type: "image",
+            src: repIcon,
+            alt: "Rep Icon",
+          },
+          {
+            type: "image",
+            src: repIcon,
+            alt: "Rep Icon",
+          },
+          {
+            type: "image",
+            src: repIcon,
+            alt: "Rep Icon",
+          },
+        ],
+        link: "https://github.com/smanzler/workout-tracker",
+        featured: true,
+        isApp: true,
+        github: "https://github.com/smanzler/workout-tracker",
+        role: "Mobile Developer",
+        timeline: "2024",
+        keyFeatures: [
+          "Log workouts, exercises, and sets with offline support",
+          "Local-first data storage with background sync",
+          "Track workout history and personal records",
+          "Social feed with shared workouts, likes, and interactions",
+          "Push notifications for follows and likes",
+          "Native charts for visualizing workout progress",
+        ],
+        problemAndSolution: {
+          problem:
+            "Many workout apps include excessive features that slow down basic logging and don't adapt well to real gym workflows.",
+
+          solution:
+            "Rep prioritizes speed, offline support, and usability by storing all workout data locally and syncing in the background. By using the app personally, features were shaped by real needs rather than assumptions, leading to a focused and practical MVP.",
+        },
+        technicalHighlights: [
+          "Built with React Native for cross-platform development",
+          "Implemented a local-first data model using WatermelonDB",
+          "Designed custom sync logic with Supabase for pushing and pulling workout data",
+          "Built a social feed with relational data for users, posts, workouts, and likes",
+          "Integrated native Swift modules to render performant charts",
+          "Implemented push notifications with in-app toasts when the app is active",
+        ],
+        challenges: [
+          {
+            problem: "Local-First Sync Architecture",
+            solution:
+              "Implemented bidirectional sync between the local database and Supabase, handling conflict resolution and ensuring data consistency across sessions and devices.",
+          },
+          {
+            problem: "Social Feed & Data Modeling",
+            solution:
+              "Designed a relational schema to support posts, attached workouts, likes, and follow relationships while keeping feed queries performant.",
+          },
+          {
+            problem: "Native Chart Rendering",
+            solution:
+              "Built native chart components using Swift and bridged them into React Native to achieve smooth, high-performance visualizations.",
+          },
+          {
+            problem: "Notifications & In-App Feedback",
+            solution:
+              "Implemented push notifications for social interactions and handled in-app notification states with custom toasts when the app is open.",
+          },
+        ],
+        productDecisions: [
+          "Shipped an MVP quickly and expanded features only when they were validated by real usage",
+          "Prioritized usability over feature count",
+          "Stopped feature development when additions no longer improved the core experience",
+          "Used personal daily usage to guide UX and feature priorities",
+        ],
+      },
+      {
+        title: "INVT",
+        description:
+          "Find and rsvp to events made by others and invite friends through QR codes.",
+        longDescription:
+          "INVT simplifies event discovery and RSVP management through a clean, intuitive interface. Users can create events, share invitations via QR codes, sell tickets, and track attendance. The platform is built with React and styled using shadcn/ui and TailwindCSS, with Supabase handling authentication, storage, and real-time data.",
+        tags: ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
+        image: invtImage1,
+        icon: invtIcon,
+        assets: [
+          {
+            type: "image",
+            src: invtImage2,
+            alt: "Main Page",
+          },
+          {
+            type: "image",
+            src: invtImage3,
+            alt: "Create Event Page",
+          },
+          {
+            type: "video",
+            src: "/invt/video1.mov",
+            fallback: invtVideo1Fallback,
+            alt: "Event Details",
+          },
+          {
+            type: "image",
+            src: invtImage4,
+            alt: "RSVPs Page",
+          },
+          {
+            type: "image",
+            src: invtImage5,
+            alt: "Map View",
+          },
+          {
+            type: "image",
+            src: invtImage6,
+            alt: "Profile Page",
+          },
+          {
+            type: "image",
+            src: invtImage7,
+            alt: "Notifications Page",
+          },
+          {
+            type: "image",
+            src: invtImage8,
+            alt: "Past Events",
+          },
+          {
+            type: "image",
+            src: invtImage9,
+            alt: "Sign In Page",
+          },
+        ],
+        link: "https://invt.rsvp",
+        featured: true,
+        role: "Independent Contractor",
+        timeline: "June 2025 - Present",
+        problemAndSolution: {
+          problem:
+            "Existing event platforms were overly complex and difficult to use for both organizers and attendees.",
+          solution:
+            "INVT focuses on a streamlined experience by removing unnecessary features while still supporting essential workflows like invitations, ticket sales, and attendee management.",
+        },
+        keyFeatures: [
+          "Create and manage public or private events",
+          "Share invites via QR codes and track invite attribution",
+          "Sell event tickets directly through the platform",
+          "Retarget previous attendees for future events",
+          "Authentication, storage, and real-time data powered by Supabase",
+        ],
+        technicalHighlights: [
+          "Migrated backend from Firebase to Supabase to support relational data and improve scalability",
+          "Designed a relational PostgreSQL schema for events, users, tickets, and invites",
+          "Implemented web push notifications using the Web Push API and a custom service worker integration with Vite",
+          "Integrated Stripe using a marketplace model, allowing individual event hosts to manage payouts and taxes independently",
+          "Built a responsive UI using shadcn/ui and TailwindCSS for consistent and easily adjustable styling",
+        ],
+        challenges: [
+          {
+            problem: "Backend Migration",
+            solution:
+              "Transitioned from Firebase to Supabase to improve relational data modeling and avoid vendor lock-in. This required refactoring data access patterns, rebuilding authentication flows, and migrating storage logic.",
+          },
+          {
+            problem: "Web Push Notifications",
+            solution:
+              "Implemented push notifications in a PWA environment, including handling HTTPS requirements and service worker constraints when the app is inactive.",
+          },
+          {
+            problem: "Payments Architecture",
+            solution:
+              "Chose a Stripe marketplace model to enable multiple organizers to sell tickets while managing payouts and tax responsibilities independently.",
+          },
+          {
+            problem: "UX Consistency",
+            solution:
+              "Used shadcn/ui as a foundation to maintain design consistency while allowing rapid iteration on layout and interaction patterns.",
+          },
+        ],
+        nextSteps: [
+          "Improve analytics for event organizers",
+          "Expand attendee engagement tools",
+          "Enhance accessibility and mobile UX",
+        ],
+      },
+      {
+        title: "Portfolio",
+        description:
+          "A continuously evolving portfolio used to practice design, animation, and modern frontend patterns.",
+        longDescription: `This portfolio is a long-running project that has evolved alongside my growth as a developer. It began as a static HTML/CSS site, was later migrated to React with Vite, and is now built with Next.js. Each iteration reflects new tools, patterns, and design principles I’ve learned over time.
+        
+        The site also serves as the official domain for my published apps, hosting privacy policies and terms of service required for App Store distribution.`,
+        tags: [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Shadcn UI",
+          "motion",
+          "Vercel",
+        ],
+        image: portfolioImage1,
+        icon: portfolioIcon,
+        assets: [
+          {
+            type: "image",
+            src: portfolioImage2,
+            alt: "Featured Projects",
+          },
+          {
+            type: "image",
+            src: portfolioImage3,
+            alt: "Skills",
+          },
+          {
+            type: "image",
+            src: portfolioImage4,
+            alt: "About Me",
+          },
+          {
+            type: "image",
+            src: portfolioImage5,
+            alt: "Experience",
+          },
+          {
+            type: "image",
+            src: portfolioImage6,
+            alt: "Contact",
+          },
+          {
+            type: "image",
+            src: portfolioImage7,
+            alt: "Footer",
+          },
+          {
+            type: "image",
+            src: portfolioImage8,
+            alt: "Projects Page",
+          },
+          {
+            type: "image",
+            src: portfolioImage9,
+            alt: "Project Details Page",
+          },
+        ],
+        link: "https://simonmanzler.com",
+        github: "https://github.com/smanzler/portfolio",
+        role: "Frontend Developer & Designer",
+        timeline: "2024",
+        problemAndSolution: {
+          problem:
+            "Early versions of my portfolio quickly became outdated as my skills improved, making it difficult to reflect my current abilities.",
+          solution:
+            "Instead of treating the portfolio as a finished product, I designed it as an evolving system — a place to experiment with modern tooling, subtle animations, and component-driven design while maintaining a clean and professional presentation.",
+        },
+        keyFeatures: [
+          "Component-driven UI built with shadcn/ui and TailwindCSS",
+          "Subtle, purposeful animations to enhance UX without distraction",
+          "Modular layout that supports iteration and content reorganization",
+          "Deployed as a stable domain for App Store privacy policies and legal pages",
+          "Continuously updated to reflect current skills and projects",
+        ],
+        technicalHighlights: [
+          "Migrated the project across multiple stacks (HTML/CSS → React + Vite → Next.js)",
+          "Implemented motion-based UI interactions using the Motion library",
+          "Used shadcn/ui components as a foundation for rapid experimentation and reuse",
+          "Designed flexible layouts to accommodate different project types and page structures",
+          "Balanced animation performance and accessibility with visual polish",
+        ],
+        challenges: [
+          {
+            problem: "Animation Without Overuse",
+            solution:
+              "Learned to design subtle, UX-driven animations that support interaction and hierarchy rather than overpowering the content.",
+          },
+          {
+            problem: "Design Identity",
+            solution:
+              "Iterated on typography, spacing, and layout to find a visual style that feels personal, confident, and professional.",
+          },
+          {
+            problem: "Content Organization",
+            solution:
+              "Refined how projects, sections, and information are structured to keep the site scannable while still expressive.",
+          },
+        ],
+        productDecisions: [
+          "Treated the portfolio as a living project rather than a static deliverable",
+          "Used real experimentation instead of artificial demos",
+          "Practiced new components and UI patterns directly in production",
+          "Prioritized clarity and restraint over visual noise",
         ],
       },
       {
