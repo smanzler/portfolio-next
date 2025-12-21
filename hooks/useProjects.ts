@@ -30,6 +30,8 @@ import writtenImage7 from "../public/written/image7.png";
 import writtenVideo1Fallback from "../public/written/video1-fallback.png";
 import writtenVideo2Fallback from "../public/written/video2-fallback.png";
 
+import dashIcon from "../public/dash-icon.png";
+
 import mclistIcon from "../public/mclist/icon.png";
 import mclistImage1 from "../public/mclist/image1.png";
 import mclistImage2 from "../public/mclist/image2.png";
@@ -471,8 +473,8 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
 The project was also an opportunity to deepen native iOS experience by building all map-related UI and GPS logic in Swift and bridging it into a React Native app using Expo native modules.`,
         tags: ["Expo", "TypeScript", "Swift", "Mapbox IOS SDK"],
         isApp: true,
-        image: writtenIcon,
-        icon: writtenIcon,
+        image: dashIcon,
+        icon: dashIcon,
         problemAndSolution: {
           problem:
             "Many running apps focus on general activity tracking rather than route-specific performance.",
