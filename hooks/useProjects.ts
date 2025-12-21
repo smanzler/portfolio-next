@@ -111,6 +111,7 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         tags: ["React", "Vite", "Typescript"],
         link: "https://written.simonmanzler.com",
         github: "https://github.com/smanzler/written",
+        featured: true,
         heroAsset: {
           type: "video",
           src: "/written/video1.mov",
@@ -223,7 +224,7 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
         longDescription:
           "Rep is a workout tracking app built to support consistent strength training without unnecessary complexity. Inspired by existing apps like Strong, Rep focuses on fast workout logging, offline reliability, and meaningful progress tracking. The app uses a local-first architecture and is designed around real gym usage, with features added only when they proved necessary.",
         tags: ["React Native", "Supabase", "Expo"],
-
+        featured: true,
         icon: repIcon,
         heroAsset: {
           type: "video",
@@ -429,7 +430,7 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
           },
         ],
         link: "https://invt.rsvp",
-
+        featured: true,
         role: "Independent Contractor",
         timeline: "June 2025 - Present",
         problemAndSolution: {

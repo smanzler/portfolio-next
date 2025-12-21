@@ -13,7 +13,7 @@ interface Asset {
 
 interface AssetThumbnailProps {
   asset: Asset;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   children?: React.ReactNode;
 }

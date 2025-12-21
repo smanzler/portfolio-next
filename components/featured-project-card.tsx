@@ -23,10 +23,6 @@ const FeaturedProjectCard = ({
 }) => {
   const router = useRouter();
 
-  const handleHeroAssetClick = () => {
-    router.push(`/projects/${project.title}`);
-  };
-
   return (
     <ThresholdMotionDiv
       key={project.title}
@@ -34,10 +30,7 @@ const FeaturedProjectCard = ({
     >
       <AccentShadowContainer className="relative cursor-pointer rounded-xl overflow-hidden">
         {project.heroAsset && (
-          <AssetThumbnail
-            asset={project.heroAsset}
-            onClick={handleHeroAssetClick}
-          />
+          <AssetThumbnail asset={project.heroAsset} className="border-none" />
         )}
         <div
           className={cn(
