@@ -610,7 +610,7 @@ The project was also an opportunity to deepen native iOS experience by building 
         isApp: true,
         heroAsset: {
           type: "image",
-          src: dashIcon,
+          src: dashImage1,
           alt: "Tracks Page",
         },
         icon: dashIcon,
