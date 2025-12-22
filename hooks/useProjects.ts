@@ -16,7 +16,6 @@ import repImage11 from "../public/rep/image11.png";
 import repImage12 from "../public/rep/image12.png";
 import repImage13 from "../public/rep/image13.png";
 import repImage14 from "../public/rep/image14.png";
-import repImage15 from "../public/rep/image15.png";
 import repVideo1Fallback from "../public/rep/video1-fallback.png";
 
 import invtIcon from "../public/invt/icon.png";
@@ -54,6 +53,18 @@ import writtenVideo1Fallback from "../public/written/video1-fallback.png";
 import writtenVideo2Fallback from "../public/written/video2-fallback.png";
 
 import dashIcon from "../public/dash-icon.png";
+import dashImage1 from "../public/dash/image1.png";
+import dashImage2 from "../public/dash/image2.png";
+import dashImage3 from "../public/dash/image3.png";
+import dashImage4 from "../public/dash/image4.png";
+import dashImage5 from "../public/dash/image5.png";
+import dashImage6 from "../public/dash/image6.png";
+import dashImage7 from "../public/dash/image7.png";
+import dashImage8 from "../public/dash/image8.png";
+import dashImage9 from "../public/dash/image9.png";
+import dashImage10 from "../public/dash/image10.png";
+import dashImage11 from "../public/dash/image11.png";
+import dashImage12 from "../public/dash/image12.png";
 
 import mclistIcon from "../public/mclist/icon.png";
 import mclistImage1 from "../public/mclist/image1.png";
@@ -236,76 +247,71 @@ The app is built with a local-first mindset, prioritizing privacy, responsivenes
           {
             type: "image",
             src: repImage1,
-            alt: "Rep Homepage",
-          },
-          {
-            type: "image",
-            src: repImage2,
             alt: "Profile Page",
           },
           {
             type: "image",
-            src: repImage3,
+            src: repImage2,
             alt: "Start Workout Page",
           },
           {
             type: "image",
-            src: repImage4,
+            src: repImage3,
             alt: "History Page",
           },
           {
             type: "image",
-            src: repImage5,
+            src: repImage4,
             alt: "Details Modal",
           },
           {
             type: "image",
-            src: repImage6,
+            src: repImage5,
             alt: "Add Exercise Modal",
           },
           {
             type: "image",
-            src: repImage7,
+            src: repImage6,
             alt: "Add Exercise Modal 2",
           },
           {
             type: "image",
-            src: repImage8,
+            src: repImage7,
             alt: "Workout Modal",
           },
           {
             type: "image",
-            src: repImage9,
+            src: repImage8,
             alt: "Completing Sets",
           },
           {
             type: "image",
-            src: repImage10,
+            src: repImage9,
             alt: "Completed Workout",
           },
           {
             type: "image",
-            src: repImage11,
+            src: repImage10,
             alt: "Explore Page",
           },
           {
             type: "image",
-            src: repImage12,
+            src: repImage11,
             alt: "Create Post Page",
           },
           {
             type: "image",
-            src: repImage13,
+            src: repImage12,
             alt: "Add Workout To Post",
           },
           {
             type: "image",
-            src: repImage14,
+            src: repImage13,
             alt: "Settings Dropdown",
           },
           {
             type: "image",
-            src: repImage15,
+            src: repImage14,
             alt: "Notifications Page",
           },
         ],
@@ -605,9 +611,66 @@ The project was also an opportunity to deepen native iOS experience by building 
         heroAsset: {
           type: "image",
           src: dashIcon,
-          alt: "Dash Video 1",
+          alt: "Tracks Page",
         },
         icon: dashIcon,
+        assets: [
+          {
+            type: "image",
+            src: dashImage2,
+            alt: "Start Run",
+          },
+          {
+            type: "image",
+            src: dashImage3,
+            alt: "Running",
+          },
+          {
+            type: "image",
+            src: dashImage4,
+            alt: "Finished Run",
+          },
+          {
+            type: "image",
+            src: dashImage5,
+            alt: "Upload Run",
+          },
+          {
+            type: "image",
+            src: dashImage6,
+            alt: "My Runs Page",
+          },
+          {
+            type: "image",
+            src: dashImage7,
+            alt: "Run Details",
+          },
+          {
+            type: "image",
+            src: dashImage8,
+            alt: "Leaderboard Page",
+          },
+          {
+            type: "image",
+            src: dashImage9,
+            alt: "Login Page",
+          },
+          {
+            type: "image",
+            src: dashImage10,
+            alt: "Register Page",
+          },
+          {
+            type: "image",
+            src: dashImage11,
+            alt: "Create Profile",
+          },
+          {
+            type: "image",
+            src: dashImage12,
+            alt: "Settings Page",
+          },
+        ],
         problemAndSolution: {
           problem:
             "Many running apps focus on general activity tracking rather than route-specific performance.",
