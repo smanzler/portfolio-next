@@ -1,7 +1,6 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { motion } from "motion/react";
 import AccentShadowContainer from "../motion/accent-shadow-container";
 import { skills } from "./skills";
 import { Icon } from "@iconify/react";
@@ -11,23 +10,23 @@ import { Button } from "../ui/button";
 import { scrollToSection } from "@/lib/utils";
 import { AnimateOnThreshold } from "../motion/animate-on-threshold";
 
-export default function Hero() {
-  const SkillItem = ({ skill }: { skill: (typeof skills)[0] }) => {
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <AccentShadowContainer
-            className="p-2 mr-4 rounded-lg cursor-pointer"
-            onClick={() => scrollToSection("skills")}
-          >
-            <Icon icon={skill.icon} className="w-10 h-10" />
-          </AccentShadowContainer>
-        </TooltipTrigger>
-        <TooltipContent>{skill.name}</TooltipContent>
-      </Tooltip>
-    );
-  };
+const SkillItem = ({ skill }: { skill: (typeof skills)[0] }) => {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <AccentShadowContainer
+          className="p-2 mr-4 rounded-lg cursor-pointer"
+          onClick={() => scrollToSection("skills")}
+        >
+          <Icon icon={skill.icon} className="w-10 h-10" />
+        </AccentShadowContainer>
+      </TooltipTrigger>
+      <TooltipContent>{skill.name}</TooltipContent>
+    </Tooltip>
+  );
+};
 
+export default function Hero() {
   return (
     <section
       id="home"
@@ -71,12 +70,15 @@ export default function Hero() {
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-1 pointer-events-none" />
 
         <div className="flex">
-          <div className="flex animate-infinite-scroll">
+          <div className="flex animate-marquee flex-shrink-0">
             {skills.map((skill, index) => (
               <SkillItem key={`${skill.name}-${index}`} skill={skill} />
             ))}
           </div>
-          <div className="flex animate-infinite-scroll" aria-hidden="true">
+          <div
+            className="flex animate-marquee flex-shrink-0"
+            aria-hidden="true"
+          >
             {skills.map((skill, index) => (
               <SkillItem
                 key={`${skill.name}-duplicate-${index}`}
@@ -85,21 +87,6 @@ export default function Hero() {
             ))}
           </div>
         </div>
-
-        <style>{`
-          @keyframes infinite-scroll {
-            from {
-              transform: translateX(0);
-            }
-            to {
-              transform: translateX(-100%);
-            }
-          }
-          
-          .animate-infinite-scroll {
-            animation: infinite-scroll 20s linear infinite;
-          }
-        `}</style>
       </AnimateOnThreshold>
       <AnimateOnThreshold shouldAnimate delay={1} className="mt-12">
         <AccentShadowContainer hoverOffset={6} className="rounded-md">
