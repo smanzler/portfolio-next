@@ -535,7 +535,7 @@
       "width": 195,
       "height": 422
     },
-    "icon": "/dash-icon.png",
+    "icon": "/dash/icon.png",
     "assets": [
       {
         "type": "image",
