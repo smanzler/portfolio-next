@@ -21,10 +21,12 @@ const FeaturedProjectCard = ({
   const isMobile = useIsMobile();
 
   return (
-    <ThresholdMotionDiv className="cursor-pointer">
+    <ThresholdMotionDiv
+      className="cursor-pointer"
+      onClick={() => router.push(`/projects/${project.title}`)}
+    >
       <AccentShadowContainer
         key={project.title}
-        onClick={() => router.push(`/projects/${project.title}`)}
         className="rounded-xl border overflow-hidden relative"
       >
         {project.heroAsset && (
