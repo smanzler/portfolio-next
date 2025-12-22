@@ -35,7 +35,7 @@ export function AssetThumbnail({
           width={asset.width}
           height={asset.height}
           sizes="100vw"
-          className="w-full h-auto border rounded-lg"
+          className="size-full object-contain border rounded-lg"
         />
       ) : (
         <video

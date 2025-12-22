@@ -148,7 +148,7 @@ export function AssetLightboxDialog({
                       width={asset.width}
                       height={asset.height}
                       sizes="100vw"
-                      className="w-full h-auto border rounded-lg"
+                      className="size-full object-contain"
                     />
                   ) : (
                     <video
@@ -158,7 +158,7 @@ export function AssetLightboxDialog({
                       loop
                       playsInline
                       webkit-playsinline="true"
-                      className="w-full h-auto border rounded-lg"
+                      className="size-full object-contain"
                     >
                       {asset.fallback && (
                         <Image
@@ -167,7 +167,7 @@ export function AssetLightboxDialog({
                           width={asset.width}
                           height={asset.height}
                           sizes="100vw"
-                          className="w-full h-auto border rounded-lg"
+                          className="size-full object-contain"
                         />
                       )}
                     </video>
