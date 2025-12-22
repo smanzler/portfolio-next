@@ -1,15 +1,30 @@
+"use client";
+
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { Button } from "./ui/button";
 import React from "react";
 
+type ParentComponentProps = {
+  children?: React.ReactNode;
+  className?: string;
+  asChild?: boolean;
+  [key: string]: unknown;
+};
+
 export function ResponsiveButton({
   icon,
+  parent: Parent = Button,
   children,
   asChild,
+  className,
+  size,
   ...props
-}: React.ComponentProps<typeof Button> & { icon: React.ReactNode }) {
+}: React.ComponentProps<typeof Button> & {
+  icon: React.ReactNode;
+  parent?: React.ComponentType<ParentComponentProps>;
+}) {
   const isMobile = useIsMobile();
-  const buttonSize = isMobile ? "icon" : props.size;
+  const buttonSize = isMobile ? "icon" : size;
 
   // Handle asChild case (for links, etc.)
   if (asChild && React.isValidElement(children)) {
@@ -33,11 +48,13 @@ export function ResponsiveButton({
       responsiveContent
     );
 
-    return (
-      <Button {...props} asChild size={buttonSize}>
-        {clonedChild}
-      </Button>
-    );
+    // Only pass size if Parent is Button (has size prop)
+    const parentProps =
+      Parent === Button
+        ? { ...props, asChild, size: buttonSize, className }
+        : { ...props, asChild, className };
+
+    return <Parent {...parentProps}>{clonedChild}</Parent>;
   }
 
   // Regular button case
@@ -50,9 +67,11 @@ export function ResponsiveButton({
     </>
   );
 
-  return (
-    <Button {...props} size={buttonSize}>
-      {buttonContent}
-    </Button>
-  );
+  // Only pass size if Parent is Button (has size prop)
+  const parentProps =
+    Parent === Button
+      ? { ...props, size: buttonSize, className }
+      : { ...props, className };
+
+  return <Parent {...parentProps}>{buttonContent}</Parent>;
 }

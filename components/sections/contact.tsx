@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import AccentShadowContainer from "../motion/accent-shadow-container";
 import ContactForm from "../contact-form";
+import { ResponsiveButton } from "../responsive-button";
 
 export default function Contact() {
   return (
@@ -29,49 +30,47 @@ export default function Contact() {
 
           <div>
             <div className="flex gap-3">
-              <AccentShadowContainer
-                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
+              <ResponsiveButton
+                size="sm"
                 asChild
+                icon={<Mail className="h-4 w-4" />}
+                parent={AccentShadowContainer}
+                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
               >
-                <Link href="mailto:simanzler@gmail.com">
-                  <Mail className="h-4 w-4" />
-                  Email me
-                </Link>
-              </AccentShadowContainer>
+                <Link href="mailto:simanzler@gmail.com">Email me</Link>
+              </ResponsiveButton>
 
-              <AccentShadowContainer
-                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
+              <ResponsiveButton
+                size="sm"
                 asChild
+                icon={<Icon icon="line-md:github" />}
+                parent={AccentShadowContainer}
+                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
               >
                 <Link
                   href="https://github.com/smanzler"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icon
-                    icon="line-md:github"
-                    style={{ width: "16px", height: "16px" }}
-                  />
                   GitHub
                 </Link>
-              </AccentShadowContainer>
+              </ResponsiveButton>
 
-              <AccentShadowContainer
-                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
+              <ResponsiveButton
+                size="sm"
                 asChild
+                icon={<Icon icon="line-md:linkedin" />}
+                parent={AccentShadowContainer}
+                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
               >
                 <Link
                   href="https://linkedin.com/in/simonmanzler"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icon
-                    icon="line-md:linkedin"
-                    style={{ width: "16px", height: "16px" }}
-                  />
                   LinkedIn
                 </Link>
-              </AccentShadowContainer>
+              </ResponsiveButton>
             </div>
           </div>
         </ThresholdMotionDiv>

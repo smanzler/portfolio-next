@@ -1,19 +1,17 @@
 "use client";
 
 import { getProjects } from "@/lib/projects";
-import { redirect, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
-  Github,
   ExternalLink,
   FileQuestion,
   GalleryVertical,
   LayoutGrid,
   LayoutList,
-  Play,
   CirclePlay,
 } from "lucide-react";
 import { H1, H2, H3, Muted, P, UL } from "@/components/ui/typography";
@@ -349,7 +347,7 @@ export default function ProjectDetails() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Github className="mr-2 h-4 w-4" />
+                    <Icon icon="line-md:github" className="mr-2 h-4 w-4" />
                     View Code
                   </a>
                 </Button>
