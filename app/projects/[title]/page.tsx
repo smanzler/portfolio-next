@@ -38,6 +38,7 @@ import {
 import React from "react";
 import Image from "next/image";
 import { AssetThumbnail } from "@/components/asset-thumbnail";
+import { ResponsiveButton } from "@/components/responsive-button";
 
 export default function ProjectDetails() {
   const { title } = useParams();
@@ -102,28 +103,35 @@ export default function ProjectDetails() {
           {(project.link || project.github) && (
             <div className="flex gap-2 flex-wrap">
               {project.link && (
-                <Button size="sm" asChild>
+                <ResponsiveButton
+                  size="sm"
+                  asChild
+                  icon={<ExternalLink className="h-4 w-4" />}
+                >
                   <Link
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <ExternalLink className="h-4 w-4" />
                     View Live Demo
                   </Link>
-                </Button>
+                </ResponsiveButton>
               )}
               {project.github && (
-                <Button size="sm" asChild variant="outline">
+                <ResponsiveButton
+                  size="sm"
+                  asChild
+                  variant="outline"
+                  icon={<Icon icon="line-md:github" />}
+                >
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Icon icon="line-md:github" />
                     View Code
                   </a>
-                </Button>
+                </ResponsiveButton>
               )}
             </div>
           )}
