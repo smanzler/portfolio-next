@@ -153,7 +153,7 @@ export function AssetLightboxDialog({
                       alt={asset.alt || `Asset ${i + 1}`}
                       unoptimized
                       priority
-                      className="size-full border rounded-lg"
+                      className="size-full object-contain"
                     />
                   ) : (
                     <video
@@ -163,7 +163,7 @@ export function AssetLightboxDialog({
                       loop
                       playsInline
                       webkit-playsinline="true"
-                      className="size-full border rounded-lg"
+                      className="size-full object-contain"
                     >
                       {asset.fallback && (
                         <Image
@@ -171,7 +171,7 @@ export function AssetLightboxDialog({
                           alt={asset.alt || `Asset ${i + 1}`}
                           unoptimized
                           priority
-                          className="size-full border rounded-lg"
+                          className="size-full object-contain"
                         />
                       )}
                     </video>
