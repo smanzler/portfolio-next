@@ -41,16 +41,12 @@ import { AssetThumbnail } from "@/components/asset-thumbnail";
 import { ResponsiveButton } from "@/components/responsive-button";
 
 export default function ProjectDetails() {
-  const { title } = useParams();
+  const { slug } = useParams();
   const projects = getProjects();
   const [lightboxIndex, setLightboxIndex] = React.useState(0);
   const [lightboxOpen, setLightboxOpen] = React.useState(false);
 
-  if (!title || typeof title !== "string") {
-    redirect("/projects");
-  }
-  const decodedTitle = decodeURIComponent(title);
-  const project = projects.find((project) => project.title === decodedTitle);
+  const project = projects.find((project) => project.slug === slug);
 
   const handleLightboxOpen = (index: number) => {
     setLightboxIndex(index);

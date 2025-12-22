@@ -79,7 +79,7 @@ const Footer = ({
       title: "Projects",
       links: projects.map((project) => ({
         text: project.title,
-        url: `/projects/${project.title}`,
+        url: `/projects/${project.slug}`,
       })),
     },
     {

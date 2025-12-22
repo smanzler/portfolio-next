@@ -33,9 +33,9 @@ import { AssetThumbnail } from "@/components/asset-thumbnail";
 import { useApps } from "@/hooks/useApps";
 
 const AppDetails = () => {
-  const { title } = useParams();
+  const { slug } = useParams();
   const { apps } = useApps();
-  const app = apps.find((app) => app.title === title);
+  const app = apps.find((app) => app.title === slug);
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);

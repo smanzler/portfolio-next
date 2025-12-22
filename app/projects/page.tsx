@@ -16,7 +16,7 @@ export default function ProjectsPage() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project) => (
           <Link
-            key={project.title}
+            key={project.slug}
             className="relative flex flex-row cursor-pointer gap-6 group"
             href={`/projects/${project.slug}`}
           >
@@ -27,6 +27,8 @@ export default function ProjectsPage() {
                   src={project.icon}
                   alt={project.title}
                   className="h-full w-auto"
+                  width={64}
+                  height={64}
                 />
               </div>
               <Muted className="text-xs">{project.title}</Muted>

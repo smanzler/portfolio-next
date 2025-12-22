@@ -23,12 +23,9 @@ const FeaturedProjectCard = ({
   return (
     <ThresholdMotionDiv
       className="cursor-pointer"
-      onClick={() => router.push(`/projects/${project.title}`)}
+      onClick={() => router.push(`/projects/${project.slug}`)}
     >
-      <AccentShadowContainer
-        key={project.title}
-        className="rounded-xl border overflow-hidden relative"
-      >
+      <AccentShadowContainer className="rounded-xl border overflow-hidden relative">
         {project.heroAsset && (
           <AssetThumbnail
             asset={project.heroAsset}

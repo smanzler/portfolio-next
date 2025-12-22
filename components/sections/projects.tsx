@@ -39,7 +39,7 @@ export default function Projects() {
       <div className="flex flex-col gap-6">
         {featuredProjects.map((project, index) => (
           <FeaturedProjectCard
-            key={project.title}
+            key={project.slug}
             project={project}
             side={index % 2 === 0 ? "left" : "right"}
           />
