@@ -3,7 +3,6 @@
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, FileQuestion, Star } from "lucide-react";
-import { useProjects } from "@/hooks/useProjects";
 import {
   Card,
   CardContent,
@@ -102,7 +101,13 @@ const AppDetails = () => {
             app.assets.map((asset, index) => (
               <AssetThumbnail
                 key={index}
-                asset={asset}
+                asset={{
+                  type: asset.type,
+                  path: asset.path,
+                  width: asset.width,
+                  height: asset.height,
+                  alt: asset.alt || "",
+                }}
                 onClick={() => handleLightboxOpen(index)}
                 className="rounded-xl overflow-hidden border max-w-[500px]"
               />

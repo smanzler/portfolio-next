@@ -1,8 +1,5 @@
 // src/hooks/useProjects.ts
 import { useMemo } from "react";
-import repIcon from "../public/rep/icon.png";
-import dashIcon from "../public/dash-icon.png";
-import { StaticImageData } from "next/image";
 
 interface Policy {
   lastUpdated: string;
@@ -28,12 +25,14 @@ export interface App {
   description: string;
   longDescription?: string;
   tags: string[];
-  image?: StaticImageData;
+  image?: string;
   assets?: {
     type: "image" | "video";
-    src: string | StaticImageData;
-    fallback?: StaticImageData;
+    path: string;
+    fallback?: string;
     alt?: string;
+    width: number;
+    height: number;
   }[];
   features?: string[];
   link?: string;
@@ -54,22 +53,28 @@ export function useApps() {
           "Workout tracker built to work offline and sync with your friends.",
         longDescription:
           "Rep is a comprehensive workout tracking mobile application built with React Native and Expo. It enables users to log exercises, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can log workouts without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
-        image: repIcon,
+        image: "/rep/icon.png",
         assets: [
           {
             type: "image",
-            src: repIcon,
+            path: "/rep/icon.png",
             alt: "Rep Icon",
+            width: 100,
+            height: 100,
           },
           {
             type: "image",
-            src: repIcon,
+            path: "/rep/icon.png",
             alt: "Rep Icon",
+            width: 100,
+            height: 100,
           },
           {
             type: "image",
-            src: repIcon,
+            path: "/rep/icon.png",
             alt: "Rep Icon",
+            width: 100,
+            height: 100,
           },
         ],
         tags: ["React Native", "Expo", "TypeScript"],
@@ -287,22 +292,28 @@ export function useApps() {
           "Running tracker built to work offline and sync with your friends.",
         longDescription:
           "Dash is a comprehensive running tracking mobile application built with React Native and Expo. It enables users to track their runs, track progress over time, and share achievements with friends. The app features offline-first architecture, ensuring users can track runs without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
-        image: dashIcon,
+        image: "/dash/icon.png",
         assets: [
           {
             type: "image",
-            src: dashIcon,
+            path: "/dash/icon.png",
             alt: "Dash Icon",
+            width: 100,
+            height: 100,
           },
           {
             type: "image",
-            src: dashIcon,
+            path: "/dash/icon.png",
             alt: "Dash Icon",
+            width: 100,
+            height: 100,
           },
           {
             type: "image",
-            src: dashIcon,
+            path: "/dash/icon.png",
             alt: "Dash Icon",
+            width: 100,
+            height: 100,
           },
         ],
         tags: ["React Native", "Expo", "TypeScript"],
