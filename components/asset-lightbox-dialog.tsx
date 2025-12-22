@@ -134,7 +134,6 @@ export function AssetLightboxDialog({
           opts={{
             align: "start",
             loop: false,
-            startIndex: initialIndex,
           }}
         >
           <CarouselContent>
@@ -149,6 +148,7 @@ export function AssetLightboxDialog({
                       height={asset.height}
                       sizes="100vw"
                       className="size-full object-contain"
+                      loading="lazy"
                     />
                   ) : (
                     <video
@@ -159,6 +159,7 @@ export function AssetLightboxDialog({
                       playsInline
                       webkit-playsinline="true"
                       className="size-full object-contain"
+                      preload="metadata"
                     >
                       {asset.fallback && (
                         <Image
@@ -168,6 +169,7 @@ export function AssetLightboxDialog({
                           height={asset.height}
                           sizes="100vw"
                           className="size-full object-contain"
+                          loading="lazy"
                         />
                       )}
                     </video>
