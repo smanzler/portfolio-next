@@ -27,8 +27,8 @@ export function AssetThumbnail({
   return (
     <div
       className={cn(
-        "cursor-pointer shrink-0",
-        children ? "size-full" : "rounded-lg overflow-hidden border",
+        "cursor-pointer shrink-0 flex items-center justify-center size-full",
+        !children && "rounded-lg overflow-hidden border",
         className
       )}
       onClick={onClick}
@@ -41,15 +41,17 @@ export function AssetThumbnail({
           alt={asset.alt || ""}
           unoptimized
           priority
-          className="w-full h-full object-cover"
+          className="size-full object-contain"
         />
       ) : (
         <video
           src={asset.src as string}
-          className="w-full h-full object-contain"
           autoPlay
           muted
           loop
+          playsInline
+          webkit-playsinline="true"
+          className="size-full object-contain"
         >
           {asset.fallback && (
             <Image
@@ -57,7 +59,7 @@ export function AssetThumbnail({
               alt={asset.alt || ""}
               unoptimized
               priority
-              className="w-full h-full object-contain"
+              className="size-full object-contain"
             />
           )}
         </video>

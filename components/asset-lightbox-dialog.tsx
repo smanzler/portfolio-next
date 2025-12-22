@@ -41,7 +41,7 @@ function AssetDialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200",
           className
         )}
         {...props}
@@ -73,6 +73,8 @@ export function AssetLightboxDialog({
   initialIndex,
 }: AssetLightboxDialogProps) {
   const [api, setApi] = React.useState<CarouselApi>();
+  const dragStartRef = React.useRef<{ x: number; y: number } | null>(null);
+  const isDraggingRef = React.useRef(false);
 
   React.useEffect(() => {
     if (api && initialIndex >= 0) {
@@ -80,7 +82,6 @@ export function AssetLightboxDialog({
     }
   }, [api, initialIndex]);
 
-  // Keyboard navigation
   React.useEffect(() => {
     if (!open || !api) return;
 
@@ -98,65 +99,93 @@ export function AssetLightboxDialog({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open, api]);
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    dragStartRef.current = { x: e.clientX, y: e.clientY };
+    isDraggingRef.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDraggingRef.current) return;
+
+    if (dragStartRef.current) {
+      const deltaX = Math.abs(e.clientX - dragStartRef.current.x);
+      const deltaY = Math.abs(e.clientY - dragStartRef.current.y);
+      if (deltaX > 5 || deltaY > 5) {
+        isDraggingRef.current = true;
+      }
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (!isDraggingRef.current) {
+      setOpen(false);
+    }
+
+    dragStartRef.current = null;
+    isDraggingRef.current = false;
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <AssetDialogContent
-        className="!max-w-7xl p-16 bg-transparent border-none shadow-none"
-        onClick={() => setOpen(false)}
+        className="!max-w-7xl p-10 sm:p-16 bg-transparent border-none shadow-none outline-none focus:outline-none focus:ring-0 focus-visible:ring-0 select-none"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onClick={handleClick}
       >
         <DialogTitle className="sr-only">Media Gallery</DialogTitle>
 
         <Carousel
           setApi={setApi}
           opts={{
-            align: "center",
+            align: "start",
             loop: false,
             startIndex: initialIndex,
           }}
-          onClick={(e) => e.stopPropagation()}
         >
           <CarouselContent>
             {assets.map((asset, i) => (
-              <CarouselItem
-                key={i}
-                className="flex items-center justify-center"
-              >
-                {asset.type === "image" ? (
-                  <Image
-                    src={asset.src as StaticImageData}
-                    alt={asset.alt || `Asset ${i + 1}`}
-                    className="max-h-full max-w-full w-auto h-auto object-contain rounded-lg"
-                    unoptimized
-                    priority
-                  />
-                ) : (
-                  <video
-                    src={asset.src as string}
-                    className="max-h-full max-w-full w-auto h-auto object-contain rounded-lg"
-                    autoPlay
-                    muted
-                    loop
-                  >
-                    {asset.fallback && (
-                      <Image
-                        src={asset.fallback}
-                        alt={asset.alt || `Asset ${i + 1}`}
-                        className="max-h-full max-w-full w-auto h-auto object-contain"
-                        unoptimized
-                        priority
-                      />
-                    )}
-                  </video>
-                )}
+              <CarouselItem key={i}>
+                <div className="flex items-center justify-center h-[calc(100vh-10rem)] w-full">
+                  {asset.type === "image" ? (
+                    <Image
+                      src={asset.src as StaticImageData}
+                      alt={asset.alt || `Asset ${i + 1}`}
+                      unoptimized
+                      priority
+                      className="size-full border rounded-lg"
+                    />
+                  ) : (
+                    <video
+                      src={asset.src as string}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      webkit-playsinline="true"
+                      className="size-full border rounded-lg"
+                    >
+                      {asset.fallback && (
+                        <Image
+                          src={asset.fallback}
+                          alt={asset.alt || `Asset ${i + 1}`}
+                          unoptimized
+                          priority
+                          className="size-full border rounded-lg"
+                        />
+                      )}
+                    </video>
+                  )}
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
 
           {assets.length > 1 && (
-            <>
+            <div onClick={(e) => e.stopPropagation()}>
               <CarouselPrevious />
               <CarouselNext />
-            </>
+            </div>
           )}
         </Carousel>
       </AssetDialogContent>

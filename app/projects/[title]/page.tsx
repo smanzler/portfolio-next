@@ -147,14 +147,13 @@ export default function ProjectDetails() {
       </AnimateOnThreshold>
 
       <AnimateOnThreshold shouldAnimate delay={0.4}>
-        <div className="rounded-lg overflow-hidden border">
-          {project.heroAsset && (
-            <AssetThumbnail
-              asset={project.heroAsset}
-              onClick={() => handleLightboxOpen(0)}
-            />
-          )}
-        </div>
+        {project.heroAsset && (
+          <AssetThumbnail
+            asset={project.heroAsset}
+            className={project.isApp ? "h-150" : undefined}
+            onClick={() => handleLightboxOpen(0)}
+          />
+        )}
       </AnimateOnThreshold>
 
       <AnimateOnThreshold shouldAnimate delay={0.5}>
