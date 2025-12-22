@@ -1,6 +1,6 @@
 "use client";
 
-import type { Project } from "@/hooks/useProjects";
+import type { Project } from "@/lib/projects";
 import { useRouter } from "next/navigation";
 import { H4, P } from "@/components/ui/typography";
 import { Badge } from "@/components/ui/badge";

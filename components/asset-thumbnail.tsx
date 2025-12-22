@@ -1,15 +1,9 @@
 "use client";
 
 import * as React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
-
-interface Asset {
-  type: "image" | "video";
-  src: string | StaticImageData;
-  fallback?: StaticImageData;
-  alt?: string;
-}
+import type { Asset } from "@/lib/projects";
 
 interface AssetThumbnailProps {
   asset: Asset;
@@ -27,8 +21,7 @@ export function AssetThumbnail({
   return (
     <div
       className={cn(
-        "cursor-pointer shrink-0 flex items-center justify-center size-full",
-        !children && "rounded-lg overflow-hidden border",
+        "cursor-pointer shrink-0 flex items-center justify-center relative w-full",
         className
       )}
       onClick={onClick}
@@ -37,29 +30,31 @@ export function AssetThumbnail({
         children
       ) : asset.type === "image" ? (
         <Image
-          src={asset.src as StaticImageData}
+          src={asset.path}
           alt={asset.alt || ""}
-          unoptimized
-          priority
-          className="size-full object-contain"
+          width={asset.width}
+          height={asset.height}
+          sizes="100vw"
+          className="w-full h-auto border rounded-lg"
         />
       ) : (
         <video
-          src={asset.src as string}
+          src={asset.path}
           autoPlay
           muted
           loop
           playsInline
           webkit-playsinline="true"
-          className="size-full object-contain"
+          className="size-full border rounded-lg"
         >
           {asset.fallback && (
             <Image
               src={asset.fallback}
               alt={asset.alt || ""}
-              unoptimized
-              priority
-              className="size-full object-contain"
+              className="w-full h-auto border rounded-lg"
+              width={asset.width}
+              height={asset.height}
+              sizes="100vw"
             />
           )}
         </video>

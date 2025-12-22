@@ -1,10 +1,10 @@
 import { H1, H4, Lead, Muted } from "@/components/ui/typography";
-import { useProjects } from "@/hooks/useProjects";
+import { getProjects } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function ProjectsPage() {
-  const { projects } = useProjects();
+  const projects = getProjects();
 
   return (
     <div className="min-h-screen flex flex-col gap-8">
@@ -18,7 +18,7 @@ export default function ProjectsPage() {
           <Link
             key={project.title}
             className="relative flex flex-row cursor-pointer gap-6 group"
-            href={`/projects/${project.title}`}
+            href={`/projects/${project.slug}`}
           >
             <div className="absolute -inset-3 bg-accent dark:bg-input/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-200 pointer-events-none z-0" />
             <div className="flex flex-col gap-1 items-center justify-center">

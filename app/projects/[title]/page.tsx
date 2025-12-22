@@ -1,6 +1,6 @@
 "use client";
 
-import { useProjects } from "@/hooks/useProjects";
+import { getProjects } from "@/lib/projects";
 import { redirect, useParams } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -42,7 +42,7 @@ import { ResponsiveButton } from "@/components/responsive-button";
 
 export default function ProjectDetails() {
   const { title } = useParams();
-  const { projects } = useProjects();
+  const projects = getProjects();
   const [lightboxIndex, setLightboxIndex] = React.useState(0);
   const [lightboxOpen, setLightboxOpen] = React.useState(false);
 
@@ -230,30 +230,29 @@ export default function ProjectDetails() {
                       >
                         <div className="flex flex-row gap-2 items-center">
                           <P className="group-hover:text-primary/80 transition-colors">
-                            {asset.alt ||
-                              (asset.type === "image" &&
-                              typeof asset.src === "object"
-                                ? asset.src.src
-                                : String(asset.src))}
+                            {asset.alt || asset.path}
                           </P>
                           {asset.type === "video" && (
                             <CirclePlay className="h-4 w-4" />
                           )}
                         </div>
-                        {asset.type === "image" &&
-                        typeof asset.src === "object" ? (
-                          <Image
-                            src={asset.src}
-                            alt={asset.alt || asset.src.src}
-                            className="h-8 w-auto"
-                          />
-                        ) : asset.fallback ? (
-                          <Image
-                            src={asset.fallback}
-                            alt={asset.alt || String(asset.src)}
-                            className="h-8 w-auto"
-                          />
-                        ) : null}
+                        <div className="relative size-8">
+                          {asset.type === "image" ? (
+                            <Image
+                              src={asset.path}
+                              alt={asset.alt || asset.path}
+                              fill
+                              className="object-contain"
+                            />
+                          ) : asset.fallback ? (
+                            <Image
+                              src={asset.fallback}
+                              alt={asset.alt || asset.fallback}
+                              fill
+                              className="object-contain"
+                            />
+                          ) : null}
+                        </div>
                       </div>
                       <Separator />
                     </React.Fragment>

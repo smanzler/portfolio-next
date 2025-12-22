@@ -1,7 +1,7 @@
 "use client";
 
 import { useApps } from "@/hooks/useApps";
-import { useProjects } from "@/hooks/useProjects";
+import { getProjects } from "@/lib/projects";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +48,7 @@ const Footer = ({
   copyright = `© ${new Date().getFullYear()} Simon Manzler. All rights reserved.`,
 }: FooterProps) => {
   const { apps } = useApps();
-  const { projects } = useProjects();
+  const projects = getProjects();
   const pathname = usePathname();
   const router = useRouter();
 

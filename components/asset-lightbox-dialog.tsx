@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import { Button } from "./ui/button";
+import { Asset } from "@/lib/projects";
 
 function AssetDialogContent({
   className,
@@ -50,13 +51,6 @@ function AssetDialogContent({
       </DialogPrimitive.Content>
     </DialogPortal>
   );
-}
-
-interface Asset {
-  type: "image" | "video";
-  src: string | StaticImageData;
-  alt?: string;
-  fallback?: StaticImageData;
 }
 
 interface AssetLightboxDialogProps {
@@ -149,29 +143,31 @@ export function AssetLightboxDialog({
                 <div className="flex items-center justify-center h-[calc(100vh-10rem)] w-full">
                   {asset.type === "image" ? (
                     <Image
-                      src={asset.src as StaticImageData}
+                      src={asset.path}
                       alt={asset.alt || `Asset ${i + 1}`}
-                      unoptimized
-                      priority
-                      className="size-full object-contain"
+                      width={asset.width}
+                      height={asset.height}
+                      sizes="100vw"
+                      className="w-full h-auto border rounded-lg"
                     />
                   ) : (
                     <video
-                      src={asset.src as string}
+                      src={asset.path}
                       autoPlay
                       muted
                       loop
                       playsInline
                       webkit-playsinline="true"
-                      className="size-full object-contain"
+                      className="w-full h-auto border rounded-lg"
                     >
                       {asset.fallback && (
                         <Image
                           src={asset.fallback}
                           alt={asset.alt || `Asset ${i + 1}`}
-                          unoptimized
-                          priority
-                          className="size-full object-contain"
+                          width={asset.width}
+                          height={asset.height}
+                          sizes="100vw"
+                          className="w-full h-auto border rounded-lg"
                         />
                       )}
                     </video>

@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useProjects } from "@/hooks/useProjects";
+import { getProjects } from "@/lib/projects";
 import { H1, Lead } from "@/components/ui/typography";
 import FeaturedProjectCard from "@/components/featured-project-card";
 import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
 
 export default function Projects() {
-  const { projects } = useProjects();
+  const projects = getProjects();
 
   const featuredProjects = projects.filter((project) => project.featured);
 

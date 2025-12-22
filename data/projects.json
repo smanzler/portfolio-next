@@ -1,0 +1,724 @@
+[
+  {
+    "title": "Written",
+    "slug": "written",
+    "description": "A local-first journaling app focused on satisfying writing, privacy, and ownership.",
+    "longDescription": "Written is a journaling and writing app designed to make typing feel calm, private, and satisfying. The project evolved through several iterations—from early typing practice tools to a focused journaling experience—each version reflecting growth in frontend development, product thinking, and architecture.\n\nThe app is built with a local-first mindset, prioritizing privacy, responsiveness, and offline use.",
+    "tags": ["React", "Vite", "Typescript"],
+    "link": "https://written.simonmanzler.com",
+    "github": "https://github.com/smanzler/written",
+    "featured": true,
+    "heroAsset": {
+      "type": "video",
+      "path": "/written/video1.mov",
+      "fallbackPath": "/written/video1-fallback.png",
+      "alt": "Writing Demo",
+      "width": 3,
+      "height": 2
+    },
+    "icon": "/written/icon.png",
+    "assets": [
+      {
+        "type": "image",
+        "path": "/written/image1.png",
+        "alt": "Written Home",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/written/image2.png",
+        "alt": "Sidebar",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/written/image3.png",
+        "alt": "Journal Entry",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/written/image4.png",
+        "alt": "Account Settings",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/written/image5.png",
+        "alt": "Security Settings",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "video",
+        "path": "/written/video2.mov",
+        "fallbackPath": "/written/video2-fallback.png",
+        "alt": "Appearance Settings",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/written/image6.png",
+        "alt": "AI Settings",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/written/image7.png",
+        "alt": "Login Screen",
+        "width": 3,
+        "height": 2
+      }
+    ],
+    "problemAndSolution": {
+      "problem": "Many journaling apps feel either overly complex or disconnected from the tactile satisfaction of writing by hand. Typing can feel sterile, and privacy is often unclear.",
+      "solution": "Written focuses on the writing experience itself: a minimal interface, local-first storage, optional encryption, and thoughtful customization. Features are added only when they improve daily use, guided by actively using the app as a journal."
+    },
+    "keyFeatures": [
+      "Distraction-free journaling experience",
+      "Local-first data storage using IndexedDB",
+      "End-to-end encryption for journal entries",
+      "Customizable cursor and text colors",
+      "Optional on-device AI processing via local LLMs",
+      "Cross-device sync with encrypted data"
+    ],
+    "technicalHighlights": [
+      "Built with React and Vite using a component-driven design with shadcn/ui",
+      "Implemented local-first storage using Dexie (IndexedDB)",
+      "Added client-side encryption for journal entries to ensure data privacy",
+      "Integrated WebLLM to run AI models locally without sending data to a server",
+      "Built a custom sync engine from scratch, including encrypted push and pull logic",
+      "Designed the system to function fully offline with optional sync"
+    ],
+    "challenges": [
+      {
+        "problem": "Local-First Sync with Encryption",
+        "solution": "Designed and implemented a custom sync system that supports encrypted journal entries, handling edge cases around conflict resolution, key management, and partial sync failures."
+      },
+      {
+        "problem": "Client-Side Encryption",
+        "solution": "Implemented encryption for sensitive user data, balancing security, performance, and usability without relying on backend processing."
+      },
+      {
+        "problem": "Running AI Locally",
+        "solution": "Integrated local LLMs using WebLLM, enabling users to analyze or reflect on their entries without uploading content to external services."
+      },
+      {
+        "problem": "Product Focus & Restraint",
+        "solution": "Resisted feature creep by adding functionality only when it improved real usage, guided by daily use of the app as a journaling tool."
+      }
+    ],
+    "productDecisions": [
+      "Actively used the app to guide feature development",
+      "Prioritized privacy and ownership over convenience",
+      "Chose local-first architecture to ensure reliability and trust",
+      "Kept AI features optional, lightweight, and user-controlled"
+    ]
+  },
+  {
+    "title": "Rep",
+    "slug": "rep",
+    "description": "Track workouts, view progress, share with friends, and sync data offline.",
+    "longDescription": "Rep is a workout tracking app built to support consistent strength training without unnecessary complexity. Inspired by existing apps like Strong, Rep focuses on fast workout logging, offline reliability, and meaningful progress tracking.\n\nThe app uses a local-first architecture and is designed around real gym usage, with features added only when they proved necessary.",
+    "tags": ["React Native", "Supabase", "Expo"],
+    "featured": true,
+    "icon": "/rep/icon.png",
+    "heroAsset": {
+      "type": "video",
+      "path": "/rep/video1.mov",
+      "fallbackPath": "/rep/video1-fallback.png",
+      "alt": "Workout Demo",
+      "width": 195,
+      "height": 422
+    },
+    "assets": [
+      {
+        "type": "image",
+        "path": "/rep/image1.png",
+        "alt": "Profile Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image2.png",
+        "alt": "Start Workout Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image3.png",
+        "alt": "History Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image4.png",
+        "alt": "Details Modal",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image5.png",
+        "alt": "Add Exercise Modal",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image6.png",
+        "alt": "Add Exercise Modal 2",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image7.png",
+        "alt": "Workout Modal",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image8.png",
+        "alt": "Completing Sets",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image9.png",
+        "alt": "Completed Workout",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image10.png",
+        "alt": "Explore Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image11.png",
+        "alt": "Create Post Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image12.png",
+        "alt": "Add Workout To Post",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image13.png",
+        "alt": "Settings Dropdown",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/rep/image14.png",
+        "alt": "Notifications Page",
+        "width": 195,
+        "height": 422
+      }
+    ],
+    "link": "https://apps.apple.com/us/app/rep-workout-tracker/id6743640996",
+    "isApp": true,
+    "github": "https://github.com/smanzler/workout-tracker",
+    "role": "Mobile Developer",
+    "timeline": "2024",
+    "keyFeatures": [
+      "Log workouts, exercises, and sets with offline support",
+      "Local-first data storage with background sync",
+      "Track workout history and personal records",
+      "Social feed with shared workouts, likes, and interactions",
+      "Push notifications for follows and likes",
+      "Native charts for visualizing workout progress"
+    ],
+    "problemAndSolution": {
+      "problem": "Many workout apps include excessive features that slow down basic logging and don't adapt well to real gym workflows.",
+      "solution": "Rep prioritizes speed, offline support, and usability by storing all workout data locally and syncing in the background. By using the app personally, features were shaped by real needs rather than assumptions, leading to a focused and practical MVP."
+    },
+    "technicalHighlights": [
+      "Built with React Native for cross-platform development",
+      "Implemented a local-first data model using WatermelonDB",
+      "Designed custom sync logic with Supabase for pushing and pulling workout data",
+      "Built a social feed with relational data for users, posts, workouts, and likes",
+      "Integrated native Swift modules to render performant charts",
+      "Implemented push notifications with in-app toasts when the app is active"
+    ],
+    "challenges": [
+      {
+        "problem": "Local-First Sync Architecture",
+        "solution": "Implemented bidirectional sync between the local database and Supabase, handling conflict resolution and ensuring data consistency across sessions and devices."
+      },
+      {
+        "problem": "Social Feed & Data Modeling",
+        "solution": "Designed a relational schema to support posts, attached workouts, likes, and follow relationships while keeping feed queries performant."
+      },
+      {
+        "problem": "Native Chart Rendering",
+        "solution": "Built native chart components using Swift and bridged them into React Native to achieve smooth, high-performance visualizations."
+      },
+      {
+        "problem": "Notifications & In-App Feedback",
+        "solution": "Implemented push notifications for social interactions and handled in-app notification states with custom toasts when the app is open."
+      }
+    ],
+    "productDecisions": [
+      "Shipped an MVP quickly and expanded features only when they were validated by real usage",
+      "Prioritized usability over feature count",
+      "Stopped feature development when additions no longer improved the core experience",
+      "Used personal daily usage to guide UX and feature priorities"
+    ]
+  },
+  {
+    "title": "INVT",
+    "slug": "invt",
+    "description": "Find and rsvp to events made by others and invite friends through QR codes.",
+    "longDescription": "INVT simplifies event discovery and RSVP management through a clean, intuitive interface. Users can create events, share invitations via QR codes, sell tickets, and track attendance.\n\nThe platform is built with React and styled using shadcn/ui and TailwindCSS, with Supabase handling authentication, storage, and real-time data.",
+    "tags": ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
+    "icon": "/invt/icon.png",
+    "heroAsset": {
+      "type": "video",
+      "path": "/invt/video1.mov",
+      "fallbackPath": "/invt/video1-fallback.png",
+      "alt": "Event Details",
+      "width": 3,
+      "height": 2
+    },
+    "assets": [
+      {
+        "type": "image",
+        "path": "/invt/image2.png",
+        "alt": "Main Page",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/invt/image3.png",
+        "alt": "Create Event Page",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/invt/image4.png",
+        "alt": "RSVPs Page",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/invt/image5.png",
+        "alt": "Map View",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/invt/image6.png",
+        "alt": "Profile Page",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/invt/image7.png",
+        "alt": "Notifications Page",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/invt/image8.png",
+        "alt": "Past Events",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/invt/image9.png",
+        "alt": "Sign In Page",
+        "width": 3,
+        "height": 2
+      }
+    ],
+    "link": "https://invt.rsvp",
+    "featured": true,
+    "role": "Independent Contractor",
+    "timeline": "June 2025 - Present",
+    "problemAndSolution": {
+      "problem": "Existing event platforms were overly complex and difficult to use for both organizers and attendees.",
+      "solution": "INVT focuses on a streamlined experience by removing unnecessary features while still supporting essential workflows like invitations, ticket sales, and attendee management."
+    },
+    "keyFeatures": [
+      "Create and manage public or private events",
+      "Share invites via QR codes and track invite attribution",
+      "Sell event tickets directly through the platform",
+      "Retarget previous attendees for future events",
+      "Authentication, storage, and real-time data powered by Supabase"
+    ],
+    "technicalHighlights": [
+      "Migrated backend from Firebase to Supabase to support relational data and improve scalability",
+      "Designed a relational PostgreSQL schema for events, users, tickets, and invites",
+      "Implemented web push notifications using the Web Push API and a custom service worker integration with Vite",
+      "Integrated Stripe using a marketplace model, allowing individual event hosts to manage payouts and taxes independently",
+      "Built a responsive UI using shadcn/ui and TailwindCSS for consistent and easily adjustable styling"
+    ],
+    "challenges": [
+      {
+        "problem": "Backend Migration",
+        "solution": "Transitioned from Firebase to Supabase to improve relational data modeling and avoid vendor lock-in. This required refactoring data access patterns, rebuilding authentication flows, and migrating storage logic."
+      },
+      {
+        "problem": "Web Push Notifications",
+        "solution": "Implemented push notifications in a PWA environment, including handling HTTPS requirements and service worker constraints when the app is inactive."
+      },
+      {
+        "problem": "Payments Architecture",
+        "solution": "Chose a Stripe marketplace model to enable multiple organizers to sell tickets while managing payouts and tax responsibilities independently."
+      },
+      {
+        "problem": "UX Consistency",
+        "solution": "Used shadcn/ui as a foundation to maintain design consistency while allowing rapid iteration on layout and interaction patterns."
+      }
+    ],
+    "nextSteps": [
+      "Improve analytics for event organizers",
+      "Expand attendee engagement tools",
+      "Enhance accessibility and mobile UX"
+    ]
+  },
+  {
+    "title": "Portfolio",
+    "slug": "portfolio",
+    "description": "A continuously evolving portfolio used to practice design, animation, and modern frontend patterns.",
+    "longDescription": "This portfolio is a long-running project that has evolved alongside my growth as a developer. It began as a static HTML/CSS site, was later migrated to React with Vite, and is now built with Next.js. Each iteration reflects new tools, patterns, and design principles I've learned over time. The site also serves as the official domain for my published apps, hosting privacy policies and terms of service required for App Store distribution.",
+    "tags": ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn UI", "motion", "Vercel"],
+    "heroAsset": {
+      "type": "image",
+      "path": "/portfolio/image1.png",
+      "alt": "Portfolio Homepage",
+      "width": 3,
+      "height": 2
+    },
+    "icon": "/portfolio/icon.png",
+    "assets": [
+      {
+        "type": "image",
+        "path": "/portfolio/image2.png",
+        "alt": "Featured Projects",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/portfolio/image3.png",
+        "alt": "Skills",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/portfolio/image4.png",
+        "alt": "About Me",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/portfolio/image5.png",
+        "alt": "Experience",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/portfolio/image6.png",
+        "alt": "Contact",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/portfolio/image7.png",
+        "alt": "Footer",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/portfolio/image8.png",
+        "alt": "Projects Page",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/portfolio/image9.png",
+        "alt": "Project Details Page",
+        "width": 3,
+        "height": 2
+      }
+    ],
+    "link": "https://simonmanzler.com",
+    "github": "https://github.com/smanzler/portfolio",
+    "role": "Frontend Developer & Designer",
+    "timeline": "2024",
+    "problemAndSolution": {
+      "problem": "Early versions of my portfolio quickly became outdated as my skills improved, making it difficult to reflect my current abilities.",
+      "solution": "Instead of treating the portfolio as a finished product, I designed it as an evolving system — a place to experiment with modern tooling, subtle animations, and component-driven design while maintaining a clean and professional presentation."
+    },
+    "keyFeatures": [
+      "Component-driven UI built with shadcn/ui and TailwindCSS",
+      "Subtle, purposeful animations to enhance UX without distraction",
+      "Modular layout that supports iteration and content reorganization",
+      "Deployed as a stable domain for App Store privacy policies and legal pages",
+      "Continuously updated to reflect current skills and projects"
+    ],
+    "technicalHighlights": [
+      "Migrated the project across multiple stacks (HTML/CSS → React + Vite → Next.js)",
+      "Implemented motion-based UI interactions using the Motion library",
+      "Used shadcn/ui components as a foundation for rapid experimentation and reuse",
+      "Designed flexible layouts to accommodate different project types and page structures",
+      "Balanced animation performance and accessibility with visual polish"
+    ],
+    "challenges": [
+      {
+        "problem": "Animation Without Overuse",
+        "solution": "Learned to design subtle, UX-driven animations that support interaction and hierarchy rather than overpowering the content."
+      },
+      {
+        "problem": "Design Identity",
+        "solution": "Iterated on typography, spacing, and layout to find a visual style that feels personal, confident, and professional."
+      },
+      {
+        "problem": "Content Organization",
+        "solution": "Refined how projects, sections, and information are structured to keep the site scannable while still expressive."
+      }
+    ],
+    "productDecisions": [
+      "Treated the portfolio as a living project rather than a static deliverable",
+      "Used real experimentation instead of artificial demos",
+      "Practiced new components and UI patterns directly in production",
+      "Prioritized clarity and restraint over visual noise"
+    ]
+  },
+  {
+    "title": "Dash",
+    "slug": "dash",
+    "description": "A map-based running app focused on route creation and performance tracking.",
+    "longDescription": "Dash is a mobile running app built as an MVP to validate an idea developed for an entrepreneurship course. The app allows users to create custom running routes on a map and then run those routes while tracking performance data. The project was also an opportunity to deepen native iOS experience by building all map-related UI and GPS logic in Swift and bridging it into a React Native app using Expo native modules.",
+    "tags": ["Expo", "TypeScript", "Swift", "Mapbox IOS SDK"],
+    "isApp": true,
+    "heroAsset": {
+      "type": "image",
+      "path": "/dash/image1.png",
+      "alt": "Tracks Page",
+      "width": 195,
+      "height": 422
+    },
+    "icon": "/dash-icon.png",
+    "assets": [
+      {
+        "type": "image",
+        "path": "/dash/image2.png",
+        "alt": "Start Run",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image3.png",
+        "alt": "Running",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image4.png",
+        "alt": "Finished Run",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image5.png",
+        "alt": "Upload Run",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image6.png",
+        "alt": "My Runs Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image7.png",
+        "alt": "Run Details",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image8.png",
+        "alt": "Leaderboard Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image9.png",
+        "alt": "Login Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image10.png",
+        "alt": "Register Page",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image11.png",
+        "alt": "Create Profile",
+        "width": 195,
+        "height": 422
+      },
+      {
+        "type": "image",
+        "path": "/dash/image12.png",
+        "alt": "Settings Page",
+        "width": 195,
+        "height": 422
+      }
+    ],
+    "problemAndSolution": {
+      "problem": "Many running apps focus on general activity tracking rather than route-specific performance.",
+      "solution": "Dash focuses on predefined routes: users draw tracks on a map and later run those same routes to measure and compare performance, laying the foundation for competitive and social features."
+    },
+    "keyFeatures": [
+      "Create and save custom running routes on an interactive map",
+      "Track runs using real-time GPS data",
+      "Calculate basic performance stats from raw location data",
+      "Leaderboards powered by scheduled background jobs",
+      "Native map and GPS handling for accuracy and performance"
+    ],
+    "technicalHighlights": [
+      "Built with React Native using Expo",
+      "Implemented all map and GPS UI in Swift for native performance",
+      "Created Expo native modules to bridge Swift functionality into JavaScript",
+      "Used cron jobs to update leaderboards on a schedule",
+      "Designed the app as an MVP with a clear path for future refinement"
+    ],
+    "challenges": [
+      {
+        "problem": "Learning Swift in a Production Context",
+        "solution": "Used native map and GPS features as an entry point into Swift, prioritizing performance-sensitive functionality where native code matters most."
+      },
+      {
+        "problem": "GPS Data Handling",
+        "solution": "Started with raw GPS data for stat calculations, with plans to refine accuracy and smoothing in future iterations."
+      }
+    ],
+    "productDecisions": [
+      "Focused on delivering a usable MVP quickly",
+      "Chose native implementations for maps and GPS to avoid abstraction limitations",
+      "Deferred advanced analytics until core functionality was validated",
+      "Scoped features tightly to avoid overengineering"
+    ]
+  },
+  {
+    "title": "MCList",
+    "slug": "mclist",
+    "timeline": "November 2025",
+    "description": "A visual, interactive tool for tracking materials needed for Minecraft builds.",
+    "longDescription": "This web app helps Minecraft players track and manage materials needed for their builds. By parsing text-based lists from YouTube descriptions or other sources, it provides a visual checklist with images from the Minecraft Wiki and interactive progress tracking. Users can save builds locally, mark items as completed, and share builds via a compressed URL with metadata for social sharing.",
+    "github": "https://github.com/smanzler/mclist",
+    "link": "https://mclist.simonmanzler.com",
+    "tags": ["Next.js", "React", "TypeScript", "Dexie", "Motion", "Lottie"],
+    "heroAsset": {
+      "type": "video",
+      "path": "/mclist/video1.mov",
+      "fallbackPath": "/mclist/video1-fallback.png",
+      "alt": "MCList Video 1",
+      "width": 3,
+      "height": 2
+    },
+    "icon": "/mclist/icon.png",
+    "assets": [
+      {
+        "type": "image",
+        "path": "/mclist/image1.png",
+        "alt": "MCList Image 1",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/mclist/image2.png",
+        "alt": "MCList Image 2",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/mclist/image3.png",
+        "alt": "MCList Image 3",
+        "width": 3,
+        "height": 2
+      },
+      {
+        "type": "image",
+        "path": "/mclist/image4.png",
+        "alt": "MCList Image 4",
+        "width": 3,
+        "height": 2
+      }
+    ],
+    "problemAndSolution": {
+      "problem": "Minecraft players often struggle with large material lists, which are typically shared as plain text in video descriptions or forums. These lists are difficult to visualize and track.",
+      "solution": "The app solves this by converting text into interactive visual checklists, allowing users to see, check off, and manage items efficiently, making planning builds faster and more satisfying."
+    },
+    "keyFeatures": [
+      "Parse text-based material lists into visual checklists",
+      "Display item images from the Minecraft Wiki for better clarity",
+      "Save builds locally using Dexie (IndexedDB)",
+      "Mark items as completed with Lottie-powered explosion animations",
+      "Share builds via compressed URLs with metadata for social previews"
+    ],
+    "technicalHighlights": [
+      "Built in Next.js with React and TypeScript for fast iteration",
+      "Used Motion and Lottie for interactive animations and polished UX",
+      "Implemented local storage with Dexie for offline-first persistence",
+      "Compressed build data in URLs to support large builds without long links",
+      "Generated metadata dynamically for sharing and social previews"
+    ],
+    "productDecisions": [
+      "Focused on fun, visual feedback for item completion",
+      "Scoped features tightly to avoid overengineering"
+    ]
+  }
+]
