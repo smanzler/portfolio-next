@@ -656,7 +656,7 @@
     "timeline": "November 2025",
     "description": "A visual, interactive tool for tracking materials needed for Minecraft builds.",
     "longDescription": "This web app helps Minecraft players track and manage materials needed for their builds. By parsing text-based lists from YouTube descriptions or other sources, it provides a visual checklist with images from the Minecraft Wiki and interactive progress tracking. Users can save builds locally, mark items as completed, and share builds via a compressed URL with metadata for social sharing.",
-    "github": "https://github.com/smanzler/mclist",
+    "github": "https://github.com/smanzler/material-list",
     "link": "https://mclist.simonmanzler.com",
     "tags": ["Next.js", "React", "TypeScript", "Dexie", "Motion", "Lottie"],
     "heroAsset": {
