@@ -36,8 +36,7 @@ export function AssetThumbnail({
           height={asset.height}
           sizes="100vw"
           className="size-full object-contain border rounded-lg"
-          priority
-          loading="eager"
+          loading="lazy"
         />
       ) : (
         <video
@@ -48,7 +47,7 @@ export function AssetThumbnail({
           playsInline
           webkit-playsinline="true"
           className="size-full border rounded-lg"
-          preload="auto"
+          preload="metadata"
         >
           {asset.fallback && (
             <Image
@@ -58,8 +57,7 @@ export function AssetThumbnail({
               width={asset.width}
               height={asset.height}
               sizes="100vw"
-              priority
-              loading="eager"
+              loading="lazy"
             />
           )}
         </video>
