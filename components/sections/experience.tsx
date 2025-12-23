@@ -30,7 +30,10 @@ const experiences: ExperienceItem[] = [
     endDate: "Present",
     description: "",
     achievements: [
-      "Developing and maintaining software applications for the company.",
+      "Implemented the OFAC endpoint, scanning thousands of investment clients against the U.S. sanctions list to ensure compliance.",
+      "Developing C# / .NET APIs for investment IT systems to process and analyze securities data.",
+      "Writing comprehensive unit tests to increase reliability and reduce production bugs.",
+      "Collaborating with cross-functional teams to deliver secure, high-performance solutions.",
     ],
     technologies: ["C#", "ASP.NET", "SQL Server", "Azure", "Docker"],
   },
@@ -42,7 +45,10 @@ const experiences: ExperienceItem[] = [
     startDate: "Jan 2025",
     endDate: "May 2025",
     description: "",
-    achievements: ["Documented the company's software applications."],
+    achievements: [
+      "Supported enterprise content management workflows using OnBase.",
+      "Documented and streamlined processes to reduce manual effort.",
+    ],
     technologies: ["OnBase", "Windows Server", "PowerShell"],
   },
   {
@@ -53,7 +59,10 @@ const experiences: ExperienceItem[] = [
     startDate: "Jan 2024",
     endDate: "May 2024",
     description: "",
-    achievements: ["Provided support for the company's software applications."],
+    achievements: [
+      "Resolved application tickets and performed SQL debugging for production issues.",
+      "Built a React-based internal dashboard to automate routine tasks and reduce workload.",
+    ],
     technologies: ["SQL Server", "C#", "VB.NET", "React", "TypeScript"],
   },
 ];
