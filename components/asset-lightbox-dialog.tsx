@@ -34,11 +34,7 @@ function AssetCarouselItem({ asset }: AssetCarouselItemProps) {
   return (
     <CarouselItem className="min-w-[min(200px,100%)]">
       <div className="flex items-center justify-center h-[calc(100vh-10rem)] w-full relative">
-        {loading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
-            <Spinner />
-          </div>
-        )}
+        {loading && <Spinner />}
         {asset.type === "image" ? (
           <Image
             src={asset.path}
