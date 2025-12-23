@@ -2,7 +2,7 @@
 
 import { AppWindow, ArrowUpRight, FolderOpenDot } from "lucide-react";
 import Link from "next/link";
-import { ResponsiveButton } from "../responsive-button";
+import { ResponsiveButton } from "@/components/responsive-button";
 
 export function ProjectsHeaderButtons() {
   return (
@@ -27,7 +27,7 @@ export function ProjectsHeaderButtons() {
         className="flex-1 flex items-center justify-center rounded-md"
         iconSide="right"
       >
-        <Link href="/projects">View All Apps</Link>
+        <Link href="/apps">View All Apps</Link>
       </ResponsiveButton>
     </div>
   );

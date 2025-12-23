@@ -5,7 +5,7 @@ import { getProjects } from "@/lib/projects";
 import { H1, Lead } from "@/components/ui/typography";
 import FeaturedProjectCard from "@/components/featured-project-card";
 import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
-import { ProjectsHeaderButtons } from "./projects-header-buttons";
+import { ProjectsHeaderButtons } from "@/components/projects-header-buttons";
 
 export default function Projects() {
   const projects = getProjects();

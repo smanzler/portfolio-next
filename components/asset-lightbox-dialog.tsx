@@ -19,6 +19,69 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { Asset } from "@/lib/projects";
+import { Spinner } from "./ui/spinner";
+
+interface AssetCarouselItemProps {
+  asset: Asset;
+}
+
+function AssetCarouselItem({ asset }: AssetCarouselItemProps) {
+  const [loading, setLoading] = React.useState(true);
+
+  const handleImageLoad = () => setLoading(false);
+  const handleVideoLoad = () => setLoading(false);
+
+  return (
+    <CarouselItem className="min-w-[min(200px,100%)]">
+      <div className="flex items-center justify-center h-[calc(100vh-10rem)] w-full relative">
+        {loading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
+            <Spinner />
+          </div>
+        )}
+        {asset.type === "image" ? (
+          <Image
+            src={asset.path}
+            alt={asset.alt || ""}
+            width={asset.width}
+            height={asset.height}
+            sizes="100vw"
+            className="size-full object-contain"
+            loading="lazy"
+            onLoadingComplete={handleImageLoad}
+            onLoad={handleImageLoad}
+          />
+        ) : (
+          <video
+            src={asset.path}
+            autoPlay
+            muted
+            loop
+            playsInline
+            webkit-playsinline="true"
+            className="size-full object-contain"
+            preload="metadata"
+            onLoadedData={handleVideoLoad}
+          >
+            {asset.fallback && (
+              <Image
+                src={asset.fallback}
+                alt={asset.alt || ""}
+                width={asset.width}
+                height={asset.height}
+                sizes="100vw"
+                className="size-full object-contain"
+                loading="lazy"
+                onLoadingComplete={handleImageLoad}
+                onLoad={handleImageLoad}
+              />
+            )}
+          </video>
+        )}
+      </div>
+    </CarouselItem>
+  );
+}
 
 function AssetDialogContent({
   className,
@@ -137,45 +200,8 @@ export function AssetLightboxDialog({
           }}
         >
           <CarouselContent>
-            {assets.map((asset, i) => (
-              <CarouselItem key={i}>
-                <div className="flex items-center justify-center h-[calc(100vh-10rem)] w-full">
-                  {asset.type === "image" ? (
-                    <Image
-                      src={asset.path}
-                      alt={asset.alt || `Asset ${i + 1}`}
-                      width={asset.width}
-                      height={asset.height}
-                      sizes="100vw"
-                      className="size-full object-contain"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <video
-                      src={asset.path}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      webkit-playsinline="true"
-                      className="size-full object-contain"
-                      preload="metadata"
-                    >
-                      {asset.fallback && (
-                        <Image
-                          src={asset.fallback}
-                          alt={asset.alt || `Asset ${i + 1}`}
-                          width={asset.width}
-                          height={asset.height}
-                          sizes="100vw"
-                          className="size-full object-contain"
-                          loading="lazy"
-                        />
-                      )}
-                    </video>
-                  )}
-                </div>
-              </CarouselItem>
+            {assets.map((asset) => (
+              <AssetCarouselItem key={asset.path} asset={asset} />
             ))}
           </CarouselContent>
 
