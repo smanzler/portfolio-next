@@ -34,23 +34,29 @@ export default function Contact() {
                 size="sm"
                 asChild
                 icon={<Mail className="h-4 w-4" />}
-                parent={AccentShadowContainer}
-                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
+                as={AccentShadowContainer}
+                className="flex-1 flex items-center justify-center rounded-md"
               >
-                <Link href="mailto:simanzler@gmail.com">Email me</Link>
+                <Link
+                  href="mailto:simanzler@gmail.com"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
+                >
+                  Email me
+                </Link>
               </ResponsiveButton>
 
               <ResponsiveButton
                 size="sm"
                 asChild
                 icon={<Icon icon="line-md:github" />}
-                parent={AccentShadowContainer}
-                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
+                as={AccentShadowContainer}
+                className="flex-1 flex items-center justify-center rounded-md"
               >
                 <Link
                   href="https://github.com/smanzler"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
                 >
                   GitHub
                 </Link>
@@ -60,13 +66,14 @@ export default function Contact() {
                 size="sm"
                 asChild
                 icon={<Icon icon="line-md:linkedin" />}
-                parent={AccentShadowContainer}
-                className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
+                as={AccentShadowContainer}
+                className="flex-1 flex items-center justify-center rounded-md"
               >
                 <Link
                   href="https://linkedin.com/in/simonmanzler"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium shrink-0 h-9 px-6 has-[>svg]:px-4"
                 >
                   LinkedIn
                 </Link>

@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { getProjects } from "@/lib/projects";
 import { H1, Lead } from "@/components/ui/typography";
 import FeaturedProjectCard from "@/components/featured-project-card";
 import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
+import { ProjectsHeaderButtons } from "./projects-header-buttons";
 
 export default function Projects() {
   const projects = getProjects();
@@ -20,20 +21,7 @@ export default function Projects() {
           <Lead>Some projects I've built.</Lead>
         </div>
 
-        <div>
-          <Button variant="link" asChild>
-            <Link href="/projects">
-              View All Projects
-              <ArrowRight />
-            </Link>
-          </Button>
-          <Button variant="link" asChild>
-            <Link href="/apps">
-              View All Apps
-              <ArrowRight />
-            </Link>
-          </Button>
-        </div>
+        <ProjectsHeaderButtons />
       </ThresholdMotionDiv>
 
       <div className="flex flex-col gap-6">
@@ -44,11 +32,11 @@ export default function Projects() {
             side={index % 2 === 0 ? "left" : "right"}
           />
         ))}
-        <ThresholdMotionDiv className="w-fit mx-">
+        <ThresholdMotionDiv className="w-fit mx-auto">
           <Button variant="link" asChild>
             <Link href="/projects">
               View All Projects
-              <ArrowRight />
+              <ArrowUpRight />
             </Link>
           </Button>
         </ThresholdMotionDiv>
