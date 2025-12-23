@@ -1,7 +1,6 @@
 import { useApps } from "@/hooks/useApps";
-import { H1, H4, Lead, Muted } from "@/components/ui/typography";
-import Link from "next/link";
-import Image from "next/image";
+import { H1, Lead } from "@/components/ui/typography";
+import ProjectCard from "@/components/project-card";
 
 const Apps = () => {
   const { apps } = useApps();
@@ -14,30 +13,13 @@ const Apps = () => {
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {apps.map((app) => (
-          <Link
+          <ProjectCard
             key={app.title}
-            className="relative flex flex-row cursor-pointer gap-6 group"
+            title={app.title}
+            description={app.description}
+            image={app.image}
             href={`/apps/${app.title}`}
-          >
-            <div className="absolute -inset-3 bg-accent dark:bg-input/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-200 pointer-events-none z-0" />
-            <div className="flex flex-col gap-1 items-center justify-center">
-              {app.image && (
-                <div className="rounded-lg overflow-hidden bg-muted size-16">
-                  <Image
-                    src={app.image}
-                    alt={app.title}
-                    width={64}
-                    height={64}
-                  />
-                </div>
-              )}
-              <Muted className="text-xs">{app.title}</Muted>
-            </div>
-            <div className="flex flex-col gap-2">
-              <H4>{app.title}</H4>
-              <Muted className="line-clamp-3">{app.description}</Muted>
-            </div>
-          </Link>
+          />
         ))}
       </div>
     </div>

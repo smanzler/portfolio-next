@@ -144,15 +144,17 @@ export function Header() {
         <NavigationMenu viewport={isMobile}>
           <NavigationMenuList className="flex-wrap">
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="flex flex-row items-center gap-2">
-                <Image
-                  src="/simon-icon.png"
-                  alt="Simon Manzler"
-                  width={24}
-                  height={24}
-                  loading="eager"
-                />
-                {!isMobile && "Portfolio"}
+              <NavigationMenuTrigger>
+                <Link href="/" className="flex flex-row items-center gap-2">
+                  <Image
+                    src="/simon-icon.png"
+                    alt="Simon Manzler"
+                    width={24}
+                    height={24}
+                    loading="eager"
+                  />
+                  {!isMobile && "Portfolio"}
+                </Link>
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid grid-cols-2 gap-1 w-[200px]">
