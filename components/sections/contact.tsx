@@ -22,10 +22,10 @@ export default function Contact() {
         <ThresholdMotionDiv className="flex flex-col gap-6">
           <div>
             <H2>Let's Connect</H2>
-            <P>
+            <Muted>
               Whether you have a project in mind or just want to chat, I'd love
               to hear from you!
-            </P>
+            </Muted>
           </div>
 
           <div>
