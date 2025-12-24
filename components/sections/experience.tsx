@@ -1,6 +1,6 @@
 "use client";
 
-import { H1, H3, Lead, P } from "../ui/typography";
+import { H1, H3, Lead, Muted, P } from "../ui/typography";
 import ThresholdMotionDiv from "../motion/threshold-motion-div";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
 import { AnimateOnThreshold } from "../motion/animate-on-threshold";
@@ -125,27 +125,16 @@ function ExperienceCard({ experience, side }: ExperienceCardProps) {
               )}
             >
               {/* Header */}
-              <div className="space-y-2 mb-5">
+              <div className="mb-4">
                 <H3>{experience.role}</H3>
-                <div className="flex items-center text-muted-foreground">
-                  <Briefcase className="mr-2" size={16} />
-                  <P className="!mt-0">{experience.company}</P>
+                <div className="!mt-0">@ {experience.company}</div>
+
+                <div className="text-muted-foreground text-sm mt-2">
+                  {experience.startDate} - {experience.endDate}
                 </div>
               </div>
 
               {/* Date and location */}
-              <div className="flex flex-wrap gap-4 mb-5">
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <Calendar className="mr-2" size={14} />
-                  <span>
-                    {experience.startDate} - {experience.endDate}
-                  </span>
-                </div>
-                <div className="flex items-center text-muted-foreground text-sm">
-                  <MapPin className="mr-2" size={14} />
-                  <span>{experience.location}</span>
-                </div>
-              </div>
 
               {/* Achievements */}
               <ul className="space-y-3">
@@ -153,7 +142,7 @@ function ExperienceCard({ experience, side }: ExperienceCardProps) {
                   (achievement, achievementIndex) => (
                     <li key={achievementIndex} className="flex items-start">
                       <span className="inline-block w-2 h-2 mt-2 mr-3 rounded-full bg-primary flex-shrink-0" />
-                      <P className="flex-1 !mt-0">{achievement}</P>
+                      <P className="flex-1 !mt-0 text-sm">{achievement}</P>
                     </li>
                   )
                 )}
