@@ -1,6 +1,5 @@
 "use client";
 
-import { useApps } from "@/hooks/useApps";
 import { getProjects } from "@/lib/projects";
 import { Button } from "./ui/button";
 import Image from "next/image";
@@ -47,22 +46,22 @@ const Footer = ({
   ],
   copyright = `© ${new Date().getFullYear()} Simon Manzler. All rights reserved.`,
 }: FooterProps) => {
-  const { apps } = useApps();
   const projects = getProjects();
+  const apps = projects.filter((project) => project.isApp);
   const pathname = usePathname();
   const router = useRouter();
 
   const getBottomLinks = (pathname: string) => {
     if (pathname.startsWith("/apps/")) {
-      const appTitle = pathname.split("/")[2];
+      const appSlug = pathname.split("/")[2];
       return [
         {
           text: "Privacy Policy",
-          url: `/apps/${appTitle}/privacy`,
+          url: `/apps/${appSlug}/privacy`,
         },
         {
           text: "Terms of Service",
-          url: `/apps/${appTitle}/terms`,
+          url: `/apps/${appSlug}/terms`,
         },
       ];
     } else if (pathname === "/apps") {
@@ -86,7 +85,7 @@ const Footer = ({
       title: "Apps",
       links: apps.map((app) => ({
         text: app.title,
-        url: `/apps/${app.title}`,
+        url: `/apps/${app.slug}`,
       })),
     },
   ];

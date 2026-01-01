@@ -1,6 +1,6 @@
 "use client";
 
-import { getProjects } from "@/lib/projects";
+import { getProjectBySlug } from "@/lib/projects";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -40,11 +40,9 @@ import { ResponsiveButton } from "@/components/responsive-button";
 
 export default function ProjectDetails() {
   const { slug } = useParams();
-  const projects = getProjects();
+  const project = getProjectBySlug(slug as string);
   const [lightboxIndex, setLightboxIndex] = React.useState(0);
   const [lightboxOpen, setLightboxOpen] = React.useState(false);
-
-  const project = projects.find((project) => project.slug === slug);
 
   const handleLightboxOpen = (index: number) => {
     setLightboxIndex(index);

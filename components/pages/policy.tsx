@@ -6,14 +6,13 @@ import { Button } from "../ui/button";
 import { ArrowLeft } from "lucide-react";
 import { H1, H2, H4, Muted, P, UL } from "../ui/typography";
 import { Separator } from "../ui/separator";
-import { useApps } from "@/hooks/useApps";
+import { getProjectBySlug } from "@/lib/projects";
 import Image from "next/image";
 import React from "react";
 
 const Policy = ({ type }: { type: "privacy" | "terms" }) => {
-  const { title } = useParams();
-  const { apps } = useApps();
-  const item = apps.find((app) => app.title === title);
+  const { slug } = useParams();
+  const item = getProjectBySlug(slug as string);
 
   const policy =
     type === "privacy" ? item?.privacyPolicy : item?.termsOfService;
@@ -55,21 +54,24 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
         <H1>{type === "privacy" ? "Privacy Policy" : "Terms of Service"}</H1>
         <div className="flex flex-row justify-between gap-4 items-end">
           <div>
-            <Link href={`/apps/${item.title}`}>
+            <Link href={`/apps/${item.slug}`}>
               <H2 className="hover:underline">{item.title}</H2>
             </Link>
             <Muted>Last updated: {policy.lastUpdated}</Muted>
           </div>
-          {item.image && (
-            <div className="size-16 shrink-0 rounded-lg overflow-hidden">
-              <Link href={`/apps/${item.title}`}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  className="size-full object-cover"
-                />
-              </Link>
-            </div>
+          {item.icon && (
+            <Link
+              href={`/apps/${item.slug}`}
+              className="size-16 shrink-0 rounded-lg overflow-hidden"
+            >
+              <Image
+                src={item.icon}
+                alt={item.title}
+                className="size-full object-cover"
+                width={100}
+                height={100}
+              />
+            </Link>
           )}
         </div>
         <Separator />

@@ -285,7 +285,205 @@
       "Prioritized usability over feature count",
       "Stopped feature development when additions no longer improved the core experience",
       "Used personal daily usage to guide UX and feature priorities"
-    ]
+    ], 
+    "reviews": [
+      {
+        "name": "John Doe",
+        "review": "I love this app! It's so easy to use and has all the features I need.",
+        "rating": 5
+      },
+      {
+        "name": "Jane Doe",
+        "review": "This app has changed my life! I'm so much stronger now.",
+        "rating": 5
+      }
+    ],
+    "faq": [
+      {
+        "question": "How do I add a new exercise?",
+        "answer":
+          "You can add a new exercise by tapping the 'Add Exercise' button and entering the exercise details."
+      },
+
+      {
+        "question": "How do I track my progress?",
+        "answer":
+          "You can track your progress by tapping the 'Progress' button and entering the exercise details."
+      },
+
+      {
+        "question": "How do I sync my data?",
+        "answer":
+          "You can sync your data by tapping the 'Sync' button and entering the exercise details."
+      },
+      {
+        "question": "How do I share my progress with my friends?",
+        "answer":
+          "You can share your progress with your friends by tapping the 'Share' button and entering the exercise details."
+      }
+    ],
+    "privacyPolicy": {
+      "lastUpdate d": "2025-01-01",
+      "sections": [
+        {
+          "title": "1. Introduction",
+          "content": [
+            "Welcome to Rep ('we', 'our', 'us'). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you use our app, Rep."
+          ]
+        },
+        {
+          "title": "2. Information We Collect",
+          "content": [
+            "We collect the following information to provide and improve our services:",
+            [
+              "Personal Information: Names and email addresses to authenticate users and personalize your experience.",
+              "Workout Data: Information about your workouts, such as exercises, sets, reps, and performance metrics.",
+              "Health Data: Optional health-related data like weight, height, and fitness goals to tailor your experience.",
+              "Photos and Images: Photos you choose to upload related to your fitness journey.",
+              "Authentication Data: Passwords, which are encrypted and securely stored using Supabase Auth."
+            ]
+          ]
+        },
+        {
+          "title": "3. How We Use Your Information",
+          "content": [
+            "We use your information to:",
+            [
+              "Authenticate and verify your identity.",
+              "Track and analyze your workout performance.",
+              "Provide personalized workout recommendations and insights.",
+              "Allow you to share photos and progress updates with others (if you choose to).",
+              "Communicate with you about updates, security alerts, and support."
+            ]
+          ]
+        },
+        {
+          "title": "4. Data Security",
+          "content": [
+            "We take data security seriously and implement the following measures to protect your information:",
+            [
+              "Encryption: Passwords are encrypted using Supabase Auth.",
+              "Access Controls: Only authorized personnel have access to your personal information.",
+              "Secure Storage: Data is stored on secure servers with appropriate safeguards."
+            ]
+          ]
+        },
+        {
+          "title": "5. Sharing Your Information",
+          "content": [
+            "We do not sell, trade, or otherwise transfer your personal information to outside parties, except:",
+            [
+              "When we have your consent.",
+              "To comply with legal obligations.",
+              "To protect our rights, privacy, safety, or property, and that of our users."
+            ]
+          ]
+        },
+        {
+          "title": "6. Your Rights",
+          "content": [
+            "You have the following rights regarding your personal information:",
+            [
+              "Access: You can request access to the personal information we hold about you.",
+              "Correction: You can request correction of any inaccurate or incomplete information.",
+              "Deletion: You can request the deletion of your personal information, subject to legal and contractual obligations."
+            ]
+          ]
+        },
+        {
+          "title": "7. Changes to This Privacy Policy",
+          "content": [
+            "We may update this Privacy Policy from time to time. We will notify you of any changes by updating the effective date at the top of this policy. We encourage you to review this Privacy Policy periodically."
+          ]
+        },
+        {
+          "title": "8. Contact Us",
+          "content": [
+            "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at dev.simanzler@gmail.com."
+          ]
+        },
+        {
+          "title": "9. Consent",
+          "content": ["By using our app, you consent to our Privacy Policy."]
+        }
+      ]
+    },
+    "termsOfService": {
+      "lastUpdated": "2025-01-01",
+      "sections": [
+        {
+          "title": "1. Acceptance of Terms",
+          "content": [
+            "By downloading, accessing, or using Dash, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, discontinue use of the app immediately."
+          ]
+        },
+        {
+          "title": "2. Eligibility and Account Registration",
+          "content": [
+            "You must be at least 13 years old to use Dash. You are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account."
+          ]
+        },
+        {
+          "title": "3. Use of the Service",
+          "content": [
+            "Dash is provided for personal running tracking and community engagement.",
+            [
+              "Do not use Dash for any unlawful or unauthorized purpose.",
+              "Do not attempt to access, interfere with, or disrupt any system or network connected to the service.",
+              "Do not misrepresent your identity, run data, or achievements."
+            ]
+          ]
+        },
+        {
+          "title": "4. Health and Safety",
+          "content": [
+            "Dash does not provide medical advice. Consult a physician before beginning any new fitness program. You assume all risks associated with your running activities and agree to use the app responsibly."
+          ]
+        },
+        {
+          "title": "5. Location and Sensor Data",
+          "content": [
+            "Dash may collect location, motion, and other sensor data to track your runs. You control when tracking is active, and you can revoke permissions at any time through your device settings, though some features may become unavailable."
+          ]
+        },
+        {
+          "title": "6. Subscriptions and Payments",
+          "content": [
+            "Certain features may be offered as paid upgrades. Fees are disclosed before purchase and are non-refundable unless required by law. You authorize us to charge your selected payment method for any applicable fees."
+          ]
+        },
+        {
+          "title": "7. Termination",
+          "content": [
+            "We may suspend or terminate your access to Dash at any time if you violate these terms or engage in fraudulent, abusive, or harmful behavior. You may stop using Dash at any time by deleting your account."
+          ]
+        },
+        {
+          "title": "8. Intellectual Property",
+          "content": [
+            "Dash, including its design, content, and features, is owned by us or our licensors. You receive a limited, non-transferable license to use the app for personal purposes. You may not copy, modify, or distribute our content without permission."
+          ]
+        },
+        {
+          "title": "9. Disclaimers and Limitation of Liability",
+          "content": [
+            "Dash is provided 'as is' without warranties of any kind. To the fullest extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the app."
+          ]
+        },
+        {
+          "title": "10. Governing Law and Dispute Resolution",
+          "content": [
+            "These terms are governed by the laws of the jurisdiction in which we operate, without regard to conflict-of-law principles. Any disputes will be resolved through good-faith negotiations, and if necessary, binding arbitration or a court of competent jurisdiction."
+          ]
+        },
+        {
+          "title": "11. Contact",
+          "content": [
+            "If you have questions about these Terms of Service, contact us at dev.simanzler@gmail.com."
+          ]
+        }
+      ]
+    }
   },
   {
     "title": "INVT",
@@ -648,7 +846,183 @@
       "Chose native implementations for maps and GPS to avoid abstraction limitations",
       "Deferred advanced analytics until core functionality was validated",
       "Scoped features tightly to avoid overengineering"
-    ]
+    ],
+    "reviews": [
+      {
+        "name": "John Doe",
+        "review":
+          "I love this app! It's so easy to use and has all the features I need.",
+        "rating": 5
+      },
+      {
+        "name": "Jane Doe",
+        "review": "This app has changed my life! I'm so much stronger now.",
+        "rating": 5
+        }
+    ],
+    "privacyPolicy": {
+      "lastUpdated": "2025-01-01",
+      "sections": [
+        {
+          "title": "1. Introduction",
+          "content": [
+            "Welcome to Dash ('we', 'our', 'us'). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you use our app, Dash."
+          ]
+        },
+        {
+          "title": "2. Information We Collect",
+          "content": [
+            "We collect the following information to provide and improve our services:",
+            [
+              "Personal Information: Names and email addresses to authenticate users and personalize your experience.",
+              "Running Data: Information about your runs, such as distance, duration, pace, route, and performance metrics.",
+              "Health Data: Optional health-related data like weight, height, and running goals to tailor your experience.",
+              "Photos and Images: Photos you choose to upload related to your running journey.",
+              "Location Data: GPS coordinates and routes for tracking your runs (only when actively running).",
+              "Authentication Data: Passwords, which are encrypted and securely stored using Supabase Auth"
+            ]
+          ]
+        },
+        {
+          "title": "3. How We Use Your Information",
+          "content": [
+            "We use your information to:",
+            [
+              "Authenticate and verify your identity.",
+              "Track and analyze your running performance and progress.",
+              "Provide personalized running recommendations and insights.",
+              "Allow you to share photos and progress updates with others (if you choose to).",
+              "Communicate with you about updates, security alerts, and support"
+            ]
+            ]
+        },
+        {
+          "title": "4. Data Security",
+          "content": [
+            "We take data security seriously and implement the following measures to protect your information:",
+            [
+              "Encryption: Passwords are encrypted using Supabase Auth.",
+              "Access Controls: Only authorized personnel have access to your personal information.",
+              "Secure Storage: Data is stored on secure servers with appropriate safeguards."
+            ]
+          ]
+        },
+        {
+          "title": "5. Sharing Your Information",
+          "content": [
+            "We do not sell, trade, or otherwise transfer your personal information to outside parties, except:",
+            [
+              "When we have your consent.",
+              "To comply with legal obligations.",
+              "To protect our rights, privacy, safety, or property, and that of our users."
+            ]
+          ]
+        },
+        {
+          "title": "6. Your Rights",
+          "content": [
+            "You have the following rights regarding your personal information:",
+            [
+              "Access: You can request access to the personal information we hold about you.",
+              "Correction: You can request correction of any inaccurate or incomplete information.",
+              "Deletion: You can request the deletion of your personal information, subject to legal and contractual obligations."
+            ]
+          ]
+        },
+        {
+          "title": "7. Changes to This Privacy Policy",
+          "content": [
+            "We may update this Privacy Policy from time to time. We will notify you of any changes by updating the effective date at the top of this policy. We encourage you to review this Privacy Policy periodically."
+          ]
+        },
+        {
+          "title": "8. Contact Us",
+          "content": [
+            "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at dev.simanzler@gmail.com."
+          ]
+        },
+        {
+          "title": "9. Consent",
+          "content": ["By using our app, you consent to our Privacy Policy"]
+        }
+      ]
+    },
+    "termsOfService": {
+      "lastUpdated": "2025-01-01",
+      "sections": [
+        {
+          "title": "1. Acceptance of Terms",
+          "content": [
+            "By downloading, accessing, or using Rep, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please discontinue use of the app immediately."
+          ]
+        },
+        {
+          "title": "2. Eligibility and Account Registration",
+          "content": [
+            "You must be at least 13 years old to use Rep. You are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account."
+          ]
+        },
+        {
+          "title": "3. Use of the Service",
+          "content": [
+            "Rep is provided for personal workout tracking and community engagement.",
+            [
+              "Do not use Rep for any unlawful or unauthorized purpose.",
+              "Do not attempt to access, interfere with, or disrupt any system or network connected to the service.",
+              "Do not misrepresent your identity, workout data, or achievements."
+            ]
+          ]
+        },
+        {
+          "title": "4. Health and Safety",
+          "content": [
+            "Rep does not provide medical advice. Consult a physician before beginning any fitness program. You assume all risks associated with your workouts and agree to use the app responsibly."
+          ]
+        },
+        {
+          "title": "5. Data and Media Usage",
+          "content": [
+            "Rep may collect workout metrics, custom exercise entries, and optional photos or media you upload. You control what media you share, and you can revoke permissions at any time through your device settings, though some features may become unavailable."
+          ]
+        },
+        {
+          "title": "6. Subscriptions and Payments",
+          "content": [
+            "Certain features may be offered as paid upgrades. Fees are disclosed before purchase and are non-refundable unless required by law. You authorize us to charge your selected payment method for any applicable fees."
+          ]
+        },
+        {
+          "title": "7. Termination",
+          "content": [
+            "We may suspend or terminate your access to Rep at any time if you violate these terms or engage in fraudulent, abusive, or harmful behavior. You may stop using Rep at any time by deleting your account."
+          ]
+        },
+        {
+          "title": "8. Intellectual Property",
+          "content": [
+            "Rep, including its design, content, and features, is owned by us or our licensors. You receive a limited, non-transferable license to use the app for personal purposes. You may not copy, modify, or distribute our content without permission."
+          ]
+        },
+        {
+          "title": "9. Disclaimers and Limitation of Liability",
+          "content": [
+            "Rep is provided 'as is' without warranties of any kind. To the fullest extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the app."
+          ]
+        },
+        {
+          "title": "10. Governing Law and Dispute Resolution",
+          "content": [
+            "These terms are governed by the laws of the jurisdiction in which we operate, without regard to conflict-of-law principles. Any disputes will be resolved through good-faith negotiations, and if necessary, binding arbitration or a court of competent jurisdiction."
+          ]
+        },
+        {
+          "title": "11. Contact",
+          "content": [
+              "If you have questions about these Terms of Service, contact us at dev.simanzler@gmail.com."
+          ]
+        }
+      ]
+    }
   },
   {
     "title": "MCList",
@@ -720,5 +1094,246 @@
       "Focused on fun, visual feedback for item completion",
       "Scoped features tightly to avoid overengineering"
     ]
+  },
+  {
+    "title": "Pantry",
+    "slug": "pantry",
+    "description": "A grocery list app built to help you manage your groceries.",
+    "longDescription": "Pantry is a grocery list app built to help you manage your groceries. It enables users to create a grocery list, add items to the list, and share the list with others. The app features offline-first architecture, ensuring users can create a grocery list without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
+    "tags": ["React Native", "Expo", "TypeScript", "Supabase"],
+    "isApp": true,
+    "icon": "/pantry/icon.png",
+    "heroAsset": {
+      "type": "image",
+      "path": "/pantry/image1.png",
+      "alt": "Pantry Home",
+      "width": 195,
+      "height": 422
+    },
+    
+    "problemAndSolution": {
+      "problem": "Managing grocery lists across multiple devices and sharing them with family members is often fragmented across different apps or paper notes.",
+      "solution": "Pantry provides a unified, offline-first grocery management system with real-time sync and easy sharing, ensuring lists are always accessible and up-to-date."
+    },
+    "keyFeatures": [
+      "Grocery list management with item categorization",
+      "Shopping list generation with item prioritization",
+      "Shared grocery lists with friends and family",
+      "Offline-first architecture with automatic sync",
+      "Real-time collaboration on shared lists"
+    ],
+    "technicalHighlights": [
+      "Built with React Native and Expo for cross-platform development",
+      "Implemented offline-first architecture for reliable offline use",
+      "Integrated Supabase for real-time data sync, authentication, and cloud storage",
+      "Designed data models to support sharing and collaboration features"
+    ],
+    "challenges": [
+      {
+        "problem": "Offline-First Sync",
+        "solution": "Implemented a local-first data model with automatic synchronization when connectivity is restored, ensuring users can always access and modify their lists."
+      },
+      {
+        "problem": "Real-Time Collaboration",
+        "solution": "Leveraged Supabase's real-time capabilities to keep shared lists synchronized across multiple users and devices."
+      }
+    ],
+    "productDecisions": [
+      "Prioritized offline functionality to ensure the app works in any grocery store",
+      "Focused on simplicity and speed for quick list management",
+      "Designed sharing features to support common household workflows"
+    ],
+    "reviews": [
+      {
+        "name": "John Doe",
+        "review": "I love this app! It's so easy to use and has all the features I need.",
+        "rating": 5
+      },
+      {
+        "name": "Jane Doe",
+        "review": "This app has changed my life! I'm so much stronger now.",
+        "rating": 5
+      }
+    ],
+    "faq": [
+      {
+        "question": "How do I add a new item to the grocery list?",
+        "answer": "You can add a new item to the grocery list by tapping the 'Add Item' button and entering the item details."
+      },
+      {
+        "question": "How do I generate a shopping list?",
+        "answer": "You can generate a shopping list by tapping the 'Generate Shopping List' button and entering the item details."
+      },
+      {
+        "question": "How do I share the grocery list with others?",
+        "answer": "You can share the grocery list with others by tapping the 'Share' button and entering the item details."
+      },
+      {
+        "question": "How do I delete an item from the grocery list?",
+        "answer": "You can delete an item from the grocery list by tapping the 'Delete' button and entering the item details."
+      }
+    ],
+    "privacyPolicy": {
+      "lastUpdated": "2025-01-01",
+      "sections": [
+        {
+          "title": "1. Introduction",
+          "content": [
+            "Welcome to Pantry ('we', 'our', 'us'). Your privacy is critically important to us. This Privacy Policy explains how we collect, use, and safeguard your personal information when you use our grocery management app, Pantry."
+          ]
+        },
+        {
+          "title": "2. Information We Collect",
+          "content": [
+            "We collect the following information to deliver and improve our grocery app services:",
+            [
+              "Personal Information: Names and email addresses for authentication, account setup, and customization.",
+              "Grocery Data: Details about grocery items, lists, shopping preferences, and categories you create or manage within the app.",
+              "Shared List Data: Data you choose to share, such as grocery lists with friends and family.",
+              "Photos and Images: Images you upload of grocery items or receipts.",
+              "Authentication Data: Passwords, securely stored using Supabase Auth."
+            ]
+          ]
+        },
+        {
+          "title": "3. How We Use Your Information",
+          "content": [
+            "We use your information to:",
+            [
+              "Authenticate and verify your identity and provide access to your account.",
+              "Store and manage your grocery lists and items.",
+              "Allow sharing of your grocery lists with others if you choose.",
+              "Enhance app functionality and personalize your experience.",
+              "Communicate with you regarding updates, tips, feature announcements, or support."
+            ]
+          ]
+        },
+        {
+          "title": "4. Data Security",
+          "content": [
+            "We strive to keep your data safe and implement the following practices:",
+            [
+              "Encryption: Passwords and sensitive data are encrypted using Supabase Auth.",
+              "Access Controls: Only authorized team members have access to your personal information.",
+              "Secure Storage: All data is stored securely on managed servers."
+            ]
+          ]
+        },
+        {
+          "title": "5. Sharing Your Information",
+          "content": [
+            "We will never sell or rent your personal information to third parties. We only share your information in the following circumstances:",
+            [
+              "With your explicit consent (e.g., sharing a grocery list with family/friends).",
+              "To comply with applicable laws or legal obligations.",
+              "To protect our rights, property, or the safety of our users."
+            ]
+          ]
+        },
+        {
+          "title": "6. Your Rights",
+          "content": [
+            "You have rights regarding your information, including:",
+            [
+              "Access: Request to see what personal information we hold about you.",
+              "Correction: Request corrections to any inaccurate or outdated data.",
+              "Deletion: Request permanent deletion of your personal information, subject to certain legal or operational obligations."
+            ]
+          ]
+        },
+        {
+          "title": "7. Changes to This Privacy Policy",
+          "content": [
+            "We may update this Privacy Policy periodically. Any updates will be reflected by changing the effective date at the top. We encourage you to review this Privacy Policy regularly."
+          ]
+        },
+        {
+          "title": "8. Contact Us",
+          "content": [
+            "If you have questions or concerns about this Privacy Policy or our data practices, please contact us at dev.simanzler@gmail.com."
+          ]
+        },
+        {
+          "title": "9. Consent",
+          "content": ["By using Pantry, you consent to our Privacy Policy."]
+        }
+      ]
+    },
+    "termsOfService": {
+      "lastUpdated": "2025-01-01",
+      "sections": [
+        {
+          "title": "1. Acceptance of Terms",
+          "content": [
+            "By downloading, accessing, or using Pantry, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please discontinue use of the app immediately."
+          ]
+        },
+        {
+          "title": "2. Eligibility and Account Registration",
+          "content": [
+            "You must be at least 13 years old to use Pantry. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account."
+          ]
+        },
+        {
+          "title": "3. Use of the Service",
+          "content": [
+            "Pantry is provided for personal grocery list management and collaboration.",
+            [
+              "Do not use Pantry for any illegal or unauthorized purpose.",
+              "Do not attempt to access, interfere with, or disrupt any system or network connected to the app.",
+              "Do not misrepresent your identity or grocery data when using the app."
+            ]
+          ]
+        },
+        {
+          "title": "4. Data and Content",
+          "content": [
+            "The grocery lists and item data you create are your responsibility. Pantry is not responsible for the accuracy, completeness, or updating of your grocery data."
+          ]
+        },
+        {
+          "title": "5. Sharing and Collaboration",
+          "content": [
+            "Pantry allows you to share grocery lists with others. Shared users may see or edit grocery data as permitted, and you should only share lists with trusted individuals."
+          ]
+        },
+        {
+          "title": "6. Subscriptions and Payments",
+          "content": [
+            "Certain features may be offered as paid upgrades. Fees—if applicable—will be disclosed before purchase and are non-refundable unless required by law. By purchasing, you authorize us to charge your chosen payment method."
+          ]
+        },
+        {
+          "title": "7. Termination",
+          "content": [
+            "We may suspend or terminate your access to Pantry at any time for violating these terms or engaging in fraudulent, abusive, or harmful behavior. You may stop using Pantry at any time by deleting your account."
+          ]
+        },
+        {
+          "title": "8. Intellectual Property",
+          "content": [
+            "Pantry, including its design, content, and features, is owned by us or our licensors. You are granted a limited, non-transferable license to use the app for personal purposes. You may not copy, modify, or distribute our content without written permission."
+          ]
+        },
+        {
+          "title": "9. Disclaimers and Limitation of Liability",
+          "content": [
+            "Pantry is provided 'as is' without warranties of any kind. To the fullest extent permitted by law, we are not responsible for any indirect, incidental, or consequential damages resulting from your use of the app."
+          ]
+        },
+        {
+          "title": "10. Governing Law and Dispute Resolution",
+          "content": [
+            "These terms are governed by the laws of our operating jurisdiction, without regards to conflict-of-law provisions. Any disputes will be resolved first by good-faith negotiations and, if necessary, by arbitration or a court of competent jurisdiction."
+          ]
+        },
+        {
+          "title": "11. Contact",
+          "content": [
+            "If you have questions about these Terms of Service, contact us at dev.simanzler@gmail.com."
+          ]
+        }
+      ]
+    }
   }
 ]

@@ -1,9 +1,9 @@
-import { useApps } from "@/hooks/useApps";
 import { H1, Lead } from "@/components/ui/typography";
 import ProjectCard from "@/components/project-card";
+import { getProjects } from "@/lib/projects";
 
 const Apps = () => {
-  const { apps } = useApps();
+  const apps = getProjects().filter((project) => project.isApp);
 
   return (
     <div className="min-h-screen">
@@ -14,11 +14,11 @@ const Apps = () => {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {apps.map((app) => (
           <ProjectCard
-            key={app.title}
+            key={app.slug}
             title={app.title}
             description={app.description}
-            image={app.image}
-            href={`/apps/${app.title}`}
+            image={app.icon}
+            href={`/apps/${app.slug}`}
           />
         ))}
       </div>

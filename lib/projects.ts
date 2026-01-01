@@ -1,4 +1,3 @@
-// lib/projects.ts
 import projects from "@/data/projects.json";
 
 export interface Asset {
@@ -8,6 +7,25 @@ export interface Asset {
   alt?: string;
   width: number;
   height: number;
+}
+
+export interface Review {
+  name: string;
+  review: string;
+  rating: number;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface Policy {
+  lastUpdated?: string;
+  sections: {
+    title: string;
+    content: (string | string[])[];
+  }[];
 }
 
 export interface Project {
@@ -37,6 +55,10 @@ export interface Project {
   }[];
   productDecisions?: string[];
   nextSteps?: string[];
+  reviews?: Review[];
+  faq?: FAQ[];
+  privacyPolicy?: Policy;
+  termsOfService?: Policy;
 }
 
 export function getProjects(): Project[] {

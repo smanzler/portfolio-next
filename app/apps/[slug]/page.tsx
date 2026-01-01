@@ -30,12 +30,12 @@ import Image from "next/image";
 import { AssetLightboxDialog } from "@/components/asset-lightbox-dialog";
 import { useState } from "react";
 import { AssetThumbnail } from "@/components/asset-thumbnail";
-import { useApps } from "@/hooks/useApps";
+import { getProjectBySlug } from "@/lib/projects";
 
 const AppDetails = () => {
   const { slug } = useParams();
-  const { apps } = useApps();
-  const app = apps.find((app) => app.title === slug);
+
+  const app = getProjectBySlug(slug as string);
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -87,9 +87,9 @@ const AppDetails = () => {
           <Lead>{app.description}</Lead>
         </div>
 
-        {app.image && (
+        {app.icon && (
           <div className="rounded-lg overflow-hidden bg-muted shrink-0">
-            <Image src={app.image} alt={app.title} width={64} height={64} />
+            <Image src={app.icon} alt={app.title} width={64} height={64} />
           </div>
         )}
       </div>
@@ -109,7 +109,7 @@ const AppDetails = () => {
                   alt: asset.alt || "",
                 }}
                 onClick={() => handleLightboxOpen(index)}
-                className="rounded-xl overflow-hidden border max-w-[500px]"
+                className="rounded-xl overflow-hidden border flex-[0_0_auto] max-w-72"
               />
             ))}
         </div>
@@ -124,7 +124,7 @@ const AppDetails = () => {
       {/* Features */}
       <div>
         <H3>Features</H3>
-        {app.features && <UL items={app.features} />}
+        {app.keyFeatures && <UL items={app.keyFeatures} />}
       </div>
       {/* Links */}
       {app.link ||
