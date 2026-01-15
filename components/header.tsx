@@ -23,7 +23,7 @@ import {
 } from "./ui/navigation-menu";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function MenuItem({
   href,
@@ -71,6 +71,15 @@ export function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const isMobile = useIsMobile();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -85,7 +94,12 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-5 p-2 flex justify-between items-center">
+    <header
+      className={cn(
+        "fixed top-0 right-0 left-0 z-5 p-2 flex justify-between items-center transition-all duration-300",
+        isScrolled && "bg-background"
+      )}
+    >
       <NavigationMenu viewport={isMobile}>
         <NavigationMenuList className="flex-wrap">
           <NavigationMenuItem>
