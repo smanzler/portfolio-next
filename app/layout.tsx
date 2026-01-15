@@ -53,7 +53,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="py-20 px-6 max-w-3xl mx-auto">
+          <main>
             <Header />
             {children}
             <Footer />

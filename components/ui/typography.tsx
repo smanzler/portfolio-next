@@ -62,7 +62,7 @@ const P: React.FC<Props> = ({ className, children }) => {
   return (
     <p
       className={cn(
-        "leading-7 [&:not(:first-child)]:mt-2 text-[15px] text-neutral-800 dark:text-neutral-300",
+        "leading-7 text-[15px] text-neutral-800 dark:text-neutral-300",
         className
       )}
     >
