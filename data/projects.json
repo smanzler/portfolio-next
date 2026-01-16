@@ -4,7 +4,7 @@
     "slug": "written",
     "description": "A local-first journaling app focused on satisfying writing, privacy, and ownership.",
     "longDescription": "Written is a journaling and writing app designed to make typing feel calm, private, and satisfying. The project evolved through several iterations—from early typing practice tools to a focused journaling experience—each version reflecting growth in frontend development, product thinking, and architecture.\n\nThe app is built with a local-first mindset, prioritizing privacy, responsiveness, and offline use.",
-    "tags": ["React", "Vite", "Typescript"],
+    "tags": ["react", "vite", "typescript"],
     "link": "https://written.simonmanzler.com",
     "github": "https://github.com/smanzler/written",
     "featured": true,
@@ -126,7 +126,7 @@
     "slug": "rep",
     "description": "Track workouts, view progress, share with friends, and sync data offline.",
     "longDescription": "Rep is a workout tracking app built to support consistent strength training without unnecessary complexity. Inspired by existing apps like Strong, Rep focuses on fast workout logging, offline reliability, and meaningful progress tracking.\n\nThe app uses a local-first architecture and is designed around real gym usage, with features added only when they proved necessary.",
-    "tags": ["React Native", "Supabase", "Expo"],
+    "tags": ["reactnative", "supabase", "expo"],
     "featured": true,
     "icon": "/rep/icon.png",
     "heroAsset": {
@@ -490,7 +490,7 @@
     "slug": "invt",
     "description": "Find and rsvp to events made by others and invite friends through QR codes.",
     "longDescription": "INVT simplifies event discovery and RSVP management through a clean, intuitive interface. Users can create events, share invitations via QR codes, sell tickets, and track attendance.\n\nThe platform is built with React and styled using shadcn/ui and TailwindCSS, with Supabase handling authentication, storage, and real-time data.",
-    "tags": ["React", "TypeScript", "TailwindCSS", "Shadcn UI", "Supabase"],
+    "tags": ["react", "typescript", "tailwindcss", "shadcn", "supabase"],
     "icon": "/invt/icon.png",
     "heroAsset": {
       "type": "video",
@@ -609,7 +609,7 @@
     "slug": "portfolio",
     "description": "A continuously evolving portfolio used to practice design, animation, and modern frontend patterns.",
     "longDescription": "This portfolio is a long-running project that has evolved alongside my growth as a developer. It began as a static HTML/CSS site, was later migrated to React with Vite, and is now built with Next.js. Each iteration reflects new tools, patterns, and design principles I've learned over time. The site also serves as the official domain for my published apps, hosting privacy policies and terms of service required for App Store distribution.",
-    "tags": ["Next.js", "React", "TypeScript", "TailwindCSS", "Shadcn UI", "motion", "Vercel"],
+    "tags": ["nextjs", "react", "typescript", "tailwindcss", "shadcn", "motion", "vercel"],
     "heroAsset": {
       "type": "image",
       "path": "/portfolio/image1.png",
@@ -724,7 +724,7 @@
     "slug": "dash",
     "description": "A map-based running app focused on route creation and performance tracking.",
     "longDescription": "Dash is a mobile running app built as an MVP to validate an idea developed for an entrepreneurship course. The app allows users to create custom running routes on a map and then run those routes while tracking performance data. The project was also an opportunity to deepen native iOS experience by building all map-related UI and GPS logic in Swift and bridging it into a React Native app using Expo native modules.",
-    "tags": ["Expo", "TypeScript", "Swift", "Mapbox IOS SDK"],
+    "tags": ["expo", "typescript", "swift", "mapbox ios sdk"],
     "isApp": true,
     "heroAsset": {
       "type": "image",
@@ -1032,7 +1032,7 @@
     "longDescription": "This web app helps Minecraft players track and manage materials needed for their builds. By parsing text-based lists from YouTube descriptions or other sources, it provides a visual checklist with images from the Minecraft Wiki and interactive progress tracking. Users can save builds locally, mark items as completed, and share builds via a compressed URL with metadata for social sharing.",
     "github": "https://github.com/smanzler/material-list",
     "link": "https://mclist.simonmanzler.com",
-    "tags": ["Next.js", "React", "TypeScript", "Dexie", "Motion", "Lottie"],
+    "tags": ["nextjs", "react", "typescript", "dexie", "motion", "lottie"],
     "heroAsset": {
       "type": "video",
       "path": "/mclist/video1.mov",
@@ -1100,7 +1100,7 @@
     "slug": "pantry",
     "description": "A grocery list app built to help you manage your groceries.",
     "longDescription": "Pantry is a grocery list app built to help you manage your groceries. It enables users to create a grocery list, add items to the list, and share the list with others. The app features offline-first architecture, ensuring users can create a grocery list without internet connectivity, with automatic synchronization when connection is restored. Supabase provides real-time data sync, authentication, and cloud storage.",
-    "tags": ["React Native", "Expo", "TypeScript", "Supabase"],
+    "tags": ["reactnative", "expo", "typescript", "supabase"],
     "isApp": true,
     "icon": "/pantry/icon.png",
     "heroAsset": {

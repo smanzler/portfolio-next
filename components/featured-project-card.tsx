@@ -1,65 +1,53 @@
-"use client";
+import Link from "next/link";
+import { H4, Muted } from "./ui/typography";
+import Image from "next/image";
+import TechIcon from "./tech-icon";
+import { Button } from "./ui/button";
+import { ArrowUpRight } from "lucide-react";
 
-import type { Project } from "@/lib/projects";
-import { useRouter } from "next/navigation";
-import { H4, P } from "@/components/ui/typography";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-import ThresholdMotionDiv from "@/components/motion/threshold-motion-div";
-import AccentShadowContainer from "@/components/motion/accent-shadow-container";
-import { AssetThumbnail } from "./asset-thumbnail";
-import { useIsMobile } from "@/hooks/useIsMobile";
-
-const FeaturedProjectCard = ({
-  project,
-  side = "left",
+export default function FeaturedProjectCard({
+  title,
+  description,
+  image,
+  href,
+  tech,
 }: {
-  project: Project;
-  side?: "left" | "right";
-}) => {
-  const router = useRouter();
-  const isMobile = useIsMobile();
-
+  title: string;
+  description: string;
+  image?: string;
+  href: string;
+  tech: string[];
+}) {
   return (
-    <div className="relative">
-      {project.heroAsset && (
-        <AssetThumbnail
-          asset={project.heroAsset}
-          className="border-none overflow-hidden rounded-xl aspect-[3/2] bg-black"
-        />
-      )}
-      {isMobile ? (
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent rounded-xl" />
-      ) : (
-        <div
-          className={cn(
-            "absolute inset-0 from-black to-transparent rounded-xl",
-            side === "left" ? "bg-gradient-to-tl" : "bg-gradient-to-tr"
-          )}
-        />
-      )}
-      <div
-        className={cn(
-          "absolute z-1 bottom-0 text-white flex flex-col gap-4 p-8 md:p-16 lg:p-20",
-          !isMobile ? (side === "left" ? "right-0" : "left-0") : "flex-1"
+    <div className="flex flex-row gap-6">
+      <div className="flex flex-col gap-1 items-center justify-center">
+        {image && (
+          <div className="rounded-lg overflow-hidden bg-muted size-16">
+            <Image src={image} alt={title} width={64} height={64} />
+          </div>
         )}
-      >
+        <Muted className="text-xs">{title}</Muted>
+      </div>
+      <div className="flex flex-col gap-2">
         <div>
-          <div className="flex flex-row justify-between items-center gap-2 lg:mb-4">
-            <H4 className="text-3xl lg:text-4xl">{project.title}</H4>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map((tag) => (
-                <Badge key={tag} className="text-xs">
-                  {tag}
-                </Badge>
+          <div className="flex flex-row justify-between items-center gap-2">
+            <H4>{title}</H4>
+            <div className="flex flex-row gap-2">
+              {tech.map((tech) => (
+                <TechIcon key={tech} name={tech} />
               ))}
             </div>
           </div>
-          <P className="line-clamp-3 text-white/80">{project.description}</P>
+          <Muted className="line-clamp-3">{description}</Muted>
+        </div>
+        <div className="ml-auto">
+          <Button variant="ghost" asChild>
+            <Link href={href}>
+              <ArrowUpRight />
+            </Link>
+          </Button>
         </div>
       </div>
     </div>
   );
-};
-
-export default FeaturedProjectCard;
+}

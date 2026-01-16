@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="sm:min-h-screen flex flex-col-reverse sm:grid sm:grid-cols-2 pt-16 sm:pt-0"
+      className="min-h-screen flex flex-col-reverse justify-center sm:grid sm:grid-cols-2 pt-16 sm:pt-0"
     >
       <div className="flex justify-center sm:justify-end items-center p-16">
         <div className="flex flex-col gap-4">

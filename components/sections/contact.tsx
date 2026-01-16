@@ -4,10 +4,11 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import ContactForm from "../contact-form";
 import { ResponsiveButton } from "../responsive-button";
+import Section from "../section";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-40 min-h-screen">
+    <Section id="contact">
       <div className="mb-12">
         <H1>Get in Touch</H1>
         <Lead>
@@ -89,6 +90,6 @@ export default function Contact() {
           <ContactForm />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

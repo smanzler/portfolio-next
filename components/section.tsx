@@ -17,7 +17,7 @@ export default function Section({
     <section id={id} className={cn("min-h-screen p-4 sm:p-20", className)}>
       <div
         className={cn(
-          "max-w-7xl mx-auto flex flex-col gap-6",
+          "max-w-7xl mx-auto flex flex-col gap-6 lg:gap-12",
           contentClassName
         )}
       >
