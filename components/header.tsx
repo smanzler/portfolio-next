@@ -96,8 +96,8 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 right-0 left-0 z-5 p-2 flex justify-between items-center transition-all duration-300",
-        isScrolled && "bg-background"
+        "fixed top-0 right-0 left-0 z-5 p-2 flex justify-between items-center transition-all duration-300 bg-background/30 md:bg-transparent",
+        isScrolled && "!bg-background"
       )}
     >
       <NavigationMenu viewport={isMobile}>

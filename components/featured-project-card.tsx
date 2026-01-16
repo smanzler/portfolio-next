@@ -21,38 +21,32 @@ const FeaturedProjectCard = ({
   const isMobile = useIsMobile();
 
   return (
-    <ThresholdMotionDiv
-      className="cursor-pointer"
-      onClick={() => router.push(`/projects/${project.slug}`)}
-    >
-      <AccentShadowContainer className="rounded-xl border overflow-hidden relative">
-        {project.heroAsset && (
-          <AssetThumbnail
-            asset={project.heroAsset}
-            className="border-none overflow-hidden rounded-xl aspect-[3/2]"
-          />
-        )}
-        {!isMobile && (
-          <div
-            className={cn(
-              "absolute inset-0 bg-gradient-to-t from-white/20 dark:from-black to-transparent rounded-xl",
-              side === "left" ? "bg-gradient-to-tl" : "bg-gradient-to-tr"
-            )}
-          />
-        )}
-        <ThresholdMotionDiv
+    <div className="relative">
+      {project.heroAsset && (
+        <AssetThumbnail
+          asset={project.heroAsset}
+          className="border-none overflow-hidden rounded-xl aspect-[3/2] bg-black"
+        />
+      )}
+      {isMobile ? (
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent rounded-xl" />
+      ) : (
+        <div
           className={cn(
-            !isMobile &&
-              `absolute z-1 bottom-6 ${side === "left" ? "right-6" : "left-6"}`,
-            "md:w-[400px] flex flex-col justify-between gap-3 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-300/40 dark:supports-[backdrop-filter]:bg-neutral-700/40 rounded-xl"
+            "absolute inset-0 from-black to-transparent rounded-xl",
+            side === "left" ? "bg-gradient-to-tl" : "bg-gradient-to-tr"
           )}
-        >
-          <div className="flex flex-col gap-2">
-            <H4>{project.title}</H4>
-            <P className="line-clamp-3">{project.description}</P>
-          </div>
-
-          <div className="flex flex-col gap-3">
+        />
+      )}
+      <div
+        className={cn(
+          "absolute z-1 bottom-0 text-white flex flex-col gap-4 p-8 md:p-16 lg:p-20",
+          !isMobile ? (side === "left" ? "right-0" : "left-0") : "flex-1"
+        )}
+      >
+        <div>
+          <div className="flex flex-row justify-between items-center gap-2 lg:mb-4">
+            <H4 className="text-3xl lg:text-4xl">{project.title}</H4>
             <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
                 <Badge key={tag} className="text-xs">
@@ -61,9 +55,10 @@ const FeaturedProjectCard = ({
               ))}
             </div>
           </div>
-        </ThresholdMotionDiv>
-      </AccentShadowContainer>
-    </ThresholdMotionDiv>
+          <P className="line-clamp-3 text-white/80">{project.description}</P>
+        </div>
+      </div>
+    </div>
   );
 };
 
