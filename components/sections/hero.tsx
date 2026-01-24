@@ -15,7 +15,7 @@ const SkillItem = ({ skill }: { skill: (typeof skills)[0] }) => {
     <Tooltip>
       <TooltipTrigger asChild>
         <AccentShadowContainer
-          className="p-2 mr-4 rounded-lg cursor-pointer"
+          className="p-2 mr-4 rounded-lg cursor-pointer flex-shrink-0"
           onClick={() => scrollToSection("skills")}
         >
           <Icon icon={skill.icon} className="w-10 h-10" />
@@ -69,21 +69,10 @@ export default function Hero() {
 
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-1 pointer-events-none" />
 
-        <div className="flex">
-          <div className="flex animate-marquee flex-shrink-0">
-            {skills.map((skill, index) => (
-              <SkillItem key={`${skill.name}-${index}`} skill={skill} />
-            ))}
-          </div>
-          <div
-            className="flex animate-marquee flex-shrink-0"
-            aria-hidden="true"
-          >
-            {skills.map((skill, index) => (
-              <SkillItem
-                key={`${skill.name}-duplicate-${index}`}
-                skill={skill}
-              />
+        <div className="w-max">
+          <div className="flex animate-marquee">
+            {[...skills, ...skills].map((skill, index) => (
+              <SkillItem key={index} skill={skill} />
             ))}
           </div>
         </div>
