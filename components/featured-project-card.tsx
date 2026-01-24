@@ -25,11 +25,11 @@ const FeaturedProjectCard = ({
       className="cursor-pointer"
       onClick={() => router.push(`/projects/${project.slug}`)}
     >
-      <AccentShadowContainer className="rounded-xl border overflow-hidden relative">
+      <AccentShadowContainer className="rounded-xl md:border overflow-hidden relative">
         {project.heroAsset && (
           <AssetThumbnail
             asset={project.heroAsset}
-            className="border-none overflow-hidden rounded-xl aspect-[3/2]"
+            className="border-none overflow-hidden rounded-xl aspect-[3/2] bg-black"
           />
         )}
         {!isMobile && (
@@ -44,7 +44,7 @@ const FeaturedProjectCard = ({
           className={cn(
             !isMobile &&
               `absolute z-1 bottom-6 ${side === "left" ? "right-6" : "left-6"}`,
-            "md:w-[400px] flex flex-col justify-between gap-3 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-300/40 dark:supports-[backdrop-filter]:bg-neutral-700/40 rounded-xl"
+            "md:w-[400px] flex flex-col justify-between gap-3 p-6 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-100/70 dark:supports-[backdrop-filter]:bg-neutral-700/40 rounded-xl mt-2 md:mt-0"
           )}
         >
           <div className="flex flex-col gap-2">
