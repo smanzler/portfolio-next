@@ -323,161 +323,175 @@
       }
     ],
     "privacyPolicy": {
-      "lastUpdate d": "2025-01-01",
+      "lastUpdated": "2026-10-26",
       "sections": [
         {
           "title": "1. Introduction",
           "content": [
-            "Welcome to Rep ('we', 'our', 'us'). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you use our app, Rep."
+            "This Privacy Policy explains what information Rep ('we', 'our', 'us') collects when you use the Rep app, how we use it, who can see it, and how you can delete it."
           ]
         },
         {
           "title": "2. Information We Collect",
           "content": [
-            "We collect the following information to provide and improve our services:",
+            "We collect only what the app needs to work:",
             [
-              "Personal Information: Names and email addresses to authenticate users and personalize your experience.",
-              "Workout Data: Information about your workouts, such as exercises, sets, reps, and performance metrics.",
-              "Health Data: Optional health-related data like weight, height, and fitness goals to tailor your experience.",
-              "Photos and Images: Photos you choose to upload related to your fitness journey.",
-              "Authentication Data: Passwords, which are encrypted and securely stored using Supabase Auth."
-            ]
+              "Account information: your email address. If you sign in with Apple or Google, we also get the name and profile picture that the provider shares.",
+              "Profile: your username and an optional profile photo that you upload.",
+              "Workout data: your workouts, routines and custom exercises, with exercises, sets, weights, reps, notes, start and end times, and the personal records that the app calculates.",
+              "Social data: the people you follow and who follow you, and the kudos you give and get.",
+              "Notifications: your device's push notification token and the notifications we send you.",
+              "Sign-in data: one-time sign-in codes, which expire after 5 minutes, and your sessions, including the IP address and device type used to sign in."
+            ],
+            "We do not collect your location, contacts, health data from other apps, or payment information. The app has no ads, analytics or third-party tracking."
           ]
         },
         {
           "title": "3. How We Use Your Information",
           "content": [
-            "We use your information to:",
+            "We use your information only to provide Rep:",
             [
-              "Authenticate and verify your identity.",
-              "Track and analyze your workout performance.",
-              "Provide personalized workout recommendations and insights.",
-              "Allow you to share photos and progress updates with others (if you choose to).",
-              "Communicate with you about updates, security alerts, and support."
+              "Sign you in and keep your account secure.",
+              "Save your workouts and routines and calculate your progress and personal records.",
+              "Show your workouts to the people who follow you, and let you follow others and give kudos.",
+              "Send sign-in codes by email and send push notifications, for example when someone gives you kudos."
+            ],
+            "We do not sell your information or use it for advertising."
+          ]
+        },
+        {
+          "title": "4. What Other Users Can See",
+          "content": [
+            [
+              "Any Rep user can find you by your username and see your username and profile photo.",
+              "People who follow you can see your workouts, including exercises, sets, weights, reps and personal records, and the kudos on them.",
+              "Your email address is never shown to other users."
             ]
           ]
         },
         {
-          "title": "4. Data Security",
+          "title": "5. Service Providers",
           "content": [
-            "We take data security seriously and implement the following measures to protect your information:",
+            "We use these providers to run Rep. They process data only for us:",
             [
-              "Encryption: Passwords are encrypted using Supabase Auth.",
-              "Access Controls: Only authorized personnel have access to your personal information.",
-              "Secure Storage: Data is stored on secure servers with appropriate safeguards."
+              "Fly.io hosts the Rep server.",
+              "Neon hosts the database.",
+              "An S3-compatible storage provider stores profile photos.",
+              "An email provider sends sign-in codes.",
+              "Expo, Apple and Google deliver push notifications.",
+              "Apple and Google handle Sign in with Apple and Sign in with Google, under their own privacy policies."
             ]
           ]
         },
         {
-          "title": "5. Sharing Your Information",
+          "title": "6. Data on Your Device",
           "content": [
-            "We do not sell, trade, or otherwise transfer your personal information to outside parties, except:",
-            [
-              "When we have your consent.",
-              "To comply with legal obligations.",
-              "To protect our rights, privacy, safety, or property, and that of our users."
-            ]
+            "The app stores your sign-in session in your device's secure storage, and keeps your in-progress workout and app settings on your device. Deleting the app removes them."
           ]
         },
         {
-          "title": "6. Your Rights",
+          "title": "7. Data Retention and Deletion",
           "content": [
-            "You have the following rights regarding your personal information:",
-            [
-              "Access: You can request access to the personal information we hold about you.",
-              "Correction: You can request correction of any inaccurate or incomplete information.",
-              "Deletion: You can request the deletion of your personal information, subject to legal and contractual obligations."
-            ]
+            "We keep your data until you delete your account. You can delete your account in the app under You → Settings → Delete Account, or by following the steps at https://www.manzler.dev/apps/rep/delete-account. Deleting your account removes all of your data immediately. Copies can stay in encrypted database backups for up to 30 days."
           ]
         },
         {
-          "title": "7. Changes to This Privacy Policy",
+          "title": "8. Data Security",
           "content": [
-            "We may update this Privacy Policy from time to time. We will notify you of any changes by updating the effective date at the top of this policy. We encourage you to review this Privacy Policy periodically."
+            "Data is encrypted in transit with HTTPS. Access to the server, database and storage is limited to the developer. No method of storage or transmission is completely secure, but we work to protect your information."
           ]
         },
         {
-          "title": "8. Contact Us",
+          "title": "9. Your Rights",
           "content": [
-            "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at dev.simanzler@gmail.com."
+            "You can see and edit your profile and workouts in the app, and delete your account at any time. To request a copy of your data or ask any question about it, email dev.simanzler@gmail.com."
           ]
         },
         {
-          "title": "9. Consent",
-          "content": ["By using our app, you consent to our Privacy Policy."]
+          "title": "10. Children",
+          "content": [
+            "Rep is not intended for children under 13, and we do not knowingly collect information from them. If you believe a child has created an account, contact us and we will delete it."
+          ]
+        },
+        {
+          "title": "11. Changes to This Policy",
+          "content": [
+            "We may update this policy. We will change the date at the top of this page when we do, and tell you in the app about important changes."
+          ]
+        },
+        {
+          "title": "12. Contact Us",
+          "content": [
+            "If you have questions about this Privacy Policy, contact us at dev.simanzler@gmail.com."
+          ]
         }
       ]
     },
     "termsOfService": {
-      "lastUpdated": "2025-01-01",
+      "lastUpdated": "2026-10-26",
       "sections": [
         {
           "title": "1. Acceptance of Terms",
           "content": [
-            "By downloading, accessing, or using Dash, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, discontinue use of the app immediately."
+            "By downloading, accessing or using Rep, you agree to these Terms of Service and our Privacy Policy. If you do not agree, do not use the app."
           ]
         },
         {
-          "title": "2. Eligibility and Account Registration",
+          "title": "2. Eligibility and Accounts",
           "content": [
-            "You must be at least 13 years old to use Dash. You are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account."
+            "You must be at least 13 years old to use Rep. You are responsible for your account and for all activity on it. Keep access to your email and sign-in methods secure."
           ]
         },
         {
           "title": "3. Use of the Service",
           "content": [
-            "Dash is provided for personal running tracking and community engagement.",
+            "Rep is for tracking your strength training and sharing your workouts with friends.",
             [
-              "Do not use Dash for any unlawful or unauthorized purpose.",
-              "Do not attempt to access, interfere with, or disrupt any system or network connected to the service.",
-              "Do not misrepresent your identity, run data, or achievements."
+              "Do not use Rep for any unlawful purpose.",
+              "Do not harass other users, or choose a username or profile photo that is offensive or that impersonates someone.",
+              "Do not attempt to access, interfere with or disrupt the service or other users' accounts.",
+              "Do not post false workouts to mislead others."
             ]
           ]
         },
         {
-          "title": "4. Health and Safety",
+          "title": "4. Your Content",
           "content": [
-            "Dash does not provide medical advice. Consult a physician before beginning any new fitness program. You assume all risks associated with your running activities and agree to use the app responsibly."
+            "You own the workouts, routines, photos and other content you add to Rep. You give us permission to store it and show it to you and to the people who follow you, only to provide the service. You can delete it at any time by deleting it in the app or deleting your account."
           ]
         },
         {
-          "title": "5. Location and Sensor Data",
+          "title": "5. Health and Safety",
           "content": [
-            "Dash may collect location, motion, and other sensor data to track your runs. You control when tracking is active, and you can revoke permissions at any time through your device settings, though some features may become unavailable."
+            "Rep does not provide medical advice. Consult a physician before starting a new exercise program. You are responsible for training safely and assume the risks of your exercise."
           ]
         },
         {
-          "title": "6. Subscriptions and Payments",
+          "title": "6. Termination",
           "content": [
-            "Certain features may be offered as paid upgrades. Fees are disclosed before purchase and are non-refundable unless required by law. You authorize us to charge your selected payment method for any applicable fees."
+            "We may suspend or end your access to Rep if you break these terms or harm other users. You can stop using Rep at any time and delete your account in the app."
           ]
         },
         {
-          "title": "7. Termination",
+          "title": "7. Intellectual Property",
           "content": [
-            "We may suspend or terminate your access to Dash at any time if you violate these terms or engage in fraudulent, abusive, or harmful behavior. You may stop using Dash at any time by deleting your account."
+            "Rep, including its design and features, is owned by us. You receive a limited, non-transferable license to use the app for personal purposes."
           ]
         },
         {
-          "title": "8. Intellectual Property",
+          "title": "8. Disclaimers and Limitation of Liability",
           "content": [
-            "Dash, including its design, content, and features, is owned by us or our licensors. You receive a limited, non-transferable license to use the app for personal purposes. You may not copy, modify, or distribute our content without permission."
+            "Rep is provided 'as is' without warranties of any kind. To the fullest extent permitted by law, we are not liable for any indirect, incidental or consequential damages, or for loss of data, arising from your use of the app."
           ]
         },
         {
-          "title": "9. Disclaimers and Limitation of Liability",
+          "title": "9. Changes to These Terms",
           "content": [
-            "Dash is provided 'as is' without warranties of any kind. To the fullest extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the app."
+            "We may update these terms. We will change the date at the top of this page when we do. If you keep using Rep after a change, you accept the new terms."
           ]
         },
         {
-          "title": "10. Governing Law and Dispute Resolution",
-          "content": [
-            "These terms are governed by the laws of the jurisdiction in which we operate, without regard to conflict-of-law principles. Any disputes will be resolved through good-faith negotiations, and if necessary, binding arbitration or a court of competent jurisdiction."
-          ]
-        },
-        {
-          "title": "11. Contact",
+          "title": "10. Contact",
           "content": [
             "If you have questions about these Terms of Service, contact us at dev.simanzler@gmail.com."
           ]
