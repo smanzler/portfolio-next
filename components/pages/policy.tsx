@@ -6,16 +6,29 @@ import { Button } from "../ui/button";
 import { ArrowLeft } from "lucide-react";
 import { H1, H2, H4, Muted, P, UL } from "../ui/typography";
 import { Separator } from "../ui/separator";
-import { getProjectBySlug } from "@/lib/projects";
+import { getProjectBySlug, type Policy as PolicyData, type Project } from "@/lib/projects";
 import Image from "next/image";
 import React from "react";
 
-const Policy = ({ type }: { type: "privacy" | "terms" }) => {
+export type PolicyType = "privacy" | "terms" | "accountDeletion";
+
+const policyTypes: Record<
+  PolicyType,
+  { title: string; get: (item: Project) => PolicyData | undefined }
+> = {
+  privacy: { title: "Privacy Policy", get: (item) => item.privacyPolicy },
+  terms: { title: "Terms of Service", get: (item) => item.termsOfService },
+  accountDeletion: {
+    title: "Delete Your Account",
+    get: (item) => item.accountDeletion,
+  },
+};
+
+const Policy = ({ type }: { type: PolicyType }) => {
   const { slug } = useParams();
   const item = getProjectBySlug(slug as string);
-
-  const policy =
-    type === "privacy" ? item?.privacyPolicy : item?.termsOfService;
+  const { title } = policyTypes[type];
+  const policy = item && policyTypes[type].get(item);
 
   if (!policy || !item) {
     return (
@@ -28,10 +41,7 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
         </Button>
 
         <div className="flex flex-col items-center text-center justify-center py-20 gap-6">
-          <H1>
-            {type === "privacy" ? "Privacy Policy" : "Terms of Service"} Not
-            Found
-          </H1>
+          <H1>{title} Not Found</H1>
           <P>
             Sorry, we couldn't find the app you're looking for. It might have
             been moved or doesn't exist.
@@ -51,7 +61,7 @@ const Policy = ({ type }: { type: "privacy" | "terms" }) => {
   return (
     <div className="min-h-screen">
       <div className="flex flex-col gap-6">
-        <H1>{type === "privacy" ? "Privacy Policy" : "Terms of Service"}</H1>
+        <H1>{title}</H1>
         <div className="flex flex-row justify-between gap-4 items-end">
           <div>
             <Link href={`/apps/${item.slug}`}>

@@ -483,6 +483,49 @@
           ]
         }
       ]
+    },
+    "accountDeletion": {
+      "lastUpdated": "2026-10-26",
+      "sections": [
+        {
+          "title": "Delete your account in the app",
+          "content": [
+            "You can delete your Rep account and all of its data at any time:",
+            [
+              "Open Rep and sign in.",
+              "Go to the You tab and tap the Settings (gear) icon.",
+              "Tap Delete Account and confirm."
+            ],
+            "Your account is deleted immediately."
+          ]
+        },
+        {
+          "title": "Request deletion without the app",
+          "content": [
+            "If you can't use the app, email dev.simanzler@gmail.com from the email address you sign in with, with the subject \"Delete my Rep account\". We delete the account within 30 days and reply when it is done."
+          ]
+        },
+        {
+          "title": "Data that is deleted",
+          "content": [
+            "Deleting your account permanently removes all of its data:",
+            [
+              "Your account and email address",
+              "Your profile and profile photo",
+              "Your workouts, sets, routines, exercise history and records",
+              "Your friends, friend requests and kudos",
+              "Your sign-in sessions and notification settings"
+            ],
+            "We do not keep any of this data after the account is deleted."
+          ]
+        },
+        {
+          "title": "Backups",
+          "content": [
+            "Copies of deleted data can stay in encrypted database backups for up to 30 days, and are then removed. We do not restore deleted accounts from backups."
+          ]
+        }
+      ]
     }
   },
   {

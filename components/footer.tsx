@@ -63,6 +63,10 @@ const Footer = ({
           text: "Terms of Service",
           url: `/apps/${appSlug}/terms`,
         },
+        ...(projects.find((project) => project.slug === appSlug)
+          ?.accountDeletion
+          ? [{ text: "Delete Account", url: `/apps/${appSlug}/delete-account` }]
+          : []),
       ];
     } else if (pathname === "/apps") {
       return [{ text: "Back to Home", url: "/" }];

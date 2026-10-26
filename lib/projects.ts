@@ -59,6 +59,7 @@ export interface Project {
   faq?: FAQ[];
   privacyPolicy?: Policy;
   termsOfService?: Policy;
+  accountDeletion?: Policy;
 }
 
 export function getProjects(): Project[] {
